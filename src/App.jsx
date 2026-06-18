@@ -1,11 +1,29 @@
-import React from 'react';
-import { Plus, LayoutGrid, List } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Plus, LayoutGrid, List, Crosshair, Sun, Moon } from 'lucide-react';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { ItemCard } from './components/ItemCard';
 import { calculateProfit } from './utils/calculations';
+import { DestinyBoardModal } from './components/DestinyBoard';
 
 function App() {
   const [items, setItems] = useLocalStorage('albion-crafting-items', []);
+  const [isDestinyBoardOpen, setIsDestinyBoardOpen] = useState(false);
+
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved === 'dark';
+    return true; // Default dark
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
 
   const createNewItem = () => {
     return {
@@ -59,43 +77,63 @@ function App() {
     setItems(sorted);
   };
 
+  const handleSelectFromDestinyBoard = (node) => {
+    const newItem = createNewItem();
+    newItem.name = node.name;
+    setItems([newItem, ...items]);
+    setIsDestinyBoardOpen(false);
+  };
+
   return (
-    <div className="min-h-screen bg-zinc-950 p-4 md:p-8">
+    <div className="min-h-screen bg-canvas p-4 md:p-8 transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
-        <header className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800 pb-6">
+        <header className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-hairline pb-6">
           <div>
-            <h1 className="text-2xl font-bold text-zinc-100 mb-1">Máy tính Lợi nhuận Chế tạo Albion</h1>
-            <p className="text-zinc-400 text-sm">Phân tích tỷ lệ hoàn trả và tối đa hóa lợi nhuận của bạn.</p>
+            <h1 className="text-2xl font-bold text-strong mb-1 transition-colors">Máy tính Lợi nhuận Chế tạo</h1>
+            <p className="text-muted text-sm transition-colors">Phân tích tỷ lệ hoàn trả và tối đa hóa lợi nhuận của bạn.</p>
           </div>
           <div className="flex gap-2">
             <button
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className="p-2 bg-surface-card hover:bg-surface-elevated text-body rounded-lg transition-colors border border-hairline"
+              title={isDarkMode ? "Chuyển sang Giao diện Sáng" : "Chuyển sang Giao diện Tối"}
+            >
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <button
               onClick={handleSortByProfit}
-              className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-lg text-sm font-medium transition-colors border border-zinc-700/50"
+              className="px-4 py-2 bg-surface-card hover:bg-surface-elevated text-body rounded-lg text-sm font-semibold transition-colors border border-hairline"
             >
               Sắp xếp theo % Lợi nhuận
             </button>
             <button
-              onClick={handleAddItem}
-              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-medium transition-colors shadow-[0_0_15px_rgba(79,70,229,0.3)]"
+              onClick={() => setIsDestinyBoardOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-surface-card hover:bg-surface-elevated text-body rounded-lg text-sm font-semibold transition-colors border border-hairline"
             >
-              <Plus size={18} /> Thêm Vật phẩm
+              <Crosshair size={18} /> Destiny Board
+            </button>
+            <button
+              onClick={handleAddItem}
+              className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-active text-black rounded-lg text-sm font-bold transition-colors"
+            >
+              <Plus size={18} /> Thêm Tự do
             </button>
           </div>
         </header>
 
         <main>
           {items.length === 0 ? (
-            <div className="text-center py-20 bg-zinc-900/50 border border-dashed border-zinc-700 rounded-2xl">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                <Plus size={32} className="text-zinc-500" />
+            <div className="text-center py-20 bg-surface-card border border-dashed border-hairline rounded-2xl transition-colors">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface-elevated mb-4 transition-colors">
+                <Plus size={32} className="text-muted" />
               </div>
-              <h2 className="text-xl font-medium text-zinc-300 mb-2">Chưa có vật phẩm nào</h2>
-              <p className="text-zinc-500 max-w-md mx-auto mb-6">
+              <h2 className="text-xl font-semibold text-strong mb-2 transition-colors">Chưa có vật phẩm nào</h2>
+              <p className="text-muted max-w-md mx-auto mb-6 transition-colors">
                 Thêm vật phẩm chế tạo đầu tiên của bạn để bắt đầu tính toán lợi nhuận với mô hình Tỷ lệ Hoàn trả (RRR) chính xác.
               </p>
               <button
                 onClick={handleAddItem}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-active text-black rounded-lg font-bold transition-colors"
               >
                 <Plus size={20} /> Thêm Vật phẩm Chế tạo
               </button>
@@ -114,6 +152,12 @@ function App() {
             </div>
           )}
         </main>
+
+        <DestinyBoardModal
+          isOpen={isDestinyBoardOpen}
+          onClose={() => setIsDestinyBoardOpen(false)}
+          onSelectItem={handleSelectFromDestinyBoard}
+        />
       </div>
     </div>
   );

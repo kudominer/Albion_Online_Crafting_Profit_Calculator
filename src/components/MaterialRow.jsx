@@ -10,12 +10,12 @@ export function MaterialRow({ material, onChange, onRemove }) {
   const cost = (Number(material.quantity) || 0) * (Number(material.unitPrice) || 0);
 
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-2 bg-zinc-800/50 p-2 rounded-lg border border-zinc-700/50 transition-colors hover:border-zinc-600">
-      <div className="flex-1 w-full">
+    <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 mb-3 p-3 bg-canvas border border-hairline rounded-lg transition-colors">
+      <div className="flex-1 min-w-[200px]">
         <input
           type="text"
           placeholder="Tên Nguyên liệu"
-          className="w-full bg-zinc-900 border border-zinc-700 rounded p-1.5 text-sm text-zinc-200 focus:outline-none focus:border-indigo-500 transition-colors"
+          className="w-full bg-transparent text-sm text-strong focus:outline-none placeholder-muted transition-colors"
           value={material.name}
           onChange={handleNameChange}
         />
@@ -24,27 +24,25 @@ export function MaterialRow({ material, onChange, onRemove }) {
         <input
           type="number"
           placeholder="SL"
-          min="0"
-          className="w-20 bg-zinc-900 border border-zinc-700 rounded p-1.5 text-sm text-zinc-200 focus:outline-none focus:border-indigo-500 transition-colors"
+          className="w-full bg-surface-card border border-hairline rounded p-2 text-sm text-body font-plex focus:outline-none focus:ring-1 focus:ring-info-ring transition-colors"
           value={material.quantity}
           onChange={handleQuantityChange}
         />
         <input
           type="number"
           placeholder="Đơn giá"
-          min="0"
-          className="w-28 bg-zinc-900 border border-zinc-700 rounded p-1.5 text-sm text-zinc-200 focus:outline-none focus:border-indigo-500 transition-colors"
+          className="w-full bg-surface-card border border-hairline rounded p-2 text-sm text-body font-plex focus:outline-none focus:ring-1 focus:ring-info-ring transition-colors"
           value={material.unitPrice}
           onChange={handleUnitPriceChange}
         />
-        <div className="flex items-center justify-between w-24 sm:w-28 px-2 text-sm text-zinc-400">
-          <span>=</span>
-          <span className="font-mono text-zinc-300">{formatSilver(cost)}</span>
+        <div className="w-full sm:w-24 text-right flex flex-col justify-center">
+          <span className="text-xs text-muted mb-1">Thành tiền</span>
+          <span className="text-sm font-semibold text-strong font-plex transition-colors">{formatSilver(cost)}</span>
         </div>
         <button
           onClick={() => onRemove(material.id)}
-          className="p-1.5 text-zinc-500 hover:text-red-400 hover:bg-zinc-800 rounded transition-colors"
-          title="Xóa Nguyên liệu"
+          className="p-2 text-muted hover:text-trading-down hover:bg-surface-elevated rounded transition-colors"
+          title="Xóa nguyên liệu"
         >
           <Trash2 size={18} />
         </button>
