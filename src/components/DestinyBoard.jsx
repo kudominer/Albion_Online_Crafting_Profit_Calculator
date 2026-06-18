@@ -1,35 +1,79 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronDown, X, Crosshair } from 'lucide-react';
+import { ChevronRight, ChevronDown } from 'lucide-react';
 import { destinyBoardData, rawCategories } from '../data/destinyBoardData';
+import { useStore } from '../store/useStore';
+import { fetchMarketPrices } from '../utils/api';
 
-const DestinyNode = ({ node, level = 0, onSelectItem }) => {
+const formatSilver = (amount) => {
+  if (amount === undefined || amount === null || amount === 0) return '--';
+  return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+};
+
+const DestinyNode = ({ node, level = 0 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const marketData = useStore(state => state.marketData);
+  const setSelectedItem = useStore(state => state.setSelectedItem);
+  
   const hasChildren = node.children && node.children.length > 0;
   
   const handleToggle = (e) => {
     e.stopPropagation();
-    setIsExpanded(!isExpanded);
+    const nextState = !isExpanded;
+    setIsExpanded(nextState);
+    
+    if (nextState && hasChildren) {
+      // Find all leaf nodes and resources under this expanded node
+      const itemsToFetch = [];
+      const gatherLeaves = (n) => {
+        if (!n.children || n.children.length === 0) {
+          if (n.uniqueName) itemsToFetch.push(n.uniqueName);
+          if (n.resources) {
+            n.resources.forEach(res => itemsToFetch.push(res.uniqueName));
+          }
+        } else {
+          n.children.forEach(gatherLeaves);
+        }
+      };
+      
+      node.children.forEach(gatherLeaves);
+      
+      const uniqueNamesToFetch = [...new Set(itemsToFetch)];
+      if (uniqueNamesToFetch.length > 0) {
+        fetchMarketPrices(uniqueNamesToFetch);
+      }
+    }
   };
 
   const handleSelect = (e) => {
     e.stopPropagation();
     if (!hasChildren) {
-      onSelectItem(node);
+      setSelectedItem(node);
     } else {
-      setIsExpanded(!isExpanded);
+      handleToggle(e);
     }
   };
+
+  let sellPrice = 0;
+  let buyPrice = 0;
+
+  if (!hasChildren && node.uniqueName && marketData[node.uniqueName]) {
+    const cityData = marketData[node.uniqueName];
+    const sells = Object.values(cityData).map(d => d.sellPriceMin).filter(p => p > 0);
+    sellPrice = sells.length > 0 ? Math.min(...sells) : 0;
+    
+    const buys = Object.values(cityData).map(d => d.buyPriceMax).filter(p => p > 0);
+    buyPrice = buys.length > 0 ? Math.max(...buys) : 0;
+  }
 
   return (
     <div className="w-full">
       <div 
         className={`flex items-center gap-3 py-2 px-3 my-1 rounded-lg cursor-pointer transition-all duration-200 border border-transparent
-          ${hasChildren ? 'hover:bg-surface-elevated' : 'hover:bg-primary/10 hover:border-primary/30'}
+          ${hasChildren ? 'hover:bg-surface-elevated' : 'hover:bg-primary/10 hover:border-primary/30 bg-surface-card'}
         `}
         style={{ paddingLeft: `${level * 1.5 + 0.75}rem` }}
         onClick={handleSelect}
       >
-        {/* Connection line indicator for nested items */}
         {level > 0 && (
           <div className="absolute left-0 w-4 h-px bg-hairline" style={{ left: `${level * 1.5 - 0.5}rem` }}></div>
         )}
@@ -42,9 +86,8 @@ const DestinyNode = ({ node, level = 0, onSelectItem }) => {
           )}
         </div>
         
-        {/* Item Image if it's a leaf node */}
         {!hasChildren && node.uniqueName && (
-          <div className="relative w-10 h-10 bg-surface-card rounded-md border border-hairline overflow-hidden flex-shrink-0 transition-colors">
+          <div className="relative w-12 h-12 bg-surface-elevated rounded-md border border-hairline overflow-hidden flex-shrink-0 transition-colors shadow-sm">
             <img 
               src={`https://render.albiononline.com/v1/item/${node.uniqueName}.png`} 
               alt={node.name}
@@ -54,22 +97,33 @@ const DestinyNode = ({ node, level = 0, onSelectItem }) => {
           </div>
         )}
 
-        <span className={`text-sm transition-colors ${!hasChildren ? 'text-strong font-medium' : 'text-body'}`}>
-          {node.name}
-        </span>
+        {!hasChildren ? (
+          <div className="flex flex-col flex-1 min-w-0">
+            <span className="text-sm font-semibold text-strong truncate">{node.name}</span>
+            <div className="flex flex-wrap items-center gap-2 mt-1 text-xs">
+              <div className="bg-canvas px-2 py-0.5 rounded flex items-center gap-1 border border-hairline">
+                <span className="text-muted">Bán min:</span>
+                <span className="text-trading-up font-plex">{formatSilver(sellPrice)}</span>
+              </div>
+              <div className="bg-canvas px-2 py-0.5 rounded flex items-center gap-1 border border-hairline">
+                <span className="text-muted">Mua max:</span>
+                <span className="text-trading-down font-plex">{formatSilver(buyPrice)}</span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <span className="text-sm transition-colors text-body font-medium">{node.name}</span>
+        )}
       </div>
 
-      {/* Render children recursively */}
       {hasChildren && isExpanded && (
         <div className="relative">
-          {/* Vertical line connecting children */}
           <div className="absolute top-0 bottom-0 w-px bg-hairline" style={{ left: `${level * 1.5 + 1.3}rem` }}></div>
           {node.children.map(child => (
             <DestinyNode 
               key={child.id} 
               node={child} 
               level={level + 1} 
-              onSelectItem={onSelectItem} 
             />
           ))}
         </div>
@@ -78,93 +132,57 @@ const DestinyNode = ({ node, level = 0, onSelectItem }) => {
   );
 };
 
-export function DestinyBoardModal({ isOpen, onClose, onSelectItem }) {
-  const [selectedRootId, setSelectedRootId] = useState(null);
-
-  const handleClose = () => {
-    setSelectedRootId(null);
-    onClose();
-  };
-
-  if (!isOpen) return null;
+export function DestinyBoard() {
+  const selectedRootId = useStore(state => state.selectedRootId);
+  const setSelectedRootId = useStore(state => state.setSelectedRootId);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div 
-        className="bg-surface-card border border-hairline rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden transition-colors"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-hairline bg-canvas transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/20 rounded-lg text-primary">
-              <Crosshair size={24} />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-strong transition-colors">Destiny Board</h2>
-              <p className="text-xs text-muted transition-colors">Chọn vật phẩm để thêm vào máy tính</p>
-            </div>
-          </div>
-          <button 
-            onClick={handleClose}
-            className="p-2 text-muted hover:text-strong hover:bg-surface-elevated rounded-lg transition-colors"
-          >
-            <X size={20} />
-          </button>
-        </div>
-
-        {/* Body - Dynamic View */}
-        <div className="flex-1 overflow-y-auto p-4 custom-scrollbar bg-surface-elevated/20">
-          {!selectedRootId ? (
-            // Grid View
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {rawCategories.map(root => (
-                <div 
-                  key={root.id}
-                  onClick={() => setSelectedRootId(root.id)}
-                  className="bg-surface-card border border-hairline rounded-xl p-4 flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-surface-elevated hover:border-primary/50 transition-all group"
-                >
-                  <div className="w-16 h-16 bg-canvas rounded-full flex items-center justify-center p-2 group-hover:scale-110 transition-transform">
-                    <img 
-                      src={`https://render.albiononline.com/v1/item/${root.iconName}.png`}
-                      alt={root.name}
-                      className="w-full h-full object-contain"
-                      onError={(e) => { e.target.style.display = 'none'; }}
-                    />
-                  </div>
-                  <span className="text-strong font-semibold text-center">{root.name}</span>
+    <div className="h-full flex flex-col w-full">
+      <div className="flex-1 overflow-y-auto p-4 md:p-6 custom-scrollbar bg-canvas rounded-2xl border border-hairline shadow-sm relative">
+        {!selectedRootId ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {rawCategories.map(root => (
+              <div 
+                key={root.id}
+                onClick={() => setSelectedRootId(root.id)}
+                className="bg-surface-card border border-hairline rounded-2xl p-6 flex flex-col items-center justify-center gap-4 cursor-pointer hover:bg-surface-elevated hover:border-primary/50 transition-all group shadow-sm"
+              >
+                <div className="w-24 h-24 bg-canvas rounded-full flex items-center justify-center p-3 group-hover:scale-110 transition-transform shadow-inner">
+                  <img 
+                    src={`https://render.albiononline.com/v1/item/${root.iconName}.png`}
+                    alt={root.name}
+                    className="w-full h-full object-contain"
+                    onError={(e) => { e.target.style.display = 'none'; }}
+                  />
                 </div>
-              ))}
-            </div>
-          ) : (
-            // Tree View
-            <div className="space-y-4">
+                <span className="text-strong font-bold text-lg text-center">{root.name}</span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between border-b border-hairline pb-4 sticky top-0 bg-canvas z-10">
               <button 
                 onClick={() => setSelectedRootId(null)}
-                className="flex items-center gap-2 px-3 py-1.5 text-body hover:text-strong hover:bg-surface-elevated rounded-md transition-colors text-sm font-semibold mb-2"
+                className="flex items-center gap-2 px-3 py-1.5 text-body hover:text-strong hover:bg-surface-elevated rounded-md transition-colors text-sm font-semibold"
               >
                 ← Trở lại danh mục chính
               </button>
-              <div className="space-y-1 bg-surface-card p-2 rounded-xl border border-hairline">
-                {destinyBoardData.find(r => r.id === selectedRootId)?.children.map(category => (
-                  <DestinyNode 
-                    key={category.id} 
-                    node={category} 
-                    onSelectItem={(node) => {
-                      onSelectItem(node);
-                      handleClose();
-                    }} 
-                  />
-                ))}
-              </div>
+              <h2 className="text-lg font-bold text-strong">
+                {rawCategories.find(r => r.id === selectedRootId)?.name}
+              </h2>
             </div>
-          )}
-        </div>
-        
-        {/* Footer */}
-        <div className="p-4 border-t border-hairline bg-canvas text-center transition-colors">
-          <p className="text-xs text-muted">Mở các danh mục để tìm và chọn vật phẩm cụ thể.</p>
-        </div>
+            
+            <div className="space-y-1">
+              {destinyBoardData.find(r => r.id === selectedRootId)?.children.map(category => (
+                <DestinyNode 
+                  key={category.id} 
+                  node={category} 
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
