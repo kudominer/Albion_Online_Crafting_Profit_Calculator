@@ -224,6 +224,55 @@ const itemDefinitions = [
         ]
       }
     ]
+  },
+  {
+    id: 'offhand',
+    name: 'Vũ khí phụ (Offhand)',
+    iconName: 'T4_OFF_SHIELD',
+    subCategories: [
+      {
+        id: 'off_shield',
+        name: 'Shield',
+        items: [
+          { base: 'OFF_SHIELD', name: 'Shield', resources: [{ type: 'METALBAR', qty: 4 }, { type: 'WOOD', qty: 4 }] }
+        ]
+      },
+      {
+        id: 'off_tome',
+        name: 'Tome',
+        items: [
+          { base: 'OFF_TOME', name: 'Tome of Spells', resources: [{ type: 'CLOTH', qty: 4 }, { type: 'LEATHER', qty: 4 }] }
+        ]
+      },
+      {
+        id: 'off_torch',
+        name: 'Torch',
+        items: [
+          { base: 'OFF_TORCH', name: 'Torch', resources: [{ type: 'LEATHER', qty: 4 }, { type: 'WOOD', qty: 4 }] }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'accessory',
+    name: 'Phụ kiện (Accessory)',
+    iconName: 'T4_BAG',
+    subCategories: [
+      {
+        id: 'acc_bag',
+        name: 'Túi (Bag)',
+        items: [
+          { base: 'BAG', name: 'Bag', resources: [{ type: 'CLOTH', qty: 8 }, { type: 'LEATHER', qty: 8 }] }
+        ]
+      },
+      {
+        id: 'acc_cape',
+        name: 'Áo choàng (Cape)',
+        items: [
+          { base: 'CAPE', name: 'Cape', resources: [{ type: 'CLOTH', qty: 4 }, { type: 'LEATHER', qty: 4 }] }
+        ]
+      }
+    ]
   }
 ];
 

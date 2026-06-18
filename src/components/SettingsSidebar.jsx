@@ -119,11 +119,24 @@ export function SettingsSidebar() {
   const globalRrr = useStore(state => state.globalRrr);
   const globalTax = useStore(state => state.globalTax);
   const globalCraftFee = useStore(state => state.globalCraftFee);
+  const globalCity = useStore(state => state.globalCity);
   
   const setGlobalRrr = useStore(state => state.setGlobalRrr);
   const setGlobalTax = useStore(state => state.setGlobalTax);
   const setGlobalCraftFee = useStore(state => state.setGlobalCraftFee);
+  const setGlobalCity = useStore(state => state.setGlobalCity);
   const setIsSettingsOpen = useStore(state => state.setIsSettingsOpen);
+
+  const CITIES = [
+    { id: '', name: 'Tất cả thành phố (Min/Max)' },
+    { id: 'Caerleon', name: 'Caerleon' },
+    { id: 'Bridgewatch', name: 'Bridgewatch' },
+    { id: 'Martlock', name: 'Martlock' },
+    { id: 'Thetford', name: 'Thetford' },
+    { id: 'Fort Sterling', name: 'Fort Sterling' },
+    { id: 'Lymhurst', name: 'Lymhurst' },
+    { id: 'Brecilien', name: 'Brecilien' }
+  ];
 
   return (
     <div className="w-full h-full bg-surface-card border-r border-hairline flex flex-col shadow-lg overflow-hidden">
@@ -145,6 +158,18 @@ export function SettingsSidebar() {
         <div className="bg-canvas border border-hairline rounded-xl p-4">
           <h5 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Mặc định (Áp dụng cho mọi SP)</h5>
           <div className="space-y-3">
+            <div>
+              <label className="block text-xs text-muted mb-1">Thành phố (Lọc Giá API)</label>
+              <select
+                value={globalCity}
+                onChange={(e) => setGlobalCity(e.target.value)}
+                className="w-full bg-surface-elevated border border-hairline rounded px-3 py-2 text-sm text-strong font-semibold focus:outline-none focus:border-primary transition-colors appearance-none"
+              >
+                {CITIES.map(c => (
+                  <option key={c.id} value={c.id}>{c.name}</option>
+                ))}
+              </select>
+            </div>
             <div>
               <label className="block text-xs text-muted mb-1">Tỷ lệ hoàn trả - RRR (%)</label>
               <input

@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Calculator } from 'lucide-react';
+import { X, Calculator, Star } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { formatSilver, calculateProfit } from '../utils/calculations';
 
@@ -19,6 +19,8 @@ export function DetailPanel() {
   const setSelectedItem = useStore(state => state.setSelectedItem);
   const marketData = useStore(state => state.marketData);
   const customPrices = useStore(state => state.customPrices);
+  const watchlist = useStore(state => state.watchlist);
+  const toggleWatchlist = useStore(state => state.toggleWatchlist);
 
   // Global Settings linked
   const globalRrr = useStore(state => state.globalRrr);
@@ -72,6 +74,7 @@ export function DetailPanel() {
 
   const calcs = calculateProfit(mockItem);
   const profitColor = calcs.profit > 0 ? 'text-trading-up' : calcs.profit < 0 ? 'text-trading-down' : 'text-body';
+  const isWatchlisted = watchlist.includes(selectedItem.uniqueName);
 
   return (
     <div className="w-full h-full bg-surface-card border-l border-hairline flex flex-col shadow-lg overflow-hidden">
@@ -80,12 +83,21 @@ export function DetailPanel() {
           <Calculator size={18} className="text-primary" />
           Chi tiết Vật phẩm
         </h3>
-        <button 
-          onClick={() => setSelectedItem(null)}
-          className="p-1.5 text-muted hover:text-strong hover:bg-surface-elevated rounded transition-colors"
-        >
-          <X size={18} />
-        </button>
+        <div className="flex items-center gap-1">
+          <button 
+            onClick={() => toggleWatchlist(selectedItem.uniqueName)}
+            className={`p-1.5 rounded transition-colors ${isWatchlisted ? 'text-primary bg-primary/10' : 'text-muted hover:text-strong hover:bg-surface-elevated'}`}
+            title={isWatchlisted ? "Bỏ theo dõi" : "Theo dõi vật phẩm"}
+          >
+            <Star size={18} fill={isWatchlisted ? "currentColor" : "none"} />
+          </button>
+          <button 
+            onClick={() => setSelectedItem(null)}
+            className="p-1.5 text-muted hover:text-strong hover:bg-surface-elevated rounded transition-colors"
+          >
+            <X size={18} />
+          </button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
