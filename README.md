@@ -11,8 +11,7 @@
 
 ### Các bước cài đặt và khởi động
 1. **Mở terminal** (như Command Prompt, PowerShell, hoặc terminal tích hợp trong VS Code) tại thư mục chứa dự án:
-   `c:\Users\User\Documents\CODE\
-   `
+   `c:\Users\User\Documents\CODE\Albion_Online_Crafting_Profit_Calculator`
 
 2. **Cài đặt thư viện (dependencies)**:
    Gõ lệnh sau vào terminal và nhấn Enter:
@@ -33,3 +32,6 @@
 - `npm run build`: Đóng gói ứng dụng để chuẩn bị đưa lên môi trường thật (Production).
 - `npm run preview`: Xem trước giao diện của bản build.
 - `npm run lint`: Chạy công cụ kiểm tra lỗi code (ESLint).
+
+---
+**Author:** [kudominer](https://github.com/kudominer)
