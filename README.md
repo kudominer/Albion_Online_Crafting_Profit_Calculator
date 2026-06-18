@@ -11,7 +11,8 @@
 
 ### Các bước cài đặt và khởi động
 1. **Mở terminal** (như Command Prompt, PowerShell, hoặc terminal tích hợp trong VS Code) tại thư mục chứa dự án:
-   `c:\Users\User\Documents\CODE\Albion_Online_Crafting_Profit_Calculator`
+   `c:\Users\User\Documents\CODE\
+   `
 
 2. **Cài đặt thư viện (dependencies)**:
    Gõ lệnh sau vào terminal và nhấn Enter:
