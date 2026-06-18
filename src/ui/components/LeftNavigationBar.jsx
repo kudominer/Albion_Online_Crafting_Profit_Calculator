@@ -1,6 +1,6 @@
 import React from 'react';
 import { Crosshair, Star, Settings } from 'lucide-react';
-import { useStore } from '../store/useStore';
+import { useStore } from '../../cache/marketStore';
 
 export function LeftNavigationBar() {
   const activeTab = useStore(state => state.activeTab);

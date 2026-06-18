@@ -1,7 +1,7 @@
 import React from 'react';
 import { X, Calculator, Star } from 'lucide-react';
-import { useStore } from '../store/useStore';
-import { formatSilver, calculateProfit } from '../utils/calculations';
+import { useStore } from '../../cache/marketStore';
+import { CraftingService } from '../../services/craftingService';
 
 const formatResourceName = (uniqueName) => {
   const match = uniqueName.match(/^T(\d)_([A-Z]+)(?:_LEVEL\d@(\d))?$/);
@@ -72,7 +72,7 @@ export function DetailPanel() {
     }))
   };
 
-  const calcs = calculateProfit(mockItem);
+  const calcs = CraftingService.calculateProfit(mockItem);
   const profitColor = calcs.profit > 0 ? 'text-trading-up' : calcs.profit < 0 ? 'text-trading-down' : 'text-body';
   const isWatchlisted = watchlist.includes(selectedItem.uniqueName);
 
@@ -123,11 +123,11 @@ export function DetailPanel() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="text-xs text-muted mb-1">Giá Bán (Min Sell)</div>
-              <div className="font-plex text-trading-up font-bold text-lg">{minSell > 0 ? formatSilver(minSell) : '--'}</div>
+              <div className="font-plex text-trading-up font-bold text-lg">{minSell > 0 ? CraftingService.formatSilver(minSell) : '--'}</div>
             </div>
             <div>
               <div className="text-xs text-muted mb-1">Giá Mua (Max Buy)</div>
-              <div className="font-plex text-trading-down font-bold text-lg">{maxBuy > 0 ? formatSilver(maxBuy) : '--'}</div>
+              <div className="font-plex text-trading-down font-bold text-lg">{maxBuy > 0 ? CraftingService.formatSilver(maxBuy) : '--'}</div>
             </div>
           </div>
         </div>
@@ -193,20 +193,20 @@ export function DetailPanel() {
                   </div>
                   <div className="text-right shrink-0">
                     <div className={`font-plex text-xs font-semibold ${res.isCustomPrice ? 'text-primary' : 'text-strong'}`}>
-                      {res.totalCost > 0 ? formatSilver(res.totalCost) : '--'}
+                      {res.totalCost > 0 ? CraftingService.formatSilver(res.totalCost) : '--'}
                     </div>
-                    <div className="text-[10px] text-muted">@{res.unitPrice > 0 ? formatSilver(res.unitPrice) : '--'}/ea</div>
+                    <div className="text-[10px] text-muted">@{res.unitPrice > 0 ? CraftingService.formatSilver(res.unitPrice) : '--'}/ea</div>
                   </div>
                 </div>
               ))}
               <div className="pt-3 mt-3 border-t border-hairline flex flex-col gap-1">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-muted">Tổng chi phí NL gốc:</span>
-                  <span className="font-plex text-strong">{calcs.totalMaterialCost > 0 ? formatSilver(calcs.totalMaterialCost) : '--'}</span>
+                  <span className="font-plex text-strong">{calcs.totalMaterialCost > 0 ? CraftingService.formatSilver(calcs.totalMaterialCost) : '--'}</span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-muted">Chi phí Thực tế (Sau RRR):</span>
-                  <span className="font-plex font-bold text-strong">{calcs.trueCostPerItem > 0 ? formatSilver(calcs.trueCostPerItem) : '--'}</span>
+                  <span className="font-plex font-bold text-strong">{calcs.trueCostPerItem > 0 ? CraftingService.formatSilver(calcs.trueCostPerItem) : '--'}</span>
                 </div>
               </div>
             </div>
@@ -220,7 +220,7 @@ export function DetailPanel() {
           <h5 className="text-xs font-semibold text-muted uppercase tracking-wider mb-1">Lợi nhuận dự kiến</h5>
           <div className="flex justify-between items-end mt-2">
             <div className={`font-plex font-bold text-2xl ${profitColor}`}>
-              {calcs.profit > 0 ? '+' : ''}{calcs.profit !== 0 ? formatSilver(calcs.profit) : '--'}
+              {calcs.profit > 0 ? '+' : ''}{calcs.profit !== 0 ? CraftingService.formatSilver(calcs.profit) : '--'}
             </div>
             <div className={`font-plex font-bold text-lg ${profitColor}`}>
               {calcs.profitPercent !== 0 ? calcs.profitPercent.toFixed(2) + '%' : '--'}

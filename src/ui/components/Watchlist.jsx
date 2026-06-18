@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useStore } from '../store/useStore';
-import { fetchMarketPrices } from '../utils/api';
-import { destinyBoardData } from '../data/destinyBoardData';
+import { useStore } from '../../cache/marketStore';
+import { ApiService } from '../../services/apiService';
+import { ItemService } from '../../services/itemService';
+
+const destinyBoardData = ItemService.generateDestinyBoard();
 
 export function Watchlist() {
   const watchlist = useStore(state => state.watchlist);
@@ -33,7 +35,7 @@ export function Watchlist() {
           n.resources.forEach(r => itemsToFetch.push(r.uniqueName));
         }
       });
-      fetchMarketPrices([...new Set(itemsToFetch)]);
+      ApiService.fetchMarketPrices([...new Set(itemsToFetch)]);
     }
   }, [watchlist]);
 

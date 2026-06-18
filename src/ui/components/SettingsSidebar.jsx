@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { ChevronRight, ChevronDown, Settings, X, Save } from 'lucide-react';
-import { useStore } from '../store/useStore';
-import { materialsData } from '../data/materialsData';
-import { fetchMarketPrices } from '../utils/api';
-import { formatSilver } from '../utils/calculations';
+import { useStore } from '../../cache/marketStore';
+import { ItemService } from '../../services/itemService';
+import { ApiService } from '../../services/apiService';
+import { CraftingService } from '../../services/craftingService';
+
+const materialsData = ItemService.generateMaterialsTree();
 
 const MaterialNode = ({ node, level = 0 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -32,7 +34,7 @@ const MaterialNode = ({ node, level = 0 }) => {
       
       const uniqueNamesToFetch = [...new Set(itemsToFetch)];
       if (uniqueNamesToFetch.length > 0) {
-        fetchMarketPrices(uniqueNamesToFetch);
+        ApiService.fetchMarketPrices(uniqueNamesToFetch);
       }
     }
   };
@@ -82,7 +84,7 @@ const MaterialNode = ({ node, level = 0 }) => {
           <div className="flex flex-col flex-1 min-w-0 gap-1">
             <div className="flex justify-between items-center">
               <span className="text-xs font-semibold text-strong truncate">{node.name}</span>
-              <span className="text-[10px] text-muted">API: {apiPrice > 0 ? formatSilver(apiPrice) : '--'}</span>
+              <span className="text-[10px] text-muted">API: {apiPrice > 0 ? CraftingService.formatSilver(apiPrice) : '--'}</span>
             </div>
             <div className="flex items-center gap-2">
               <input 

@@ -5,7 +5,7 @@ import { DetailPanel } from './components/DetailPanel';
 import { SettingsSidebar } from './components/SettingsSidebar';
 import { LeftNavigationBar } from './components/LeftNavigationBar';
 import { Watchlist } from './components/Watchlist';
-import { useStore } from './store/useStore';
+import { useStore } from '../cache/marketStore';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = React.useState(() => {

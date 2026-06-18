@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { ChevronRight, ChevronDown, Search } from 'lucide-react';
-import { destinyBoardData, rawCategories } from '../data/destinyBoardData';
-import { useStore } from '../store/useStore';
-import { fetchMarketPrices } from '../utils/api';
-import { calculateProfit } from '../utils/calculations';
+import { useStore } from '../../cache/marketStore';
+import { ApiService } from '../../services/apiService';
+import { CraftingService } from '../../services/craftingService';
+import { ItemService } from '../../services/itemService';
+import { ITEM_DEFINITIONS } from '../../core/constants';
+
+const destinyBoardData = ItemService.generateDestinyBoard();
+const rawCategories = ITEM_DEFINITIONS;
 
 const formatSilver = (amount) => {
   if (amount === undefined || amount === null || amount === 0) return '--';
@@ -66,7 +70,7 @@ const DestinyNode = ({ node, level = 0 }) => {
       
       const uniqueNamesToFetch = [...new Set(itemsToFetch)];
       if (uniqueNamesToFetch.length > 0) {
-        fetchMarketPrices(uniqueNamesToFetch);
+        ApiService.fetchMarketPrices(uniqueNamesToFetch);
       }
     }
   };
@@ -126,7 +130,7 @@ const DestinyNode = ({ node, level = 0 }) => {
         })
       };
 
-      const calcs = calculateProfit(mockItem);
+      const calcs = CraftingService.calculateProfit(mockItem);
       profitPercent = calcs.profitPercent;
       isProfitCalculated = calcs.totalMaterialCost > 0;
     }

@@ -1,4 +1,11 @@
-const itemDefinitions = [
+export const MATERIAL_DEFINITIONS = [
+  { base: 'WOOD', name: 'Gỗ (Wood)' },
+  { base: 'METALBAR', name: 'Thép (Metalbar)' },
+  { base: 'CLOTH', name: 'Vải (Cloth)' },
+  { base: 'LEATHER', name: 'Da (Leather)' }
+];
+
+export const ITEM_DEFINITIONS = [
   {
     id: 'head',
     name: 'Nón (Head)',
@@ -275,50 +282,3 @@ const itemDefinitions = [
     ]
   }
 ];
-
-function generateDestinyBoard() {
-  const tiers = [4, 5, 6];
-  const enchants = [0, 1, 2, 3];
-
-  return itemDefinitions.map(root => ({
-    id: root.id,
-    name: root.name,
-    iconName: root.iconName,
-    children: root.subCategories.map(cat => ({
-      id: cat.id,
-      name: cat.name,
-      children: tiers.map(tier => ({
-        id: `${cat.id}_t${tier}`,
-        name: `Tier ${tier}`,
-        children: cat.items.flatMap(item => {
-          return enchants.map(enchant => {
-            const uniqueName = `T${tier}_${item.base}${enchant > 0 ? '@' + enchant : ''}`;
-            const displayName = `${item.name} T${tier}.${enchant}`;
-            
-            // Build real recipe materials with tier/enchant mapping
-            const mappedResources = item.resources.map(res => {
-              // Examples:
-              // T4_WOOD (enchant 0)
-              // T4_WOOD_LEVEL1@1 (enchant 1)
-              const matEnchantSuffix = enchant > 0 ? `_LEVEL${enchant}@${enchant}` : '';
-              return {
-                uniqueName: `T${tier}_${res.type}${matEnchantSuffix}`,
-                qty: res.qty
-              };
-            });
-
-            return {
-              id: uniqueName,
-              name: displayName,
-              uniqueName: uniqueName,
-              resources: mappedResources
-            };
-          });
-        })
-      }))
-    }))
-  }));
-}
-
-export const destinyBoardData = generateDestinyBoard();
-export const rawCategories = itemDefinitions; // Để lấy iconName và name cho Tab Cha
