@@ -3,15 +3,10 @@ import { X, Calculator, Star } from 'lucide-react';
 import { useStore } from '../../cache/marketStore';
 import { CraftingService } from '../../services/craftingService';
 
+import LOCALIZED_NAMES from '../../data/localizedNames.json';
+
 const formatResourceName = (uniqueName) => {
-  const match = uniqueName.match(/^T(\d)_([A-Z]+)(?:_LEVEL\d@(\d))?$/);
-  if (match) {
-    const tier = match[1];
-    const type = match[2];
-    const enchant = match[3] || '0';
-    return `${type} T${tier}.${enchant}`;
-  }
-  return uniqueName;
+  return LOCALIZED_NAMES[uniqueName] || uniqueName;
 };
 
 export function DetailPanel() {
