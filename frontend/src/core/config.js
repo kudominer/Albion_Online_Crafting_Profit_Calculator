@@ -1,7 +1,7 @@
 export const API_SERVERS = [
-  { id: 'west', name: 'Americas (West)', url: 'http://localhost:3001/api/prices' },
-  { id: 'east', name: 'Asia (East)', url: 'http://localhost:3001/api/prices' },
-  { id: 'europe', name: 'Europe', url: 'http://localhost:3001/api/prices' }
+  { id: 'west', name: 'Americas (West)', url: 'https://west.albion-online-data.com/api/v2/stats/prices' },
+  { id: 'east', name: 'Asia (East)', url: 'https://east.albion-online-data.com/api/v2/stats/prices' },
+  { id: 'europe', name: 'Europe', url: 'https://europe.albion-online-data.com/api/v2/stats/prices' }
 ];
 
 export const CITIES = [
