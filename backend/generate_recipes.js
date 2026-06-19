@@ -58,13 +58,18 @@ async function generateRecipes() {
           resources = [resources];
         }
 
+        let hasArtifact = false;
         const materials = resources.map(res => {
+          if (res.uniquename.includes('ARTEFACT')) hasArtifact = true;
           validItemIds.add(res.uniquename);
           return {
             id: res.uniquename,
             count: parseInt(res.count, 10)
           };
         });
+
+        // Skip if this item requires an artifact
+        if (hasArtifact) return;
 
         const tierStr = item.tier ? parseInt(item.tier, 10) : (uniqueName.match(/T(\d)/) ? parseInt(uniqueName.match(/T(\d)/)[1], 10) : 1);
 

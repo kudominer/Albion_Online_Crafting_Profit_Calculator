@@ -22,7 +22,7 @@ export class ApiService {
       for (let i = 0; i < itemIds.length; i += chunkSize) {
         const chunk = itemIds.slice(i, i + chunkSize);
         // Gọi lên Backend nội bộ
-        const url = `${serverConfig.url}?items=${chunk.join(',')}&locations=Caerleon,Bridgewatch,Martlock,Thetford,Fort Sterling,Lymhurst,Brecilien&server=${serverConfig.id}`;
+        const url = `${serverConfig.url}?items=${chunk.join(',')}&locations=Black Market&server=${serverConfig.id}`;
         
         const response = await axios.get(url);
         

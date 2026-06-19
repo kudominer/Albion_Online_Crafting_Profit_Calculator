@@ -5,14 +5,7 @@ export const API_SERVERS = [
 ];
 
 export const CITIES = [
-  { id: '', name: 'Tất cả thành phố (Min/Max)' },
-  { id: 'Caerleon', name: 'Caerleon' },
-  { id: 'Bridgewatch', name: 'Bridgewatch' },
-  { id: 'Martlock', name: 'Martlock' },
-  { id: 'Thetford', name: 'Thetford' },
-  { id: 'Fort Sterling', name: 'Fort Sterling' },
-  { id: 'Lymhurst', name: 'Lymhurst' },
-  { id: 'Brecilien', name: 'Brecilien' }
+  { id: 'Black Market', name: 'Black Market' }
 ];
 
 export const DEFAULT_SETTINGS = {
