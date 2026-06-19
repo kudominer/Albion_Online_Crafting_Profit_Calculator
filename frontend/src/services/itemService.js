@@ -10,29 +10,43 @@ const mapMarketplaceCategory = (recipe) => {
   const cat = recipe.category || 'other';
   const sub = recipe.subcategory || 'other';
 
-  if (cat === 'melee' || cat === 'magic' || cat === 'ranged') {
-    return { category: 'Weapons', subcategory: formatTitle(sub) };
-  }
+  if (cat === 'melee' || cat === 'magic' || cat === 'ranged') return { category: 'Weapons', subcategory: formatTitle(sub) };
+  
   if (cat === 'armor') {
     if (sub.includes('helmet')) return { category: 'Head Armor', subcategory: formatTitle(sub) };
     if (sub.includes('armor')) return { category: 'Chest Armor', subcategory: formatTitle(sub) };
     if (sub.includes('shoes')) return { category: 'Foot Armor', subcategory: formatTitle(sub) };
+    if (sub === 'cape') return { category: 'Capes', subcategory: formatTitle(sub) };
   }
-  if (cat === 'offhand') {
-    return { category: 'Off-Hands', subcategory: formatTitle(sub) };
-  }
+  
+  if (cat === 'offhand') return { category: 'Off-Hands', subcategory: formatTitle(sub) };
+  
   if (cat === 'accessories') {
     if (sub === 'cape') return { category: 'Capes', subcategory: formatTitle(sub) };
     if (sub === 'bag') return { category: 'Bags', subcategory: formatTitle(sub) };
   }
-  if (cat === 'mounts') return { category: 'Mount', subcategory: formatTitle(sub) };
-  if (cat === 'products' && sub === 'cooked') return { category: 'Consumable', subcategory: formatTitle(sub) };
-  if (cat === 'gatherergear') return { category: 'Gathering Equipment', subcategory: formatTitle(sub) };
-  if (cat === 'materials') return { category: 'Crafting', subcategory: formatTitle(sub) };
-  if (cat === 'artefacts') return { category: 'Artifact', subcategory: formatTitle(sub) };
-  if (cat === 'products' && sub === 'farming') return { category: 'Farming', subcategory: formatTitle(sub) };
   
-  return { category: 'Other', subcategory: formatTitle(sub) };
+  if (cat === 'mounts') return { category: 'Mount', subcategory: formatTitle(sub) };
+  if (cat === 'consumables') return { category: 'Consumable', subcategory: formatTitle(sub) };
+  
+  if (cat === 'products') {
+    if (sub === 'cooked') return { category: 'Consumable', subcategory: formatTitle(sub) };
+    if (sub === 'farming') return { category: 'Farming', subcategory: formatTitle(sub) };
+  }
+  
+  if (cat === 'gatherergear' || cat === 'tools') return { category: 'Gathering Equipment', subcategory: formatTitle(sub) };
+  
+  if (cat === 'materials' || cat === 'resources' || cat === 'cityresources') {
+    return { category: 'Crafting', subcategory: formatTitle(sub) };
+  }
+  
+  if (cat === 'artefacts') return { category: 'Artifact', subcategory: formatTitle(sub) };
+  if (cat === 'furniture' || cat === 'trophies') return { category: 'Furniture', subcategory: formatTitle(sub) };
+  if (cat === 'skillbooks') return { category: 'Consumable', subcategory: 'Skill Books' };
+  if (cat === 'luxurygoods') return { category: 'Other', subcategory: 'Luxury Goods' };
+  if (cat === 'token') return { category: 'Other', subcategory: 'Token' };
+  
+  return { category: 'Other', subcategory: formatTitle(cat) };
 };
 
 export class ItemService {
@@ -44,9 +58,6 @@ export class ItemService {
     const catMap = new Map();
 
     RECIPES.forEach(recipe => {
-      // Bỏ qua resources (nguyên liệu thuần túy) khỏi danh sách Marketplace chính (sẽ có tab riêng)
-      if (recipe.category === 'resources') return;
-
       const mapping = mapMarketplaceCategory(recipe);
       const catId = mapping.category;
       const subCatId = mapping.subcategory;

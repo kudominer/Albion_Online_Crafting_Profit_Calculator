@@ -115009,6 +115009,8166 @@
     ]
   },
   {
+    "id": "T2_POTION_HEAL",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 2,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "T2_AGARIC",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T4_POTION_HEAL",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 4,
+    "weight": "0.3",
+    "materials": [
+      {
+        "id": "T4_BURDOCK",
+        "count": 24
+      },
+      {
+        "id": "T3_EGG",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T4_POTION_HEAL@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 4,
+    "weight": "0.3",
+    "materials": [
+      {
+        "id": "T4_BURDOCK",
+        "count": 24
+      },
+      {
+        "id": "T3_EGG",
+        "count": 6
+      },
+      {
+        "id": "T4_ESSENCE_POTION",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_POTION_HEAL",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 6,
+    "weight": "0.87",
+    "materials": [
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T6_ALCOHOL",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T6_POTION_HEAL@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 6,
+    "weight": "0.87",
+    "materials": [
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T6_ALCOHOL",
+        "count": 18
+      },
+      {
+        "id": "T6_ESSENCE_POTION",
+        "count": 5
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T2_POTION_ENERGY",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 2,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "T2_AGARIC",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T4_POTION_ENERGY",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 4,
+    "weight": "0.3",
+    "materials": [
+      {
+        "id": "T4_BURDOCK",
+        "count": 24
+      },
+      {
+        "id": "T4_MILK",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T4_POTION_ENERGY@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 4,
+    "weight": "0.3",
+    "materials": [
+      {
+        "id": "T4_BURDOCK",
+        "count": 24
+      },
+      {
+        "id": "T4_MILK",
+        "count": 6
+      },
+      {
+        "id": "T4_ESSENCE_POTION",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_POTION_ENERGY",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 6,
+    "weight": "0.87",
+    "materials": [
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 72
+      },
+      {
+        "id": "T6_MILK",
+        "count": 18
+      },
+      {
+        "id": "T6_ALCOHOL",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T6_POTION_ENERGY@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 6,
+    "weight": "0.87",
+    "materials": [
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 72
+      },
+      {
+        "id": "T6_MILK",
+        "count": 18
+      },
+      {
+        "id": "T6_ALCOHOL",
+        "count": 18
+      },
+      {
+        "id": "T6_ESSENCE_POTION",
+        "count": 5
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_POTION_REVIVE",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 3,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "T3_COMFREY",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T5_POTION_REVIVE",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 5,
+    "weight": "0.42",
+    "materials": [
+      {
+        "id": "T5_TEASEL",
+        "count": 24
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 12
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T5_POTION_REVIVE@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 5,
+    "weight": "0.42",
+    "materials": [
+      {
+        "id": "T5_TEASEL",
+        "count": 24
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 12
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "T5_ESSENCE_POTION",
+        "count": 4
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_POTION_REVIVE",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 7,
+    "weight": "1.15",
+    "materials": [
+      {
+        "id": "T7_MULLEIN",
+        "count": 72
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 36
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T7_ALCOHOL",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T7_POTION_REVIVE@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 7,
+    "weight": "1.15",
+    "materials": [
+      {
+        "id": "T7_MULLEIN",
+        "count": 72
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 36
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T7_ALCOHOL",
+        "count": 18
+      },
+      {
+        "id": "T7_ESSENCE_POTION",
+        "count": 2
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_POTION_STONESKIN",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 3,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "T3_COMFREY",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T5_POTION_STONESKIN",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 5,
+    "weight": "0.42",
+    "materials": [
+      {
+        "id": "T5_TEASEL",
+        "count": 24
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 12
+      },
+      {
+        "id": "T4_MILK",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T5_POTION_STONESKIN@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 5,
+    "weight": "0.42",
+    "materials": [
+      {
+        "id": "T5_TEASEL",
+        "count": 24
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 12
+      },
+      {
+        "id": "T4_MILK",
+        "count": 6
+      },
+      {
+        "id": "T5_ESSENCE_POTION",
+        "count": 5
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_POTION_STONESKIN",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 7,
+    "weight": "1.44",
+    "materials": [
+      {
+        "id": "T7_MULLEIN",
+        "count": 72
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 36
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 36
+      },
+      {
+        "id": "T6_MILK",
+        "count": 18
+      },
+      {
+        "id": "T7_ALCOHOL",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T7_POTION_STONESKIN@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 7,
+    "weight": "1.44",
+    "materials": [
+      {
+        "id": "T7_MULLEIN",
+        "count": 72
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 36
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 36
+      },
+      {
+        "id": "T6_MILK",
+        "count": 18
+      },
+      {
+        "id": "T7_ALCOHOL",
+        "count": 18
+      },
+      {
+        "id": "T7_ESSENCE_POTION",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_POTION_SLOWFIELD",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 3,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "T3_COMFREY",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T5_POTION_SLOWFIELD",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 5,
+    "weight": "0.42",
+    "materials": [
+      {
+        "id": "T5_TEASEL",
+        "count": 24
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 12
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T5_POTION_SLOWFIELD@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 5,
+    "weight": "0.42",
+    "materials": [
+      {
+        "id": "T5_TEASEL",
+        "count": 24
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 12
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "T5_ESSENCE_POTION",
+        "count": 5
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_POTION_SLOWFIELD",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 7,
+    "weight": "1.44",
+    "materials": [
+      {
+        "id": "T7_MULLEIN",
+        "count": 72
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 36
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 36
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T7_ALCOHOL",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T7_POTION_SLOWFIELD@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 7,
+    "weight": "1.44",
+    "materials": [
+      {
+        "id": "T7_MULLEIN",
+        "count": 72
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 36
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 36
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T7_ALCOHOL",
+        "count": 18
+      },
+      {
+        "id": "T7_ESSENCE_POTION",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_POTION_COOLDOWN",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 4,
+    "weight": "0.14",
+    "materials": [
+      {
+        "id": "T4_BURDOCK",
+        "count": 8
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "id": "T4_POTION_COOLDOWN@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 4,
+    "weight": "0.14",
+    "materials": [
+      {
+        "id": "T4_BURDOCK",
+        "count": 8
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 4
+      },
+      {
+        "id": "T4_ESSENCE_POTION",
+        "count": 5
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_POTION_COOLDOWN",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 6,
+    "weight": "0.53",
+    "materials": [
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 24
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 12
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 12
+      },
+      {
+        "id": "T6_MILK",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T6_POTION_COOLDOWN@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 6,
+    "weight": "0.53",
+    "materials": [
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 24
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 12
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 12
+      },
+      {
+        "id": "T6_MILK",
+        "count": 6
+      },
+      {
+        "id": "T6_ESSENCE_POTION",
+        "count": 2
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T8_POTION_COOLDOWN",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 8,
+    "weight": "1.44",
+    "materials": [
+      {
+        "id": "T8_YARROW",
+        "count": 72
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 36
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 36
+      },
+      {
+        "id": "T8_MILK",
+        "count": 18
+      },
+      {
+        "id": "T8_ALCOHOL",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T8_POTION_COOLDOWN@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 8,
+    "weight": "1.44",
+    "materials": [
+      {
+        "id": "T8_YARROW",
+        "count": 72
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 36
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 36
+      },
+      {
+        "id": "T8_MILK",
+        "count": 18
+      },
+      {
+        "id": "T8_ALCOHOL",
+        "count": 18
+      },
+      {
+        "id": "T8_ESSENCE_POTION",
+        "count": 1
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T8_POTION_CLEANSE",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 8,
+    "weight": "2.16",
+    "materials": [
+      {
+        "id": "T8_YARROW",
+        "count": 72
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 36
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 36
+      },
+      {
+        "id": "T8_MILK",
+        "count": 18
+      },
+      {
+        "id": "T8_ALCOHOL",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T8_POTION_CLEANSE@1",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 8,
+    "weight": "2.16",
+    "materials": [
+      {
+        "id": "T8_YARROW",
+        "count": 72
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 36
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 36
+      },
+      {
+        "id": "T8_MILK",
+        "count": 18
+      },
+      {
+        "id": "T8_ALCOHOL",
+        "count": 18
+      },
+      {
+        "id": "T8_ESSENCE_POTION",
+        "count": 1
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T1_FISHINGBAIT",
+    "category": "consumables",
+    "subcategory": "fishingbait",
+    "tier": 1,
+    "weight": 0,
+    "materials": [
+      {
+        "id": "T1_WORM",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T3_FISHINGBAIT",
+    "category": "consumables",
+    "subcategory": "fishingbait",
+    "tier": 3,
+    "weight": 0,
+    "materials": [
+      {
+        "id": "T1_WORM",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T5_FISHINGBAIT",
+    "category": "consumables",
+    "subcategory": "fishingbait",
+    "tier": 5,
+    "weight": 0,
+    "materials": [
+      {
+        "id": "T1_WORM",
+        "count": 25
+      }
+    ]
+  },
+  {
+    "id": "T1_MEAL_GRILLEDFISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "0.3",
+    "materials": [
+      {
+        "id": "T1_FISHCHOPS",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T1_MEAL_SEAWEEDSALAD",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "0.08",
+    "materials": [
+      {
+        "id": "T1_SEAWEED",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T1_MEAL_SOUP",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T1_CARROT",
+        "count": 16
+      }
+    ]
+  },
+  {
+    "id": "T1_MEAL_SOUP@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T1_CARROT",
+        "count": 16
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T1_MEAL_SOUP@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T1_CARROT",
+        "count": 16
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T1_MEAL_SOUP@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T1_CARROT",
+        "count": 16
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_SOUP",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 48
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_SOUP@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 48
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_SOUP@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 48
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_SOUP@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 48
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_SOUP",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "7.56",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 144
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_SOUP@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "7.56",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 144
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_SOUP@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "7.56",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 144
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_SOUP@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "7.56",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 144
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T1_MEAL_SOUP_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "1.59",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T1_CARROT",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T1_MEAL_SOUP_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "1.59",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T1_CARROT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T1_MEAL_SOUP_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "1.59",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T1_CARROT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T1_MEAL_SOUP_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 1,
+    "weight": "1.59",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T1_CARROT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_SOUP_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_WHEAT",
+        "count": 2
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 2
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_SOUP_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_WHEAT",
+        "count": 2
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 2
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_SOUP_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_WHEAT",
+        "count": 2
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 2
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_SOUP_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_WHEAT",
+        "count": 2
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 2
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_SOUP_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 6
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 6
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_SOUP_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 6
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 6
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_SOUP_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 6
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 6
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_SOUP_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_SWAMP_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 6
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 6
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T2_MEAL_SALAD",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 2,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T2_BEAN",
+        "count": 8
+      },
+      {
+        "id": "T1_CARROT",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T2_MEAL_SALAD@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 2,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T2_BEAN",
+        "count": 8
+      },
+      {
+        "id": "T1_CARROT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T2_MEAL_SALAD@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 2,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T2_BEAN",
+        "count": 8
+      },
+      {
+        "id": "T1_CARROT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T2_MEAL_SALAD@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 2,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T2_BEAN",
+        "count": 8
+      },
+      {
+        "id": "T1_CARROT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T4_MEAL_SALAD",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T4_TURNIP",
+        "count": 24
+      },
+      {
+        "id": "T3_WHEAT",
+        "count": 24
+      }
+    ]
+  },
+  {
+    "id": "T4_MEAL_SALAD@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T4_TURNIP",
+        "count": 24
+      },
+      {
+        "id": "T3_WHEAT",
+        "count": 24
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_MEAL_SALAD@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T4_TURNIP",
+        "count": 24
+      },
+      {
+        "id": "T3_WHEAT",
+        "count": 24
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T4_MEAL_SALAD@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T4_TURNIP",
+        "count": 24
+      },
+      {
+        "id": "T3_WHEAT",
+        "count": 24
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T6_MEAL_SALAD",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "7.56",
+    "materials": [
+      {
+        "id": "T6_POTATO",
+        "count": 72
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 72
+      }
+    ]
+  },
+  {
+    "id": "T6_MEAL_SALAD@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "7.56",
+    "materials": [
+      {
+        "id": "T6_POTATO",
+        "count": 72
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 72
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_MEAL_SALAD@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "7.56",
+    "materials": [
+      {
+        "id": "T6_POTATO",
+        "count": 72
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 72
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T6_MEAL_SALAD@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "7.56",
+    "materials": [
+      {
+        "id": "T6_POTATO",
+        "count": 72
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 72
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T2_MEAL_SALAD_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 2,
+    "weight": "1.59",
+    "materials": [
+      {
+        "id": "T3_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T2_BEAN",
+        "count": 1
+      },
+      {
+        "id": "T2_AGARIC",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T2_MEAL_SALAD_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 2,
+    "weight": "1.59",
+    "materials": [
+      {
+        "id": "T3_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T2_BEAN",
+        "count": 1
+      },
+      {
+        "id": "T2_AGARIC",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T2_MEAL_SALAD_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 2,
+    "weight": "1.59",
+    "materials": [
+      {
+        "id": "T3_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T2_BEAN",
+        "count": 1
+      },
+      {
+        "id": "T2_AGARIC",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T2_MEAL_SALAD_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 2,
+    "weight": "1.59",
+    "materials": [
+      {
+        "id": "T3_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T2_BEAN",
+        "count": 1
+      },
+      {
+        "id": "T2_AGARIC",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T4_MEAL_SALAD_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 2
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 2
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T4_MEAL_SALAD_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 2
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 2
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_MEAL_SALAD_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 2
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 2
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T4_MEAL_SALAD_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 2
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 2
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T6_MEAL_SALAD_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 6
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 6
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T6_MEAL_SALAD_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 6
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 6
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_MEAL_SALAD_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 6
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 6
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T6_MEAL_SALAD_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_SALTWATER_ALL_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 6
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 6
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_PIE",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.17",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 2
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_PIE@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.17",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 2
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_PIE@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.17",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 2
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_PIE@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.17",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 2
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_PIE",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.33",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 6
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T4_MILK",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_PIE@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.33",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 6
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T4_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_PIE@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.33",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 6
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T4_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_PIE@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.33",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 6
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T4_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T7_MEAL_PIE",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.99",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 18
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T6_MILK",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T7_MEAL_PIE@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.99",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 18
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T6_MILK",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_MEAL_PIE@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.99",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 18
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T6_MILK",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T7_MEAL_PIE@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.99",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 18
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T6_MILK",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_PIE_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.8",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 1
+      },
+      {
+        "id": "T3_EGG",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_PIE_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.8",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 1
+      },
+      {
+        "id": "T3_EGG",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_PIE_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.8",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 1
+      },
+      {
+        "id": "T3_EGG",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_PIE_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.8",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_FLOUR",
+        "count": 1
+      },
+      {
+        "id": "T3_EGG",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_PIE_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T5_EGG",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_PIE_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T5_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_PIE_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T5_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_PIE_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T5_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T7_MEAL_PIE_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T7_MEAL_PIE_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_MEAL_PIE_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T7_MEAL_PIE_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_OMELETTE",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T3_EGG",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_OMELETTE@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T3_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_OMELETTE@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T3_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_OMELETTE@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.16",
+    "materials": [
+      {
+        "id": "T3_WHEAT",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T3_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_OMELETTE",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "2.88",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_OMELETTE@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "2.88",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_OMELETTE@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "2.88",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_OMELETTE@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "2.88",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T7_MEAL_OMELETTE",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "6.9",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T7_MEAL_OMELETTE@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "6.9",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_MEAL_OMELETTE@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "6.9",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T7_MEAL_OMELETTE@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "6.9",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_OMELETTE_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 1
+      },
+      {
+        "id": "T3_EGG",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_OMELETTE_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 1
+      },
+      {
+        "id": "T3_EGG",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_OMELETTE_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 1
+      },
+      {
+        "id": "T3_EGG",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_OMELETTE_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 1
+      },
+      {
+        "id": "T3_EGG",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_OMELETTE_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T5_EGG",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_OMELETTE_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T5_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_OMELETTE_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T5_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_OMELETTE_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T5_EGG",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T7_MEAL_OMELETTE_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T7_MEAL_OMELETTE_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_MEAL_OMELETTE_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T7_MEAL_OMELETTE_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_STEPPE_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_OMELETTE_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.26",
+    "materials": [
+      {
+        "id": "T4_MILK",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T3_EGG",
+        "count": 2
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_OMELETTE_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.26",
+    "materials": [
+      {
+        "id": "T4_MILK",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T3_EGG",
+        "count": 2
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_OMELETTE_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.26",
+    "materials": [
+      {
+        "id": "T4_MILK",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T3_EGG",
+        "count": 2
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_OMELETTE_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.26",
+    "materials": [
+      {
+        "id": "T4_MILK",
+        "count": 4
+      },
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T3_EGG",
+        "count": 2
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_OMELETTE_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T6_MILK",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_OMELETTE_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T6_MILK",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_OMELETTE_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T6_MILK",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_OMELETTE_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.15",
+    "materials": [
+      {
+        "id": "T6_MILK",
+        "count": 12
+      },
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_EGG",
+        "count": 6
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T7_MEAL_OMELETTE_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.55",
+    "materials": [
+      {
+        "id": "T8_MILK",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      }
+    ]
+  },
+  {
+    "id": "T7_MEAL_OMELETTE_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.55",
+    "materials": [
+      {
+        "id": "T8_MILK",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_MEAL_OMELETTE_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.55",
+    "materials": [
+      {
+        "id": "T8_MILK",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T7_MEAL_OMELETTE_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.55",
+    "materials": [
+      {
+        "id": "T8_MILK",
+        "count": 36
+      },
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T5_EGG",
+        "count": 18
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T4_MEAL_STEW",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.37",
+    "materials": [
+      {
+        "id": "T4_TURNIP",
+        "count": 4
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T4_MEAL_STEW@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.37",
+    "materials": [
+      {
+        "id": "T4_TURNIP",
+        "count": 4
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_MEAL_STEW@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.37",
+    "materials": [
+      {
+        "id": "T4_TURNIP",
+        "count": 4
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T4_MEAL_STEW@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.37",
+    "materials": [
+      {
+        "id": "T4_TURNIP",
+        "count": 4
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T6_MEAL_STEW",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.4",
+    "materials": [
+      {
+        "id": "T6_POTATO",
+        "count": 12
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      }
+    ]
+  },
+  {
+    "id": "T6_MEAL_STEW@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.4",
+    "materials": [
+      {
+        "id": "T6_POTATO",
+        "count": 12
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_MEAL_STEW@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.4",
+    "materials": [
+      {
+        "id": "T6_POTATO",
+        "count": 12
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T6_MEAL_STEW@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.4",
+    "materials": [
+      {
+        "id": "T6_POTATO",
+        "count": 12
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T8_MEAL_STEW",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "8.17",
+    "materials": [
+      {
+        "id": "T8_PUMPKIN",
+        "count": 36
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      }
+    ]
+  },
+  {
+    "id": "T8_MEAL_STEW@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "8.17",
+    "materials": [
+      {
+        "id": "T8_PUMPKIN",
+        "count": 36
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T8_MEAL_STEW@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "8.17",
+    "materials": [
+      {
+        "id": "T8_PUMPKIN",
+        "count": 36
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T8_MEAL_STEW@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "8.17",
+    "materials": [
+      {
+        "id": "T8_PUMPKIN",
+        "count": 36
+      },
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T4_MEAL_STEW_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 1
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T4_MEAL_STEW_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 1
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_MEAL_STEW_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 1
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T4_MEAL_STEW_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 1
+      },
+      {
+        "id": "T4_BURDOCK",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T6_MEAL_STEW_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 2
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 2
+      },
+      {
+        "id": "T6_MILK",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T6_MEAL_STEW_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 2
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 2
+      },
+      {
+        "id": "T6_MILK",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_MEAL_STEW_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 2
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 2
+      },
+      {
+        "id": "T6_MILK",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T6_MEAL_STEW_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 2
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 2
+      },
+      {
+        "id": "T6_MILK",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T8_MEAL_STEW_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "9.78",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 6
+      },
+      {
+        "id": "T8_YARROW",
+        "count": 6
+      },
+      {
+        "id": "T8_MILK",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T8_MEAL_STEW_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "9.78",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 6
+      },
+      {
+        "id": "T8_YARROW",
+        "count": 6
+      },
+      {
+        "id": "T8_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T8_MEAL_STEW_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "9.78",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 6
+      },
+      {
+        "id": "T8_YARROW",
+        "count": 6
+      },
+      {
+        "id": "T8_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T8_MEAL_STEW_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "9.78",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_FOREST_RARE",
+        "count": 1
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 6
+      },
+      {
+        "id": "T8_YARROW",
+        "count": 6
+      },
+      {
+        "id": "T8_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T4_MEAL_STEW_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.41",
+    "materials": [
+      {
+        "id": "T1_CARROT",
+        "count": 4
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T4_MEAL_STEW_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.41",
+    "materials": [
+      {
+        "id": "T1_CARROT",
+        "count": 4
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_MEAL_STEW_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.41",
+    "materials": [
+      {
+        "id": "T1_CARROT",
+        "count": 4
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T4_MEAL_STEW_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.41",
+    "materials": [
+      {
+        "id": "T1_CARROT",
+        "count": 4
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T6_MEAL_STEW_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.54",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T6_MEAL_STEW_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.54",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_MEAL_STEW_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.54",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T6_MEAL_STEW_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.54",
+    "materials": [
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T8_MEAL_STEW_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "8.5",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      }
+    ]
+  },
+  {
+    "id": "T8_MEAL_STEW_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "8.5",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T8_MEAL_STEW_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "8.5",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T8_MEAL_STEW_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "8.5",
+    "materials": [
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T4_MEAL_SANDWICH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.22",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T4_MEAL_SANDWICH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.22",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_MEAL_SANDWICH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.22",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T4_MEAL_SANDWICH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.22",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T6_MEAL_SANDWICH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.04",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T6_MEAL_SANDWICH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.04",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_MEAL_SANDWICH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.04",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T6_MEAL_SANDWICH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.04",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T8_MEAL_SANDWICH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "7.3",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "id": "T8_MEAL_SANDWICH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "7.3",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T8_MEAL_SANDWICH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "7.3",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T8_MEAL_SANDWICH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "7.3",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 18
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T4_MEAL_SANDWICH_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.8",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 1
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T4_MEAL_SANDWICH_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.8",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 1
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_MEAL_SANDWICH_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.8",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 1
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T4_MEAL_SANDWICH_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.8",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T4_TURNIP",
+        "count": 1
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T6_MEAL_SANDWICH_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 2
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 2
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T6_MEAL_SANDWICH_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 2
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 2
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_MEAL_SANDWICH_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 2
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 2
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T6_MEAL_SANDWICH_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "4.31",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T6_POTATO",
+        "count": 2
+      },
+      {
+        "id": "T6_FOXGLOVE",
+        "count": 2
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T8_MEAL_SANDWICH_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 6
+      },
+      {
+        "id": "T8_YARROW",
+        "count": 6
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T8_MEAL_SANDWICH_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 6
+      },
+      {
+        "id": "T8_YARROW",
+        "count": 6
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T8_MEAL_SANDWICH_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 6
+      },
+      {
+        "id": "T8_YARROW",
+        "count": 6
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T8_MEAL_SANDWICH_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "10.02",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_HIGHLANDS_RARE",
+        "count": 1
+      },
+      {
+        "id": "T8_PUMPKIN",
+        "count": 6
+      },
+      {
+        "id": "T8_YARROW",
+        "count": 6
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T4_MEAL_SANDWICH_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.32",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T4_MEAL_SANDWICH_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.32",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T4_MEAL_SANDWICH_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.32",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T4_MEAL_SANDWICH_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 4,
+    "weight": "1.32",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 4
+      },
+      {
+        "id": "T4_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T4_BUTTER",
+        "count": 2
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 10
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T6_MEAL_SANDWICH_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.31",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T6_MEAL_SANDWICH_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.31",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T6_MEAL_SANDWICH_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.31",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T6_MEAL_SANDWICH_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 6,
+    "weight": "3.31",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 12
+      },
+      {
+        "id": "T6_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T6_BUTTER",
+        "count": 6
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 30
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T8_MEAL_SANDWICH_AVALON",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "7.95",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 18
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      }
+    ]
+  },
+  {
+    "id": "T8_MEAL_SANDWICH_AVALON@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "7.95",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 18
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T8_MEAL_SANDWICH_AVALON@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "7.95",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 18
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T8_MEAL_SANDWICH_AVALON@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 8,
+    "weight": "7.95",
+    "materials": [
+      {
+        "id": "T4_BREAD",
+        "count": 36
+      },
+      {
+        "id": "T8_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T8_BUTTER",
+        "count": 18
+      },
+      {
+        "id": "QUESTITEM_TOKEN_AVALON",
+        "count": 90
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_ROAST",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.31",
+    "materials": [
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T2_BEAN",
+        "count": 4
+      },
+      {
+        "id": "T4_MILK",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_ROAST@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.31",
+    "materials": [
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T2_BEAN",
+        "count": 4
+      },
+      {
+        "id": "T4_MILK",
+        "count": 4
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_ROAST@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.31",
+    "materials": [
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T2_BEAN",
+        "count": 4
+      },
+      {
+        "id": "T4_MILK",
+        "count": 4
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_ROAST@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.31",
+    "materials": [
+      {
+        "id": "T3_MEAT",
+        "count": 8
+      },
+      {
+        "id": "T2_BEAN",
+        "count": 4
+      },
+      {
+        "id": "T4_MILK",
+        "count": 4
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 10
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_ROAST",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.28",
+    "materials": [
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T6_MILK",
+        "count": 12
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_ROAST@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.28",
+    "materials": [
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T6_MILK",
+        "count": 12
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_ROAST@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.28",
+    "materials": [
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T6_MILK",
+        "count": 12
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_ROAST@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "3.28",
+    "materials": [
+      {
+        "id": "T5_MEAT",
+        "count": 24
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 12
+      },
+      {
+        "id": "T6_MILK",
+        "count": 12
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 30
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T7_MEAL_ROAST",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.85",
+    "materials": [
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T8_MILK",
+        "count": 36
+      }
+    ]
+  },
+  {
+    "id": "T7_MEAL_ROAST@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.85",
+    "materials": [
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T8_MILK",
+        "count": 36
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_MEAL_ROAST@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.85",
+    "materials": [
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T8_MILK",
+        "count": 36
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T7_MEAL_ROAST@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "7.85",
+    "materials": [
+      {
+        "id": "T7_MEAT",
+        "count": 72
+      },
+      {
+        "id": "T7_CORN",
+        "count": 36
+      },
+      {
+        "id": "T8_MILK",
+        "count": 36
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 90
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T3_MEAL_ROAST_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 1
+      },
+      {
+        "id": "T4_MILK",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T3_MEAL_ROAST_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 1
+      },
+      {
+        "id": "T4_MILK",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T3_MEAL_ROAST_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 1
+      },
+      {
+        "id": "T4_MILK",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T3_MEAL_ROAST_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 3,
+    "weight": "1.74",
+    "materials": [
+      {
+        "id": "T3_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T3_COMFREY",
+        "count": 1
+      },
+      {
+        "id": "T4_MILK",
+        "count": 1
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 3
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T5_MEAL_ROAST_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T6_MILK",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T5_MEAL_ROAST_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T6_MILK",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T5_MEAL_ROAST_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T6_MILK",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T5_MEAL_ROAST_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 5,
+    "weight": "4.21",
+    "materials": [
+      {
+        "id": "T5_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T5_CABBAGE",
+        "count": 2
+      },
+      {
+        "id": "T5_TEASEL",
+        "count": 2
+      },
+      {
+        "id": "T6_MILK",
+        "count": 2
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 9
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "T7_MEAL_ROAST_FISH",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "9.78",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T8_MILK",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "id": "T7_MEAL_ROAST_FISH@1",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "9.78",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T8_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL1",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 1
+  },
+  {
+    "id": "T7_MEAL_ROAST_FISH@2",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "9.78",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T8_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL2",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 2
+  },
+  {
+    "id": "T7_MEAL_ROAST_FISH@3",
+    "category": "consumables",
+    "subcategory": "cooked",
+    "tier": 7,
+    "weight": "9.78",
+    "materials": [
+      {
+        "id": "T7_FISH_FRESHWATER_AVALON_RARE",
+        "count": 1
+      },
+      {
+        "id": "T7_CORN",
+        "count": 6
+      },
+      {
+        "id": "T7_MULLEIN",
+        "count": 6
+      },
+      {
+        "id": "T8_MILK",
+        "count": 6
+      },
+      {
+        "id": "T1_FISHSAUCE_LEVEL3",
+        "count": 27
+      }
+    ],
+    "enchantmentLevel": 3
+  },
+  {
+    "id": "UNIQUE_CONSUMABLE_EVENT_EASTER_2020_CHOCOLATE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.01",
+    "materials": [
+      {
+        "id": "UNIQUE_CONSUMABLE_EVENT_EASTER_2020_EGG",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_WEAPONMASTER_POTION_PROTOTYPE",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 2,
+    "weight": "0.11",
+    "materials": [
+      {
+        "id": "T2_AGARIC",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_WEAPONMASTER_IDLE_PROTOTYPE",
+    "category": "consumables",
+    "subcategory": "potion",
+    "tier": 2,
+    "weight": "0.11",
+    "materials": [
+      {
+        "id": "T2_AGARIC",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_01",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_NATURE",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_FIRE",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_ARCANE",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_SWORDS",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_FARMING",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_AXES",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_FISHING",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATARRING_ADC_TOKENLOCKED_NECROMANCER",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_AVATAR_ADC_TOKENLOCKED_01",
+    "category": "consumables",
+    "subcategory": "other",
+    "tier": 7,
+    "weight": "1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ADC_FRAME",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "id": "T6_HELLGATE_2V2_LETHAL_1_MAP",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_SOUL",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T7_HELLGATE_5V5_LETHAL_1_MAP",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_SOUL",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_HELLGATE_10V10_LETHAL_1_MAP",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_SOUL",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T5_HELLGATE_2V2_NON_LETHAL_1_MAP",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_SOUL",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "id": "T5_HELLGATE_5V5_NON_LETHAL_1_MAP",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_SOUL",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T5_HELLGATE_10V10_NON_LETHAL_1_MAP",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_SOUL",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T6_RANDOM_DUNGEON_ELITE_TOKEN_1",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_RANDOM_DUNGEON_TOKEN_1",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T7_RANDOM_DUNGEON_ELITE_TOKEN_1",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_RANDOM_DUNGEON_TOKEN_1",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_RANDOM_DUNGEON_ELITE_TOKEN_1",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_RANDOM_DUNGEON_TOKEN_1",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T6_RANDOM_DUNGEON_ELITE_TOKEN_2",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_RANDOM_DUNGEON_TOKEN_2",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T7_RANDOM_DUNGEON_ELITE_TOKEN_2",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_RANDOM_DUNGEON_TOKEN_2",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_RANDOM_DUNGEON_ELITE_TOKEN_2",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_RANDOM_DUNGEON_TOKEN_2",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T6_RANDOM_DUNGEON_ELITE_TOKEN_3",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_RANDOM_DUNGEON_TOKEN_3",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T7_RANDOM_DUNGEON_ELITE_TOKEN_3",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_RANDOM_DUNGEON_TOKEN_3",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_RANDOM_DUNGEON_ELITE_TOKEN_3",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_RANDOM_DUNGEON_TOKEN_3",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T6_RANDOM_DUNGEON_ELITE_TOKEN_4",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_RANDOM_DUNGEON_TOKEN_4",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T7_RANDOM_DUNGEON_ELITE_TOKEN_4",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_RANDOM_DUNGEON_TOKEN_4",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_RANDOM_DUNGEON_ELITE_TOKEN_4",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_RANDOM_DUNGEON_TOKEN_4",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T4_RANDOM_DUNGEON_TOKEN_1",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T4_RANDOM_DUNGEON_SOLO_TOKEN_1",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T5_RANDOM_DUNGEON_TOKEN_1",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_RANDOM_DUNGEON_SOLO_TOKEN_1",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T6_RANDOM_DUNGEON_TOKEN_1",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_RANDOM_DUNGEON_SOLO_TOKEN_1",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T7_RANDOM_DUNGEON_TOKEN_1",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_RANDOM_DUNGEON_SOLO_TOKEN_1",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_RANDOM_DUNGEON_TOKEN_1",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_RANDOM_DUNGEON_SOLO_TOKEN_1",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T4_RANDOM_DUNGEON_TOKEN_2",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T4_RANDOM_DUNGEON_SOLO_TOKEN_2",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T5_RANDOM_DUNGEON_TOKEN_2",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_RANDOM_DUNGEON_SOLO_TOKEN_2",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T6_RANDOM_DUNGEON_TOKEN_2",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_RANDOM_DUNGEON_SOLO_TOKEN_2",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T7_RANDOM_DUNGEON_TOKEN_2",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_RANDOM_DUNGEON_SOLO_TOKEN_2",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_RANDOM_DUNGEON_TOKEN_2",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_RANDOM_DUNGEON_SOLO_TOKEN_2",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T4_RANDOM_DUNGEON_TOKEN_3",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T4_RANDOM_DUNGEON_SOLO_TOKEN_3",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T5_RANDOM_DUNGEON_TOKEN_3",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_RANDOM_DUNGEON_SOLO_TOKEN_3",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T6_RANDOM_DUNGEON_TOKEN_3",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_RANDOM_DUNGEON_SOLO_TOKEN_3",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T7_RANDOM_DUNGEON_TOKEN_3",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_RANDOM_DUNGEON_SOLO_TOKEN_3",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_RANDOM_DUNGEON_TOKEN_3",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_RANDOM_DUNGEON_SOLO_TOKEN_3",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T4_RANDOM_DUNGEON_TOKEN_4",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T4_RANDOM_DUNGEON_SOLO_TOKEN_4",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T5_RANDOM_DUNGEON_TOKEN_4",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_RANDOM_DUNGEON_SOLO_TOKEN_4",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T6_RANDOM_DUNGEON_TOKEN_4",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_RANDOM_DUNGEON_SOLO_TOKEN_4",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T7_RANDOM_DUNGEON_TOKEN_4",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T7_RANDOM_DUNGEON_SOLO_TOKEN_4",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T8_RANDOM_DUNGEON_TOKEN_4",
+    "category": "consumables",
+    "subcategory": "maps",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_RANDOM_DUNGEON_SOLO_TOKEN_4",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_HORSE_UNDEAD",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_MOUNTUPGRADE_HORSE_CURSE",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_ARENA_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 460
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_ARENA",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 300
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_MORGANA",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T5_MOUNTUPGRADE_HORSE_MORGANA",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_COUGAR_ARENA_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 1000
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_COUGAR_ARENA",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 2000
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_VANITY_2H_FW_BRIDGEWATCH_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T1_FACTION_STEPPE_TOKEN_1",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_VANITY_2H_FW_THETFORD_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T1_FACTION_SWAMP_TOKEN_1",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_VANITY_2H_FW_FORTSTERLING_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T1_FACTION_MOUNTAIN_TOKEN_1",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_VANITY_2H_FW_MARTLOCK_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T1_FACTION_HIGHLAND_TOKEN_1",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_VANITY_2H_FW_LYMHURST_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T1_FACTION_FOREST_TOKEN_1",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_VANITY_2H_FW_CAERLEON_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T1_FACTION_CAERLEON_TOKEN_1",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_ARENA_SET_01_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 80
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_ARENA_SET_01",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 40
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_ARENA_SET_01_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 260
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_ARENA_SET_01",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 80
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_ARENA_SET_01_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 70
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_ARENA_SET_01",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 40
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_CAPE_VANITY_ARENA_SET_01_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 90
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_CAPE_VANITY_ARENA_SET_01",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 40
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_ARENA_EYEPATCH_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_ARENA_EYEPATCH",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_T4_CAPE_ARENA_BANNER_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 120
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_T4_CAPE_ARENA_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T4_CAPE",
+        "count": 1
+      },
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 60
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_T6_CAPE_ARENA_BANNER_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 240
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_T6_CAPE_ARENA_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T6_CAPE",
+        "count": 1
+      },
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 300
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_T8_CAPE_ARENA_BANNER_COPY",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 800
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_T8_CAPE_ARENA_BANNER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "T8_CAPE",
+        "count": 1
+      },
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 1500
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_GLADIATOR_ARENA",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 500
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_GLADIATOR_ARENA",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 800
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_GLADIATOR_ARENA",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 110
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_CAPE_VANITY_GLADIATOR_ARENA",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 130
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_GLADIATOR_CRYSTAL",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_GVGTOKEN_GENERIC",
+        "count": 300
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_GLADIATOR_CRYSTAL",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_GVGTOKEN_GENERIC",
+        "count": 220
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_GLADIATOR_CRYSTAL",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_GVGTOKEN_GENERIC",
+        "count": 130
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_CAPE_VANITY_GLADIATOR_CRYSTAL",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_GVGTOKEN_GENERIC",
+        "count": 150
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_EASTER_WHITE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_EVENT_EASTER_2018",
+        "count": 40000
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_EASTER_BROWN",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_EVENT_EASTER_2018",
+        "count": 7500
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_EASTER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_EVENT_EASTER_2018",
+        "count": 4500
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_EASTER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_EVENT_EASTER_2018",
+        "count": 1500
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_BACKPACK_VANITY_EASTER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_EVENT_EASTER_2018",
+        "count": 4500
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_UNIQUE_VANITY_2H_CHICKENGUN_EASTER",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_CONSUMABLE_EVENT_EASTER_2020_EGG",
+        "count": 6000
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_DRESS_BLUE_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_DRESS_BLACK_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_PRIEST_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_WEDDING_DRESS_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_WEDDING_TUXEDO_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_BARD_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_INNKEEPER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_PIRATE_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_DRESS_BLUE_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_DRESS_BLACK_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_PRIEST_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_WEDDING_DRESS_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_WEDDING_TUXEDO_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_BARD_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_INNKEEPER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_PIRATE_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_DRESS_BLUE_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_DRESS_BLACK_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_PRIEST_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_WEDDING_DRESS_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_WEDDING_TUXEDO_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_BARD_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_INNKEEPER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_PIRATE_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_CAPE_VANITY_WEDDING_TUXEDO_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_VANITY_2H_CHICKENGUN_EASTER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 800
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_OFF_VANITY_PRIEST_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_OFF_VANITY_WEDDING_DRESS_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_OFF_VANITY_WEDDING_TUXEDO_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_OFF_VANITY_INNKEEPER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_OFF_VANITY_PIRATE_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_HORSE_BROWN_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_HORSE_KEEPER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_HORSE_UNICORN_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 800
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_T5_GUILD_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_T6_GUILD_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_T7_GUILD_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_ARMORED_HORSE_T8_GUILD_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 800
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_OX_BISON_AH_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_OX_BISON_ROYAL_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 800
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_OX_BLACKMARKET_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_DRESS_GREEN_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_DRESS_GREEN_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 5,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_DRESS_GREEN_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_ENTERTAINER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_ARMOR_VANITY_ENTERTAINER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SHOES_VANITY_ENTERTAINER_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 200
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_HEAD_VANITY_NIGHTGOWN_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_CAPE_VANITY_HYENA_NON_TRADABLE",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 7,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 800
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_COUGAR_AMETHYST",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 1600
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_GIANTSTAG_ALPACA_BROWN",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 1600
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_UNLOCK_SKIN_HORSE_UNICORN_AMETHYST",
+    "category": "consumables",
+    "subcategory": "vanity",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 1600
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_TOMBSTONE_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_FLAG_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_GHOST_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_OVERGROWN_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_HELLGATE_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 8,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 25
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_SWORD_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_HAMMER_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 6,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_FLAG_MOBILE_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_FLAG_DESKTOP_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "T1_KILL_EMOTE_FLAG_CONTROLLER_CHARGES_NONTRADABLE",
+    "category": "consumables",
+    "subcategory": "kill_emotes",
+    "tier": 4,
+    "weight": "0.09",
+    "materials": [
+      {
+        "id": "UNIQUE_TOKEN_COMMUNITY",
+        "count": 1
+      }
+    ]
+  },
+  {
     "id": "T1_FISHCHOPS",
     "category": "products",
     "subcategory": "cooked",
@@ -130895,6 +139055,556 @@
       {
         "id": "T3_PLANKS",
         "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T4_FURNITUREITEM_REPAIRKIT",
+    "category": "furniture",
+    "subcategory": "repairkit",
+    "tier": 4,
+    "weight": "60",
+    "materials": [
+      {
+        "id": "T4_PLANKS",
+        "count": 8
+      },
+      {
+        "id": "T4_METALBAR",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T5_FURNITUREITEM_REPAIRKIT",
+    "category": "furniture",
+    "subcategory": "repairkit",
+    "tier": 5,
+    "weight": "75",
+    "materials": [
+      {
+        "id": "T5_PLANKS",
+        "count": 8
+      },
+      {
+        "id": "T5_METALBAR",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T6_FURNITUREITEM_REPAIRKIT",
+    "category": "furniture",
+    "subcategory": "repairkit",
+    "tier": 6,
+    "weight": "92",
+    "materials": [
+      {
+        "id": "T6_PLANKS",
+        "count": 8
+      },
+      {
+        "id": "T6_METALBAR",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T7_FURNITUREITEM_REPAIRKIT",
+    "category": "furniture",
+    "subcategory": "repairkit",
+    "tier": 7,
+    "weight": "112",
+    "materials": [
+      {
+        "id": "T7_PLANKS",
+        "count": 8
+      },
+      {
+        "id": "T7_METALBAR",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T8_FURNITUREITEM_REPAIRKIT",
+    "category": "furniture",
+    "subcategory": "repairkit",
+    "tier": 8,
+    "weight": "138",
+    "materials": [
+      {
+        "id": "T8_PLANKS",
+        "count": 8
+      },
+      {
+        "id": "T8_METALBAR",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "id": "T2_FURNITUREITEM_BED",
+    "category": "furniture",
+    "subcategory": "bed",
+    "tier": 2,
+    "weight": "2.7",
+    "materials": [
+      {
+        "id": "T2_PLANKS",
+        "count": 10
+      },
+      {
+        "id": "T2_CLOTH",
+        "count": 20
+      }
+    ]
+  },
+  {
+    "id": "T3_FURNITUREITEM_BED",
+    "category": "furniture",
+    "subcategory": "bed",
+    "tier": 3,
+    "weight": "4.05",
+    "materials": [
+      {
+        "id": "T3_PLANKS",
+        "count": 10
+      },
+      {
+        "id": "T3_CLOTH",
+        "count": 20
+      }
+    ]
+  },
+  {
+    "id": "T4_FURNITUREITEM_BED",
+    "category": "furniture",
+    "subcategory": "bed",
+    "tier": 4,
+    "weight": "6.08",
+    "materials": [
+      {
+        "id": "T4_PLANKS",
+        "count": 10
+      },
+      {
+        "id": "T4_CLOTH",
+        "count": 20
+      }
+    ]
+  },
+  {
+    "id": "T5_FURNITUREITEM_BED",
+    "category": "furniture",
+    "subcategory": "bed",
+    "tier": 5,
+    "weight": "9.11",
+    "materials": [
+      {
+        "id": "T5_PLANKS",
+        "count": 10
+      },
+      {
+        "id": "T5_CLOTH",
+        "count": 20
+      }
+    ]
+  },
+  {
+    "id": "T6_FURNITUREITEM_BED",
+    "category": "furniture",
+    "subcategory": "bed",
+    "tier": 6,
+    "weight": "13.67",
+    "materials": [
+      {
+        "id": "T6_PLANKS",
+        "count": 10
+      },
+      {
+        "id": "T6_CLOTH",
+        "count": 20
+      }
+    ]
+  },
+  {
+    "id": "T7_FURNITUREITEM_BED",
+    "category": "furniture",
+    "subcategory": "bed",
+    "tier": 7,
+    "weight": "20.5",
+    "materials": [
+      {
+        "id": "T7_PLANKS",
+        "count": 10
+      },
+      {
+        "id": "T7_CLOTH",
+        "count": 20
+      }
+    ]
+  },
+  {
+    "id": "T8_FURNITUREITEM_BED",
+    "category": "furniture",
+    "subcategory": "bed",
+    "tier": 8,
+    "weight": "30.75",
+    "materials": [
+      {
+        "id": "T8_PLANKS",
+        "count": 10
+      },
+      {
+        "id": "T8_CLOTH",
+        "count": 20
+      }
+    ]
+  },
+  {
+    "id": "T2_FURNITUREITEM_CHEST",
+    "category": "furniture",
+    "subcategory": "chest",
+    "tier": 2,
+    "weight": "2.7",
+    "materials": [
+      {
+        "id": "T2_PLANKS",
+        "count": 20
+      },
+      {
+        "id": "T2_METALBAR",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T3_FURNITUREITEM_CHEST",
+    "category": "furniture",
+    "subcategory": "chest",
+    "tier": 3,
+    "weight": "4.05",
+    "materials": [
+      {
+        "id": "T3_PLANKS",
+        "count": 20
+      },
+      {
+        "id": "T3_METALBAR",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T4_FURNITUREITEM_CHEST",
+    "category": "furniture",
+    "subcategory": "chest",
+    "tier": 4,
+    "weight": "6.08",
+    "materials": [
+      {
+        "id": "T4_PLANKS",
+        "count": 20
+      },
+      {
+        "id": "T4_METALBAR",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T5_FURNITUREITEM_CHEST",
+    "category": "furniture",
+    "subcategory": "chest",
+    "tier": 5,
+    "weight": "9.11",
+    "materials": [
+      {
+        "id": "T5_PLANKS",
+        "count": 20
+      },
+      {
+        "id": "T5_METALBAR",
+        "count": 10
+      }
+    ]
+  },
+  {
+    "id": "T2_FURNITUREITEM_TABLE",
+    "category": "furniture",
+    "subcategory": "table",
+    "tier": 2,
+    "weight": "5.4",
+    "materials": [
+      {
+        "id": "T2_PLANKS",
+        "count": 30
+      },
+      {
+        "id": "T2_CLOTH",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T3_FURNITUREITEM_TABLE",
+    "category": "furniture",
+    "subcategory": "table",
+    "tier": 3,
+    "weight": "8.1",
+    "materials": [
+      {
+        "id": "T3_PLANKS",
+        "count": 30
+      },
+      {
+        "id": "T3_CLOTH",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T4_FURNITUREITEM_TABLE",
+    "category": "furniture",
+    "subcategory": "table",
+    "tier": 4,
+    "weight": "12.15",
+    "materials": [
+      {
+        "id": "T4_PLANKS",
+        "count": 30
+      },
+      {
+        "id": "T4_CLOTH",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T5_FURNITUREITEM_TABLE",
+    "category": "furniture",
+    "subcategory": "table",
+    "tier": 5,
+    "weight": "18.23",
+    "materials": [
+      {
+        "id": "T5_PLANKS",
+        "count": 30
+      },
+      {
+        "id": "T5_CLOTH",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T6_FURNITUREITEM_TABLE",
+    "category": "furniture",
+    "subcategory": "table",
+    "tier": 6,
+    "weight": "27.34",
+    "materials": [
+      {
+        "id": "T6_PLANKS",
+        "count": 30
+      },
+      {
+        "id": "T6_CLOTH",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T7_FURNITUREITEM_TABLE",
+    "category": "furniture",
+    "subcategory": "table",
+    "tier": 7,
+    "weight": "41.01",
+    "materials": [
+      {
+        "id": "T7_PLANKS",
+        "count": 30
+      },
+      {
+        "id": "T7_CLOTH",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "T8_FURNITUREITEM_TABLE",
+    "category": "furniture",
+    "subcategory": "table",
+    "tier": 8,
+    "weight": "61.51",
+    "materials": [
+      {
+        "id": "T8_PLANKS",
+        "count": 30
+      },
+      {
+        "id": "T8_CLOTH",
+        "count": 30
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_EASTER_CHEST",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 1,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_EVENT_EASTER_2018",
+        "count": 7500
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_VANITY_ARENA_BANNER_04",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 1,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 100
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_VANITY_ARENA_BANNER_05",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 1,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 120
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_VANITY_ARENA_BANNER_06",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 1,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_CRYSTAL",
+        "count": 220
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_VANITY_ARENA_BANNER_01",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 1,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_VANITY_ARENA_BANNER_02",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 1,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 200
+      },
+      {
+        "id": "UNIQUE_FURNITUREITEM_VANITY_ARENA_BANNER_01",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_VANITY_ARENA_BANNER_03",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 1,
+    "weight": "0.1",
+    "materials": [
+      {
+        "id": "QUESTITEM_TOKEN_ARENA_UNRANKED",
+        "count": 1000
+      },
+      {
+        "id": "UNIQUE_FURNITUREITEM_VANITY_ARENA_BANNER_02",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_XMAS_PRESENT",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 5,
+    "weight": "1.5",
+    "materials": [
+      {
+        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
+        "count": 150
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_XMAS_FILL_CITY_TREE_B",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 5,
+    "weight": "1.5",
+    "materials": [
+      {
+        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "id": "UNIQUE_FURNITUREITEM_XMAS_FILL_CITY_TREE_A",
+    "category": "furniture",
+    "subcategory": "decoration_furniture",
+    "tier": 7,
+    "weight": "1.5",
+    "materials": [
+      {
+        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
+        "count": 250
+      }
+    ]
+  },
+  {
+    "id": "T8_FURNITUREITEM_TROPHY_FISHING_BOSS",
+    "category": "trophies",
+    "subcategory": "generaltrophy",
+    "tier": 8,
+    "weight": "3",
+    "materials": [
+      {
+        "id": "T8_FISH_SALTWATER_ALL_BOSS_SHARK",
+        "count": 1
+      },
+      {
+        "id": "T8_PLANKS",
+        "count": 4
+      },
+      {
+        "id": "T8_METALBAR",
+        "count": 2
       }
     ]
   }

@@ -23,7 +23,7 @@ async function generateRecipes() {
       ignoreAttributes: false,
       attributeNamePrefix: '',
       isArray: (name) => { 
-        if (name === 'weapon' || name === 'armor' || name === 'equipmentitem' || name === 'consumable' || name === 'simpleitem' || name === 'craftresource' || name === 'mount') return true;
+        if (['weapon', 'armor', 'equipmentitem', 'consumableitem', 'consumablefrominventoryitem', 'simpleitem', 'mount', 'furnitureitem', 'craftresource'].includes(name)) return true;
         return false;
       }
     });
@@ -34,7 +34,7 @@ async function generateRecipes() {
     const allItems = [];
     const validItemIds = new Set();
 
-    const tagTypes = ['weapon', 'armor', 'equipmentitem', 'consumable', 'simpleitem', 'mount'];
+    const tagTypes = ['weapon', 'armor', 'equipmentitem', 'consumableitem', 'consumablefrominventoryitem', 'simpleitem', 'mount', 'furnitureitem'];
 
     for (const tag of tagTypes) {
       if (!itemsNode[tag]) continue;
