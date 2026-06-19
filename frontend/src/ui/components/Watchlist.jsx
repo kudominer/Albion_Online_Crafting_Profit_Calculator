@@ -3,7 +3,7 @@ import { useStore } from '../../cache/marketStore';
 import { ApiService } from '../../services/apiService';
 import { ItemService } from '../../services/itemService';
 
-const destinyBoardData = ItemService.generateDestinyBoard();
+const marketplaceData = ItemService.generateMarketplaceBoard();
 
 export function Watchlist() {
   const watchlist = useStore(state => state.watchlist);
@@ -11,19 +11,24 @@ export function Watchlist() {
   const [watchlistNodes, setWatchlistNodes] = useState([]);
 
   useEffect(() => {
-    // Find node details from destinyBoardData
     const nodes = [];
-    const searchTree = (node) => {
-      if (!node.children || node.children.length === 0) {
-        if (watchlist.includes(node.uniqueName)) {
-          nodes.push(node);
-        }
-      } else {
-        node.children.forEach(searchTree);
-      }
-    };
     
-    destinyBoardData.forEach(searchTree);
+    // Find node details from marketplaceData
+    watchlist.forEach(uniqueName => {
+      let foundNode = null;
+      marketplaceData.forEach(cat => {
+        if (foundNode) return;
+        cat.children.forEach(sub => {
+          if (foundNode) return;
+          const match = sub.items.find(i => i.uniqueName === uniqueName);
+          if (match) foundNode = match;
+        });
+      });
+      if (foundNode) {
+        nodes.push(foundNode);
+      }
+    });
+
     setWatchlistNodes(nodes);
 
     // Fetch prices for watchlist items
