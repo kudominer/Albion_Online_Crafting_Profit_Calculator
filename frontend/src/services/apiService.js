@@ -21,39 +21,13 @@ export class ApiService {
       const chunkSize = 200;
       for (let i = 0; i < itemIds.length; i += chunkSize) {
         const chunk = itemIds.slice(i, i + chunkSize);
-        // Gọi trực tiếp lên Albion Data Project API (Serverless)
-        const url = `${serverConfig.url}/${chunk.join(',')}?locations=Caerleon,Bridgewatch,Martlock,Thetford,Fort Sterling,Lymhurst,Brecilien`;
+        // Gọi lên Backend nội bộ
+        const url = `${serverConfig.url}?items=${chunk.join(',')}&locations=Caerleon,Bridgewatch,Martlock,Thetford,Fort Sterling,Lymhurst,Brecilien&server=${serverConfig.id}`;
         
         const response = await axios.get(url);
         
-        // Albion API trả về mảng phẳng. Ta cần map lại thành object cho Store.
-        // { "T4_BAG": { "Caerleon": { sell_price_min: 1500, buy_price_max: 1400 } } }
-        response.data.forEach(item => {
-          const { item_id, city, sell_price_min, buy_price_max } = item;
-          if (sell_price_min === 0 && buy_price_max === 0) return;
-          
-          if (!formattedData[item_id]) formattedData[item_id] = {};
-          
-          if (!formattedData[item_id][city]) {
-            formattedData[item_id][city] = {
-              item_id, city, 
-              sell_price_min: sell_price_min, 
-              buy_price_max: buy_price_max
-            };
-          } else {
-            const current = formattedData[item_id][city];
-            if (sell_price_min > 0) {
-              if (current.sell_price_min === 0 || sell_price_min < current.sell_price_min) {
-                current.sell_price_min = sell_price_min;
-              }
-            }
-            if (buy_price_max > 0) {
-              if (current.buy_price_max === 0 || buy_price_max > current.buy_price_max) {
-                current.buy_price_max = buy_price_max;
-              }
-            }
-          }
-        });
+        // Backend đã xử lý lọc rác, cache và format sẵn
+        Object.assign(formattedData, response.data);
       }
 
       store.setMarketData(formattedData);
