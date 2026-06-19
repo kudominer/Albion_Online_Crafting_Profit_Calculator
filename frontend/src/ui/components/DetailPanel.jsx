@@ -2,14 +2,14 @@ import React from 'react';
 import { X, Calculator, Star } from 'lucide-react';
 import { useStore } from '../../cache/marketStore';
 import { CraftingService } from '../../services/craftingService';
+import { ItemService } from '../../services/itemService';
 
-import LOCALIZED_NAMES from '../../data/localizedNames.json';
-
-const formatResourceName = (uniqueName) => {
-  return LOCALIZED_NAMES[uniqueName] || uniqueName;
+const formatResourceName = (uniqueName, lang) => {
+  return ItemService.getItemName(uniqueName, lang);
 };
 
 export function DetailPanel() {
+  const globalLanguage = useStore(state => state.globalLanguage);
   const selectedItem = useStore(state => state.selectedItem);
   const setSelectedItem = useStore(state => state.setSelectedItem);
   const marketData = useStore(state => state.marketData);
@@ -108,7 +108,7 @@ export function DetailPanel() {
             />
           </div>
           <div>
-            <h4 className="font-bold text-lg text-strong">{selectedItem.name}</h4>
+            <h4 className="font-bold text-lg text-strong">{ItemService.getItemName(selectedItem.uniqueName, globalLanguage)}</h4>
             <p className="text-xs text-muted font-mono">{selectedItem.uniqueName}</p>
           </div>
         </div>
@@ -182,7 +182,7 @@ export function DetailPanel() {
                     </div>
                     <div>
                       <div className="text-strong font-medium text-xs flex items-center gap-1">
-                        {formatResourceName(res.uniqueName)}
+                        {formatResourceName(res.uniqueName, globalLanguage)}
                         {res.isCustomPrice && <span className="text-[9px] bg-primary/20 text-primary px-1 rounded">CUSTOM</span>}
                       </div>
                       <div className="text-muted text-[10px]">{res.qty}x</div>

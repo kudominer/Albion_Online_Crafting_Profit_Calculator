@@ -11,7 +11,8 @@ export const useStore = create((set) => ({
   globalTax: '6.5',
   globalCraftFee: '',
   globalCity: '', // Empty means 'All Cities'
-  globalServer: 'europe',
+  globalServer: 'east',
+  globalLanguage: typeof window !== 'undefined' ? (localStorage.getItem('globalLanguage') || 'vi') : 'vi',
   customPrices: {},
   
   // UI State
@@ -48,6 +49,12 @@ export const useStore = create((set) => ({
   setGlobalCraftFee: (val) => set({ globalCraftFee: val }),
   setGlobalCity: (val) => set({ globalCity: val }),
   setGlobalServer: (val) => set({ globalServer: val }),
+  setGlobalLanguage: (val) => set(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('globalLanguage', val);
+    }
+    return { globalLanguage: val };
+  }),
   setCustomPrice: (uniqueName, price) => set((state) => ({
     customPrices: { ...state.customPrices, [uniqueName]: price }
   })),
@@ -61,3 +68,4 @@ export const useStore = create((set) => ({
       : [...state.watchlist, uniqueName]
   }))
 }));
+

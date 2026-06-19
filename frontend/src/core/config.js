@@ -12,5 +12,5 @@ export const DEFAULT_SETTINGS = {
   rrr: '15.2',
   tax: '6.5',
   craftFee: '',
-  server: 'europe'
+  server: 'east'
 };

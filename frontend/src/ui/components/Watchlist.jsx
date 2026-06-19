@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useStore } from '../../cache/marketStore';
 import { ApiService } from '../../services/apiService';
 import { ItemService } from '../../services/itemService';
 
-const marketplaceData = ItemService.generateMarketplaceBoard();
-
 export function Watchlist() {
+  const globalLanguage = useStore(state => state.globalLanguage);
+  const marketplaceData = useMemo(() => ItemService.generateMarketplaceBoard(globalLanguage), [globalLanguage]);
+
   const watchlist = useStore(state => state.watchlist);
+  const marketData = useStore(state => state.marketData);
   const setSelectedItem = useStore(state => state.setSelectedItem);
   const [watchlistNodes, setWatchlistNodes] = useState([]);
 
@@ -45,7 +47,9 @@ export function Watchlist() {
       });
       ApiService.fetchMarketPrices([...new Set(itemsToFetch)]);
     }
-  }, [watchlist]);
+  }, [watchlist, marketplaceData]);
+  
+
 
   if (watchlist.length === 0) {
     return (
