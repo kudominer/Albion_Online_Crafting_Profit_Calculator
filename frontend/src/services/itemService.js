@@ -73,6 +73,9 @@ export class ItemService {
       const catId = mapping.category;
       const subCatId = mapping.subcategory;
 
+      const allowedCategories = ['Weapons', 'Chest Armor', 'Head Armor', 'Foot Armor', 'Off-Hands', 'Capes', 'Bags', 'Consumable'];
+      if (!allowedCategories.includes(catId)) return;
+
       if (!catMap.has(catId)) {
          catMap.set(catId, { id: catId, name: catId, children: [], subMap: new Map() });
          tree.push(catMap.get(catId));
