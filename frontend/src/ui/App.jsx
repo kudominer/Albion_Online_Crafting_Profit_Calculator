@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Sun, Moon, Settings } from 'lucide-react';
-import { DestinyBoard } from './components/DestinyBoard';
+import { MarketplaceBoard } from './components/MarketplaceBoard';
 import { DetailPanel } from './components/DetailPanel';
 import { SettingsSidebar } from './components/SettingsSidebar';
 import { LeftNavigationBar } from './components/LeftNavigationBar';
@@ -32,7 +32,7 @@ function App() {
 
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
-  // Tính toán chiều rộng của DestinyBoard dựa trên việc mở các panel khác
+  // Tính toán chiều rộng của MarketplaceBoard dựa trên việc mở các panel khác
   let mainWidthClass = 'w-full';
   if (isSettingsOpen && selectedItem) {
     mainWidthClass = 'hidden xl:block xl:w-2/4'; // Chỉ hiện trên màn hình rất lớn nếu mở cả 2 bên
@@ -86,7 +86,7 @@ function App() {
 
           {/* Main Content Area */}
           <div className={`h-full transition-all duration-300 ${mainWidthClass}`}>
-            {activeTab === 'destiny' ? <DestinyBoard /> : <Watchlist />}
+            {activeTab === 'destiny' ? <MarketplaceBoard /> : <Watchlist />}
           </div>
 
           {/* Right Detail Panel */}

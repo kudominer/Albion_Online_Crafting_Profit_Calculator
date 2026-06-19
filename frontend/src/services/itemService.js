@@ -1,48 +1,40 @@
 import RECIPES from '../data/recipes.json';
 import LOCALIZED_NAMES from '../data/localizedNames.json';
 
+const formatTitle = (str) => {
+  if (!str) return 'Other';
+  return str.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+};
+
 export class ItemService {
   /**
-   * Sinh toàn bộ cây dữ liệu Destiny Board từ recipes.json
-   * Lọc bỏ những category là resources
+   * Sinh cây dữ liệu Marketplace: Category -> Subcategory -> Danh sách Items
    */
-  static generateDestinyBoard() {
+  static generateMarketplaceBoard() {
     const tree = [];
     const catMap = new Map();
 
     RECIPES.forEach(recipe => {
-      // Bỏ qua category resources vì sẽ cho vào hàm generateMaterialsTree
+      // Bỏ qua resources (nguyên liệu thuần túy) khỏi danh sách Marketplace chính (sẽ có tab riêng)
       if (recipe.category === 'resources') return;
 
       const catId = recipe.category || 'other';
       const subCatId = recipe.subcategory || 'other';
-      const tierId = `Tier ${recipe.tier}`;
 
       // Build Category
       if (!catMap.has(catId)) {
-         catMap.set(catId, { id: catId, name: catId.toUpperCase(), children: [], subMap: new Map() });
+         catMap.set(catId, { id: catId, name: formatTitle(catId), children: [], subMap: new Map() });
          tree.push(catMap.get(catId));
       }
       const catObj = catMap.get(catId);
 
       // Build SubCategory
       if (!catObj.subMap.has(subCatId)) {
-         const newSub = { id: `${catId}_${subCatId}`, name: subCatId.toUpperCase(), children: [], tierMap: new Map() };
+         const newSub = { id: `${catId}_${subCatId}`, name: formatTitle(subCatId), items: [] };
          catObj.subMap.set(subCatId, newSub);
          catObj.children.push(newSub);
       }
       const subCatObj = catObj.subMap.get(subCatId);
-
-      // Build Tier
-      if (!subCatObj.tierMap.has(tierId)) {
-         const newTier = { id: `${catId}_${subCatId}_t${recipe.tier}`, name: tierId, children: [] };
-         subCatObj.tierMap.set(tierId, newTier);
-         subCatObj.children.push(newTier);
-      }
-      const tierObj = subCatObj.tierMap.get(tierId);
-
-      // Sắp xếp Tier
-      subCatObj.children.sort((a, b) => a.name.localeCompare(b.name));
 
       // Add Item
       const resources = recipe.materials.map(mat => ({
@@ -50,11 +42,26 @@ export class ItemService {
         qty: mat.count
       }));
 
-      tierObj.children.push({
+      subCatObj.items.push({
         id: recipe.id,
-        name: LOCALIZED_NAMES[recipe.id] || recipe.id, // Đã đổi sang tiếng Anh chuẩn từ file JSON
+        name: LOCALIZED_NAMES[recipe.id] || recipe.id,
         uniqueName: recipe.id,
+        tier: recipe.tier || 4,
+        enchantment: recipe.enchantmentLevel || 0,
         resources: resources
+      });
+    });
+
+    // Sắp xếp
+    tree.sort((a, b) => a.name.localeCompare(b.name));
+    tree.forEach(cat => {
+      cat.children.sort((a, b) => a.name.localeCompare(b.name));
+      cat.children.forEach(subCat => {
+        // Sort items by Tier then Enchantment
+        subCat.items.sort((a, b) => {
+          if (a.tier !== b.tier) return a.tier - b.tier;
+          return a.enchantment - b.enchantment;
+        });
       });
     });
 
