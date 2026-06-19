@@ -50,8 +50,12 @@ function App() {
         <header className="flex-shrink-0 px-4 md:px-6 py-3 md:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-hairline bg-surface-elevated/20 z-10 shadow-sm">
           <div className="flex items-center gap-4">
             <div>
-              <h1 className="text-xl font-bold text-strong transition-colors">Albion Crafting Profit</h1>
-              <p className="text-xs text-muted transition-colors">Auto-calculating real-time profits</p>
+              <h1 className="text-xl font-bold text-strong transition-colors tracking-wide">
+                ✦ Albion Crafting Profit
+              </h1>
+              <p className="text-xs text-muted transition-colors tracking-widest uppercase" style={{fontSize: '10px', letterSpacing: '0.12em'}}>
+                The Northern Constellations
+              </p>
             </div>
             {isFetching && (
               <div className="hidden sm:flex items-center gap-2 text-xs text-info ml-4 bg-info/10 px-3 py-1.5 rounded-full border border-info/20">
