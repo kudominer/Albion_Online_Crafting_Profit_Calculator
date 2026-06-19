@@ -21,6 +21,8 @@ export function MarketplaceBoard() {
   const setMarketCategory = useStore(state => state.setMarketCategory);
   const marketSubcategory = useStore(state => state.marketSubcategory);
   const setMarketSubcategory = useStore(state => state.setMarketSubcategory);
+  const marketItemFamily = useStore(state => state.marketItemFamily);
+  const setMarketItemFamily = useStore(state => state.setMarketItemFamily);
   const marketTier = useStore(state => state.marketTier);
   const setMarketTier = useStore(state => state.setMarketTier);
   const marketEnchantment = useStore(state => state.marketEnchantment);
@@ -44,12 +46,16 @@ export function MarketplaceBoard() {
   const displayedItems = useMemo(() => {
     let items = [];
 
-    // Filter by Category/Subcategory
+    // Filter by Category/Subcategory/Family
     marketplaceData.forEach(cat => {
       if (!marketCategory || cat.id === marketCategory) {
         cat.children.forEach(sub => {
           if (!marketSubcategory || sub.id === marketSubcategory) {
-            items = items.concat(sub.items);
+            sub.families.forEach(fam => {
+              if (!marketItemFamily || fam.id === marketItemFamily) {
+                items = items.concat(fam.items);
+              }
+            });
           }
         });
       }
@@ -72,7 +78,7 @@ export function MarketplaceBoard() {
     }
 
     return items;
-  }, [marketCategory, marketSubcategory, marketTier, marketEnchantment, searchQuery]);
+  }, [marketCategory, marketSubcategory, marketItemFamily, marketTier, marketEnchantment, searchQuery]);
 
   // Fetch prices for displayed items
   useEffect(() => {
@@ -194,14 +200,34 @@ export function MarketplaceBoard() {
                     {cat.children.map(sub => {
                       const isSubSelected = marketSubcategory === sub.id;
                       return (
-                        <div
-                          key={sub.id}
-                          className={`px-3 py-1.5 rounded-md cursor-pointer text-sm transition-colors
-                            ${isSubSelected ? 'bg-surface-elevated text-strong font-bold' : 'text-body hover:text-strong hover:bg-surface-elevated/50'}
-                          `}
-                          onClick={() => setMarketSubcategory(isSubSelected ? null : sub.id)}
-                        >
-                          {sub.name}
+                        <div key={sub.id}>
+                          <div
+                            className={`px-3 py-1.5 rounded-md cursor-pointer text-sm transition-colors
+                              ${isSubSelected ? 'bg-surface-elevated text-strong font-bold' : 'text-body hover:text-strong hover:bg-surface-elevated/50'}
+                            `}
+                            onClick={() => setMarketSubcategory(isSubSelected ? null : sub.id)}
+                          >
+                            {sub.name}
+                          </div>
+                          
+                          {isSubSelected && (
+                            <div className="ml-3 mt-1 pl-2 border-l border-hairline space-y-0.5">
+                              {sub.families.map(fam => {
+                                const isFamSelected = marketItemFamily === fam.id;
+                                return (
+                                  <div
+                                    key={fam.id}
+                                    className={`px-2 py-1 rounded cursor-pointer text-xs transition-colors
+                                      ${isFamSelected ? 'text-primary font-bold bg-primary/10' : 'text-muted hover:text-strong hover:bg-surface-elevated'}
+                                    `}
+                                    onClick={() => setMarketItemFamily(isFamSelected ? null : fam.id)}
+                                  >
+                                    {fam.name}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
                       )
                     })}

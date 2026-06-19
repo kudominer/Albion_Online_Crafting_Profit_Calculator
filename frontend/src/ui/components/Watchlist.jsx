@@ -20,8 +20,11 @@ export function Watchlist() {
         if (foundNode) return;
         cat.children.forEach(sub => {
           if (foundNode) return;
-          const match = sub.items.find(i => i.uniqueName === uniqueName);
-          if (match) foundNode = match;
+          sub.families.forEach(fam => {
+            if (foundNode) return;
+            const match = fam.items.find(i => i.uniqueName === uniqueName);
+            if (match) foundNode = match;
+          });
         });
       });
       if (foundNode) {

@@ -49,10 +49,21 @@ const mapMarketplaceCategory = (recipe) => {
   return { category: 'Other', subcategory: formatTitle(cat) };
 };
 
+const prefixes = [
+  "Beginner's ", "Novice's ", "Journeyman's ", "Adept's ", 
+  "Expert's ", "Master's ", "Grandmaster's ", "Elder's "
+];
+
+const getFamilyName = (uniqueName, localizedName) => {
+  let name = localizedName || uniqueName;
+  name = name.replace(/\s\d?\.\d+$/, ''); // Remove tier/enchant suffix
+  for (const p of prefixes) {
+    if (name.startsWith(p)) return name.substring(p.length);
+  }
+  return name;
+};
+
 export class ItemService {
-  /**
-   * Sinh cây dữ liệu Marketplace: Category -> Subcategory -> Danh sách Items
-   */
   static generateMarketplaceBoard() {
     const tree = [];
     const catMap = new Map();
@@ -62,30 +73,37 @@ export class ItemService {
       const catId = mapping.category;
       const subCatId = mapping.subcategory;
 
-      // Build Category
       if (!catMap.has(catId)) {
          catMap.set(catId, { id: catId, name: catId, children: [], subMap: new Map() });
          tree.push(catMap.get(catId));
       }
       const catObj = catMap.get(catId);
 
-      // Build SubCategory
       if (!catObj.subMap.has(subCatId)) {
-         const newSub = { id: `${catId}_${subCatId}`, name: subCatId, items: [] };
+         const newSub = { id: `${catId}_${subCatId}`, name: subCatId, families: [], familyMap: new Map() };
          catObj.subMap.set(subCatId, newSub);
          catObj.children.push(newSub);
       }
       const subCatObj = catObj.subMap.get(subCatId);
 
-      // Add Item
+      const itemName = LOCALIZED_NAMES[recipe.id] || recipe.id;
+      const familyName = getFamilyName(recipe.id, itemName);
+
+      if (!subCatObj.familyMap.has(familyName)) {
+         const newFamily = { id: `${catId}_${subCatId}_${familyName}`, name: familyName, items: [] };
+         subCatObj.familyMap.set(familyName, newFamily);
+         subCatObj.families.push(newFamily);
+      }
+      const familyObj = subCatObj.familyMap.get(familyName);
+
       const resources = recipe.materials.map(mat => ({
         uniqueName: mat.id,
         qty: mat.count
       }));
 
-      subCatObj.items.push({
+      familyObj.items.push({
         id: recipe.id,
-        name: LOCALIZED_NAMES[recipe.id] || recipe.id,
+        name: itemName,
         uniqueName: recipe.id,
         tier: recipe.tier || 4,
         enchantment: recipe.enchantmentLevel || 0,
@@ -93,7 +111,6 @@ export class ItemService {
       });
     });
 
-    // Custom sort order based on Albion Marketplace
     const order = [
       'Weapons', 'Chest Armor', 'Head Armor', 'Foot Armor', 
       'Off-Hands', 'Capes', 'Bags', 'Mount', 'Consumable', 
@@ -113,17 +130,18 @@ export class ItemService {
     tree.forEach(cat => {
       cat.children.sort((a, b) => a.name.localeCompare(b.name));
       cat.children.forEach(subCat => {
-        // Sort items by Tier then Enchantment
-        subCat.items.sort((a, b) => {
-          if (a.tier !== b.tier) return a.tier - b.tier;
-          return a.enchantment - b.enchantment;
+        subCat.families.sort((a, b) => a.name.localeCompare(b.name));
+        subCat.families.forEach(fam => {
+          fam.items.sort((a, b) => {
+            if (a.tier !== b.tier) return a.tier - b.tier;
+            return a.enchantment - b.enchantment;
+          });
         });
       });
     });
 
     return tree;
   }
-
   /**
    * Sinh toàn bộ cây dữ liệu Nguyên liệu (resources) từ recipes.json
    */
