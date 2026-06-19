@@ -5,14 +5,15 @@ import { ApiService } from '../../services/apiService';
 import { CraftingService } from '../../services/craftingService';
 import { ItemService } from '../../services/itemService';
 
-const marketplaceData = ItemService.generateMarketplaceBoard();
-
 const formatSilver = (amount) => {
   if (amount === undefined || amount === null || amount === 0) return '--';
   return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
 export function MarketplaceBoard() {
+  const globalLanguage = useStore(state => state.globalLanguage);
+  const marketplaceData = useMemo(() => ItemService.generateMarketplaceBoard(globalLanguage), [globalLanguage]);
+
   const marketData = useStore(state => state.marketData);
   const selectedItem = useStore(state => state.selectedItem);
   const setSelectedItem = useStore(state => state.setSelectedItem);
@@ -41,7 +42,7 @@ export function MarketplaceBoard() {
     if (!marketCategory && marketplaceData.length > 0) {
       setMarketCategory(marketplaceData[0].id);
     }
-  }, [marketCategory, setMarketCategory]);
+  }, [marketCategory, setMarketCategory, marketplaceData]);
 
   const displayedItems = useMemo(() => {
     let items = [];
@@ -79,6 +80,8 @@ export function MarketplaceBoard() {
 
     return items;
   }, [marketCategory, marketSubcategory, marketItemFamily, marketTier, marketEnchantment, searchQuery]);
+  
+
 
   // Fetch prices for displayed items
   useEffect(() => {

@@ -1,5 +1,70 @@
 import RECIPES from '../data/recipes.json';
 import LOCALIZED_NAMES from '../data/localizedNames.json';
+import LOCALIZED_NAMES_VI from '../data/localizedNames_vi.json';
+
+const UI_TRANSLATIONS = {
+  vi: {
+    // Categories
+    'Weapons': 'Vũ khí',
+    'Chest Armor': 'Giáp ngực',
+    'Head Armor': 'Mũ giáp',
+    'Foot Armor': 'Giày giáp',
+    'Off-Hands': 'Trang bị phụ',
+    'Capes': 'Áo choàng',
+    'Bags': 'Túi xách',
+    'Consumable': 'Vật phẩm tiêu thụ',
+    'Farming': 'Nông nghiệp',
+    'Crafting': 'Chế tạo',
+    'Gathering Equipment': 'Trang bị thu hoạch',
+    'Artifact': 'Cổ vật',
+    'Furniture': 'Nội thất',
+    'Vanity': 'Thời trang',
+    'Other': 'Khác',
+
+    // Subcategories
+    'Bow': 'Cung',
+    'Crossbow': 'Nỏ',
+    'Dagger': 'Dao găm',
+    'Sword': 'Kiếm',
+    'Axe': 'Rìu',
+    'Mace': 'Chùy',
+    'Hammer': 'Búa',
+    'Quarterstaff': 'Gậy thiết bảng',
+    'Spear': 'Thương',
+    'Knuckles': 'Găng chiến đấu',
+    'Firestaff': 'Trượng lửa',
+    'Froststaff': 'Trượng băng',
+    'Cursefield': 'Trượng nguyền',
+    'Arcanestaff': 'Trượng bí thuật',
+    'Holystaff': 'Trượng thánh',
+    'Naturestaff': 'Trượng thiên nhiên',
+    'Cloth': 'Vải',
+    'Leather': 'Da',
+    'Plate': 'Giáp sắt',
+    'Cape': 'Áo choàng',
+    'Bag': 'Túi xách',
+    'Cooked': 'Đồ ăn',
+    'Potion': 'Thuốc',
+    'Skill Books': 'Sách kỹ năng',
+    'Luxury Goods': 'Đồ xa xỉ',
+    'Token': 'Huy hiệu',
+    
+    // Resource subcategories
+    'PLANKS': 'GỖ VÁN',
+    'METALBAR': 'THỎI KIM LOẠI',
+    'ORE': 'QUẶNG THÔ',
+    'CLOTH': 'VẢI DỆT',
+    'LEATHER': 'DA THUỘC',
+    'STONEBLOCK': 'KHỐI ĐÁ'
+  }
+};
+
+const translateUI = (text, lang = 'vi') => {
+  if (lang === 'vi' && UI_TRANSLATIONS.vi[text]) {
+    return UI_TRANSLATIONS.vi[text];
+  }
+  return text;
+};
 
 const formatTitle = (str) => {
   if (!str) return 'Other';
@@ -54,17 +119,36 @@ const prefixes = [
   "Expert's ", "Master's ", "Grandmaster's ", "Elder's "
 ];
 
-const getFamilyName = (uniqueName, localizedName) => {
+const getFamilyName = (uniqueName, localizedName, lang = 'vi') => {
   let name = localizedName || uniqueName;
   name = name.replace(/\s\d?\.\d+$/, ''); // Remove tier/enchant suffix
-  for (const p of prefixes) {
-    if (name.startsWith(p)) return name.substring(p.length);
+  name = name.replace(/\s\.\d+$/, ''); // Remove .1, .2, etc. suffix
+  
+  if (lang === 'vi') {
+    const viPrefixes = [
+      " Tân thủ", " Tập sự", " Lữ khách", " Thông thạo", 
+      " Chuyên gia", " Bậc thầy", " Đại sư", " Trưởng lão"
+    ];
+    for (const vp of viPrefixes) {
+      if (name.endsWith(vp)) return name.substring(0, name.length - vp.length);
+    }
+  } else {
+    for (const p of prefixes) {
+      if (name.startsWith(p)) return name.substring(p.length);
+    }
   }
   return name;
 };
 
 export class ItemService {
-  static generateMarketplaceBoard() {
+  static getItemName(itemId, lang = 'vi') {
+    if (lang === 'vi') {
+      return LOCALIZED_NAMES_VI[itemId] || LOCALIZED_NAMES[itemId] || itemId;
+    }
+    return LOCALIZED_NAMES[itemId] || itemId;
+  }
+
+  static generateMarketplaceBoard(lang = 'vi') {
     const tree = [];
     const catMap = new Map();
 
@@ -77,20 +161,20 @@ export class ItemService {
       if (!allowedCategories.includes(catId)) return;
 
       if (!catMap.has(catId)) {
-         catMap.set(catId, { id: catId, name: catId, children: [], subMap: new Map() });
+         catMap.set(catId, { id: catId, name: translateUI(catId, lang), children: [], subMap: new Map() });
          tree.push(catMap.get(catId));
       }
       const catObj = catMap.get(catId);
 
       if (!catObj.subMap.has(subCatId)) {
-         const newSub = { id: `${catId}_${subCatId}`, name: subCatId, families: [], familyMap: new Map() };
+         const newSub = { id: `${catId}_${subCatId}`, name: translateUI(subCatId, lang), families: [], familyMap: new Map() };
          catObj.subMap.set(subCatId, newSub);
          catObj.children.push(newSub);
       }
       const subCatObj = catObj.subMap.get(subCatId);
 
-      const itemName = LOCALIZED_NAMES[recipe.id] || recipe.id;
-      const familyName = getFamilyName(recipe.id, itemName);
+      const itemName = ItemService.getItemName(recipe.id, lang);
+      const familyName = getFamilyName(recipe.id, itemName, lang);
 
       if (!subCatObj.familyMap.has(familyName)) {
          const newFamily = { id: `${catId}_${subCatId}_${familyName}`, name: familyName, items: [] };
@@ -145,10 +229,11 @@ export class ItemService {
 
     return tree;
   }
+
   /**
    * Sinh toàn bộ cây dữ liệu Nguyên liệu (resources) từ recipes.json
    */
-  static generateMaterialsTree() {
+  static generateMaterialsTree(lang = 'vi') {
     const tree = [];
     const subCatMap = new Map();
 
@@ -160,7 +245,7 @@ export class ItemService {
 
       // Build SubCategory (ví dụ: planks, metalbar)
       if (!subCatMap.has(subCatId)) {
-         const newSub = { id: `mat_${subCatId}`, name: subCatId.toUpperCase(), children: [], tierMap: new Map() };
+         const newSub = { id: `mat_${subCatId}`, name: translateUI(subCatId.toUpperCase(), lang), children: [], tierMap: new Map() };
          subCatMap.set(subCatId, newSub);
          tree.push(newSub);
       }
@@ -180,7 +265,7 @@ export class ItemService {
       // Add Item
       tierObj.children.push({
         id: recipe.id,
-        name: LOCALIZED_NAMES[recipe.id] || recipe.id, // Đã đổi sang tiếng Anh chuẩn từ file JSON
+        name: ItemService.getItemName(recipe.id, lang),
         uniqueName: recipe.id
       });
     });

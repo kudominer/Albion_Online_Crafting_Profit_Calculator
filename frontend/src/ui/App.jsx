@@ -15,7 +15,6 @@ function App() {
   });
   
   const selectedItem = useStore(state => state.selectedItem);
-  const isFetching = useStore(state => state.isFetching);
   const isSettingsOpen = useStore(state => state.isSettingsOpen);
   const setIsSettingsOpen = useStore(state => state.setIsSettingsOpen);
   const activeTab = useStore(state => state.activeTab);
@@ -57,19 +56,8 @@ function App() {
                 The Northern Constellations
               </p>
             </div>
-            {isFetching && (
-              <div className="hidden sm:flex items-center gap-2 text-xs text-info ml-4 bg-info/10 px-3 py-1.5 rounded-full border border-info/20">
-                <div className="w-3 h-3 rounded-full border-2 border-info border-t-transparent animate-spin"></div>
-                Đang tải giá thị trường...
-              </div>
-            )}
           </div>
           <div className="flex gap-2">
-            {isFetching && (
-              <div className="sm:hidden flex items-center gap-2 text-xs text-info bg-info/10 px-3 py-1.5 rounded-full border border-info/20">
-                <div className="w-3 h-3 rounded-full border-2 border-info border-t-transparent animate-spin"></div>
-              </div>
-            )}
             <button
               onClick={toggleTheme}
               className="p-2 bg-surface-card hover:bg-surface-elevated text-body rounded-lg transition-colors border border-hairline shadow-sm"

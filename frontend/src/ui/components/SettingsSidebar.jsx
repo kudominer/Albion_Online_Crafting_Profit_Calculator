@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ChevronRight, ChevronDown, Settings, X, Save } from 'lucide-react';
 import { useStore } from '../../cache/marketStore';
 import { ItemService } from '../../services/itemService';
 import { ApiService } from '../../services/apiService';
 import { CraftingService } from '../../services/craftingService';
 import { API_SERVERS } from '../../core/config';
-
-const materialsData = ItemService.generateMaterialsTree();
 
 const MaterialNode = ({ node, level = 0 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -125,13 +123,17 @@ export function SettingsSidebar() {
   const globalCraftFee = useStore(state => state.globalCraftFee);
   const globalCity = useStore(state => state.globalCity);
   const globalServer = useStore(state => state.globalServer);
+  const globalLanguage = useStore(state => state.globalLanguage);
   
   const setGlobalRrr = useStore(state => state.setGlobalRrr);
   const setGlobalTax = useStore(state => state.setGlobalTax);
   const setGlobalCraftFee = useStore(state => state.setGlobalCraftFee);
   const setGlobalCity = useStore(state => state.setGlobalCity);
   const setGlobalServer = useStore(state => state.setGlobalServer);
+  const setGlobalLanguage = useStore(state => state.setGlobalLanguage);
   const setIsSettingsOpen = useStore(state => state.setIsSettingsOpen);
+
+  const materialsData = useMemo(() => ItemService.generateMaterialsTree(globalLanguage), [globalLanguage]);
 
   const CITIES = [
     { id: '', name: 'Tất cả thành phố (Min/Max)' },
@@ -174,6 +176,17 @@ export function SettingsSidebar() {
                 {API_SERVERS.map(s => (
                   <option key={s.id} value={s.id}>{s.name}</option>
                 ))}
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs text-muted mb-1">Ngôn ngữ (Language)</label>
+              <select
+                value={globalLanguage}
+                onChange={(e) => setGlobalLanguage(e.target.value)}
+                className="w-full bg-surface-elevated border border-hairline rounded px-3 py-2 text-sm text-strong font-semibold focus:outline-none focus:border-primary transition-colors appearance-none"
+              >
+                <option value="vi">Tiếng Việt 🇻🇳</option>
+                <option value="en">English 🇬🇧</option>
               </select>
             </div>
             <div>
