@@ -6,6 +6,35 @@ const formatTitle = (str) => {
   return str.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 };
 
+const mapMarketplaceCategory = (recipe) => {
+  const cat = recipe.category || 'other';
+  const sub = recipe.subcategory || 'other';
+
+  if (cat === 'melee' || cat === 'magic' || cat === 'ranged') {
+    return { category: 'Weapons', subcategory: formatTitle(sub) };
+  }
+  if (cat === 'armor') {
+    if (sub.includes('helmet')) return { category: 'Head Armor', subcategory: formatTitle(sub) };
+    if (sub.includes('armor')) return { category: 'Chest Armor', subcategory: formatTitle(sub) };
+    if (sub.includes('shoes')) return { category: 'Foot Armor', subcategory: formatTitle(sub) };
+  }
+  if (cat === 'offhand') {
+    return { category: 'Off-Hands', subcategory: formatTitle(sub) };
+  }
+  if (cat === 'accessories') {
+    if (sub === 'cape') return { category: 'Capes', subcategory: formatTitle(sub) };
+    if (sub === 'bag') return { category: 'Bags', subcategory: formatTitle(sub) };
+  }
+  if (cat === 'mounts') return { category: 'Mount', subcategory: formatTitle(sub) };
+  if (cat === 'products' && sub === 'cooked') return { category: 'Consumable', subcategory: formatTitle(sub) };
+  if (cat === 'gatherergear') return { category: 'Gathering Equipment', subcategory: formatTitle(sub) };
+  if (cat === 'materials') return { category: 'Crafting', subcategory: formatTitle(sub) };
+  if (cat === 'artefacts') return { category: 'Artifact', subcategory: formatTitle(sub) };
+  if (cat === 'products' && sub === 'farming') return { category: 'Farming', subcategory: formatTitle(sub) };
+  
+  return { category: 'Other', subcategory: formatTitle(sub) };
+};
+
 export class ItemService {
   /**
    * Sinh cây dữ liệu Marketplace: Category -> Subcategory -> Danh sách Items
@@ -18,19 +47,20 @@ export class ItemService {
       // Bỏ qua resources (nguyên liệu thuần túy) khỏi danh sách Marketplace chính (sẽ có tab riêng)
       if (recipe.category === 'resources') return;
 
-      const catId = recipe.category || 'other';
-      const subCatId = recipe.subcategory || 'other';
+      const mapping = mapMarketplaceCategory(recipe);
+      const catId = mapping.category;
+      const subCatId = mapping.subcategory;
 
       // Build Category
       if (!catMap.has(catId)) {
-         catMap.set(catId, { id: catId, name: formatTitle(catId), children: [], subMap: new Map() });
+         catMap.set(catId, { id: catId, name: catId, children: [], subMap: new Map() });
          tree.push(catMap.get(catId));
       }
       const catObj = catMap.get(catId);
 
       // Build SubCategory
       if (!catObj.subMap.has(subCatId)) {
-         const newSub = { id: `${catId}_${subCatId}`, name: formatTitle(subCatId), items: [] };
+         const newSub = { id: `${catId}_${subCatId}`, name: subCatId, items: [] };
          catObj.subMap.set(subCatId, newSub);
          catObj.children.push(newSub);
       }
@@ -52,8 +82,23 @@ export class ItemService {
       });
     });
 
-    // Sắp xếp
-    tree.sort((a, b) => a.name.localeCompare(b.name));
+    // Custom sort order based on Albion Marketplace
+    const order = [
+      'Weapons', 'Chest Armor', 'Head Armor', 'Foot Armor', 
+      'Off-Hands', 'Capes', 'Bags', 'Mount', 'Consumable', 
+      'Gathering Equipment', 'Crafting', 'Artifact', 
+      'Farming', 'Furniture', 'Vanity', 'Other'
+    ];
+
+    tree.sort((a, b) => {
+      const idxA = order.indexOf(a.id);
+      const idxB = order.indexOf(b.id);
+      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+      if (idxA !== -1) return -1;
+      if (idxB !== -1) return 1;
+      return a.name.localeCompare(b.name);
+    });
+
     tree.forEach(cat => {
       cat.children.sort((a, b) => a.name.localeCompare(b.name));
       cat.children.forEach(subCat => {
