@@ -22,9 +22,22 @@ export const useStore = create((set) => ({
   // Watchlist (Array of uniqueNames)
   watchlist: [],
 
+  // Marketplace State
+  marketCategory: null,
+  marketSubcategory: null,
+  marketItemFamily: null,
+  marketTier: 'All',
+  marketEnchantment: 'All',
+
   setMarketData: (data) => set((state) => ({
     marketData: { ...state.marketData, ...data }
   })),
+
+  setMarketCategory: (cat) => set({ marketCategory: cat, marketSubcategory: null, marketItemFamily: null }),
+  setMarketSubcategory: (subcat) => set({ marketSubcategory: subcat, marketItemFamily: null }),
+  setMarketItemFamily: (family) => set({ marketItemFamily: family }),
+  setMarketTier: (tier) => set({ marketTier: tier }),
+  setMarketEnchantment: (ench) => set({ marketEnchantment: ench }),
 
   setSelectedRootId: (id) => set({ selectedRootId: id }),
   setSelectedItem: (item) => set({ selectedItem: item }),

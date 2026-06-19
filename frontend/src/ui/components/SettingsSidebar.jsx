@@ -71,8 +71,9 @@ const MaterialNode = ({ node, level = 0 }) => {
         </div>
         
         {!hasChildren && node.uniqueName && (
-          <div className="relative w-8 h-8 bg-surface-elevated rounded border border-hairline overflow-hidden flex-shrink-0">
+          <div className="w-10 h-10 bg-surface-elevated rounded-lg p-1 shrink-0 flex items-center justify-center border border-hairline">
             <img 
+              loading="lazy"
               src={`https://render.albiononline.com/v1/item/${node.uniqueName}.png`} 
               alt={node.name}
               className="w-full h-full object-contain p-0.5"

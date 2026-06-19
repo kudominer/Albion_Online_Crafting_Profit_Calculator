@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useStore } from '../cache/marketStore'; // Notice the path change to cache/marketStore
 import { API_SERVERS } from '../core/config';
+import { PriceService } from './priceService';
 
 export class ApiService {
   /**
@@ -20,24 +21,13 @@ export class ApiService {
       const chunkSize = 200;
       for (let i = 0; i < itemIds.length; i += chunkSize) {
         const chunk = itemIds.slice(i, i + chunkSize);
-        const url = `${serverConfig.url}/${chunk.join(',')}?locations=Caerleon,Bridgewatch,Martlock,Thetford,Fort Sterling,Lymhurst,Brecilien`;
+        // Gọi lên Backend nội bộ
+        const url = `${serverConfig.url}?items=${chunk.join(',')}&locations=Black Market&server=${serverConfig.id}`;
         
         const response = await axios.get(url);
-        const data = response.data;
         
-        data.forEach(item => {
-          // Chỉ lấy quality 1 (Normal) cho nguyên liệu và item cơ bản
-          if (item.quality !== 1) return;
-
-          const { item_id, city, sell_price_min, buy_price_max } = item;
-          if (!formattedData[item_id]) {
-            formattedData[item_id] = {};
-          }
-          formattedData[item_id][city] = {
-            sellPriceMin: sell_price_min,
-            buyPriceMax: buy_price_max,
-          };
-        });
+        // Backend đã xử lý lọc rác, cache và format sẵn
+        Object.assign(formattedData, response.data);
       }
 
       store.setMarketData(formattedData);
