@@ -68,14 +68,55 @@ async function generateRecipes() {
           };
         });
 
+        const tierStr = item.tier ? parseInt(item.tier, 10) : (uniqueName.match(/T(\d)/) ? parseInt(uniqueName.match(/T(\d)/)[1], 10) : 1);
+
         allItems.push({
           id: uniqueName,
           category: item.shopcategory || tag,
           subcategory: item.shopsubcategory1 || item.shopcategory || 'other',
-          tier: item.tier ? parseInt(item.tier, 10) : (uniqueName.match(/T(\d)/) ? parseInt(uniqueName.match(/T(\d)/)[1], 10) : 1),
+          tier: tierStr,
           weight: item.weight || 0,
           materials: materials
         });
+
+        // Parse Enchantments
+        if (item.enchantments && item.enchantments.enchantment) {
+          let enchs = item.enchantments.enchantment;
+          if (!Array.isArray(enchs)) enchs = [enchs];
+          
+          enchs.forEach(e => {
+            const enchLevel = e.enchantmentlevel;
+            if (!enchLevel) return;
+            const enchUniqueName = `${uniqueName}@${enchLevel}`;
+            
+            let eReqs = e.craftingrequirements;
+            if (!eReqs) return;
+            if (Array.isArray(eReqs)) eReqs = eReqs[0];
+            let eRes = eReqs.craftresource;
+            if (!eRes) return;
+            if (!Array.isArray(eRes)) eRes = [eRes];
+            
+            validItemIds.add(enchUniqueName);
+
+            const eMaterials = eRes.map(res => {
+              validItemIds.add(res.uniquename);
+              return {
+                id: res.uniquename,
+                count: parseInt(res.count, 10)
+              };
+            });
+            
+            allItems.push({
+              id: enchUniqueName,
+              category: item.shopcategory || tag,
+              subcategory: item.shopsubcategory1 || item.shopcategory || 'other',
+              tier: tierStr,
+              weight: item.weight || 0,
+              materials: eMaterials,
+              enchantmentLevel: parseInt(enchLevel, 10)
+            });
+          });
+        }
       });
     }
 
@@ -120,7 +161,24 @@ async function generateRecipes() {
 
       const enUsNode = tuvArray.find(t => t['xml:lang'] === 'EN-US');
       if (enUsNode && enUsNode.seg) {
-        localizedNames[itemId] = enUsNode.seg;
+        const baseName = enUsNode.seg;
+        const tMatch = itemId.match(/T(\d)/);
+        const t = tMatch ? tMatch[1] : '';
+
+        // Tên base có thêm .0
+        if (t) {
+          localizedNames[itemId] = `${baseName} ${t}.0`;
+        } else {
+          localizedNames[itemId] = baseName;
+        }
+
+        // Tự động generate tên cho các enchantments
+        [1, 2, 3, 4].forEach(level => {
+           const enchId = `${itemId}@${level}`;
+           if (validItemIds.has(enchId)) {
+             localizedNames[enchId] = t ? `${baseName} ${t}.${level}` : `${baseName} .${level}`;
+           }
+        });
       }
     });
 
