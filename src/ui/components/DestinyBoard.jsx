@@ -4,10 +4,13 @@ import { useStore } from '../../cache/marketStore';
 import { ApiService } from '../../services/apiService';
 import { CraftingService } from '../../services/craftingService';
 import { ItemService } from '../../services/itemService';
-import { ITEM_DEFINITIONS } from '../../core/constants';
 
 const destinyBoardData = ItemService.generateDestinyBoard();
-const rawCategories = ITEM_DEFINITIONS;
+const rawCategories = destinyBoardData.map(c => ({
+  id: c.id,
+  name: c.name,
+  iconName: c.children?.[0]?.children?.[0]?.children?.[0]?.uniqueName || 'T4_MAIN_SWORD'
+}));
 
 const formatSilver = (amount) => {
   if (amount === undefined || amount === null || amount === 0) return '--';

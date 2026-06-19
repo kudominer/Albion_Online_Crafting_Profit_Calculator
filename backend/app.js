@@ -15,16 +15,66 @@ const cache = {};
 const CACHE_TTL_MS = 60 * 1000; // 60 seconds
 
 /**
+ * Hàm extractValidPrice xử lý luật giá
+ */
+function extractValidPrice(rawData) {
+  const tempPrices = {};
+
+  rawData.forEach(item => {
+    const { item_id, city, quality, sell_price_min, buy_price_max } = item;
+    if (sell_price_min <= 0 && buy_price_max <= 0) return;
+
+    if (!tempPrices[item_id]) tempPrices[item_id] = {};
+    if (!tempPrices[item_id][city]) {
+      tempPrices[item_id][city] = { 
+        q1_sell: 0, first_valid_sell: 0,
+        q1_buy: 0, first_valid_buy: 0
+      };
+    }
+
+    const p = tempPrices[item_id][city];
+
+    if (sell_price_min > 0) {
+      if (quality === 1) p.q1_sell = sell_price_min;
+      else if (p.first_valid_sell === 0) p.first_valid_sell = sell_price_min;
+    }
+    if (buy_price_max > 0) {
+      if (quality === 1) p.q1_buy = buy_price_max;
+      else if (p.first_valid_buy === 0) p.first_valid_buy = buy_price_max;
+    }
+  });
+
+  const formattedData = {};
+  for (const itemId in tempPrices) {
+    formattedData[itemId] = {};
+    for (const city in tempPrices[itemId]) {
+      const p = tempPrices[itemId][city];
+      const finalSell = p.q1_sell > 0 ? p.q1_sell : p.first_valid_sell;
+      const finalBuy = p.q1_buy > 0 ? p.q1_buy : p.first_valid_buy;
+      
+      if (finalSell === 0 && finalBuy === 0) {
+        console.log(`[DEBUG] Backend: Item ${itemId} ở ${city} có giá = 0`);
+      }
+
+      formattedData[itemId][city] = {
+        item_id: itemId,
+        city: city,
+        sell_price_min: finalSell,
+        buy_price_max: finalBuy
+      };
+    }
+  }
+
+  return formattedData;
+}
+
+/**
  * Hàm hỗ trợ lấy giá của 1 hoặc nhiều items từ Albion API (có sử dụng cache)
- * @param {string[]} items Array các item_id (VD: ['T4_BAG', 'T4_CLOTH'])
- * @param {string} location Thành phố (VD: 'Martlock')
- * @returns {Promise<Object>} Map các item_id và giá của chúng
  */
 async function getPricesWithCache(items, location) {
   const result = {};
   const itemsToFetch = [];
 
-  // Kiểm tra cache
   const now = Date.now();
   items.forEach(item => {
     const cacheKey = `price:${item}:${location}`;
@@ -37,39 +87,42 @@ async function getPricesWithCache(items, location) {
     }
   });
 
-  // Nếu có item chưa có trong cache hoặc đã hết hạn, gọi API
   if (itemsToFetch.length > 0) {
-    try {
-      const itemsString = itemsToFetch.join(',');
-      const url = `${ALBION_API_BASE}/${itemsString}?locations=${location}`;
-      const response = await axios.get(url);
-      
-      const fetchedData = response.data;
-      
-      // Lưu vào cache và result
-      fetchedData.forEach(data => {
-        const itemId = data.item_id;
-        const priceInfo = {
-          item_id: data.item_id,
-          city: data.city,
-          sell_price_min: data.sell_price_min,
-          buy_price_max: data.buy_price_max
-        };
-        
-        // Lưu vào kết quả trả về
-        result[itemId] = priceInfo;
-        
-        // Lưu vào cache
-        const cacheKey = `price:${itemId}:${location}`;
-        cache[cacheKey] = {
-          data: priceInfo,
-          expireAt: Date.now() + CACHE_TTL_MS
-        };
-      });
-      
-    } catch (error) {
-      console.error('Lỗi khi gọi Albion API:', error.message);
-      throw new Error('Không thể lấy dữ liệu từ Albion API');
+    let retries = 3;
+    let success = false;
+    let fetchedData = [];
+
+    while (retries > 0 && !success) {
+      try {
+        const itemsString = itemsToFetch.join(',');
+        const url = `${ALBION_API_BASE}/${itemsString}?locations=${location}`;
+        const response = await axios.get(url, { timeout: 5000 });
+        fetchedData = response.data;
+        success = true;
+      } catch (error) {
+        retries--;
+        console.warn(`[WARN] Lỗi khi gọi Albion API, còn lại ${retries} lần thử...`);
+        if (retries === 0) throw new Error('Không thể lấy dữ liệu từ Albion API sau 3 lần thử');
+        await new Promise(res => setTimeout(res, 1000));
+      }
+    }
+    
+    const formattedData = extractValidPrice(fetchedData);
+    
+    // Cập nhật kết quả & cache
+    for (const itemId in formattedData) {
+      for (const city in formattedData[itemId]) {
+        if (city === location || !location) {
+          const priceInfo = formattedData[itemId][city];
+          result[itemId] = priceInfo;
+          
+          const cacheKey = `price:${itemId}:${location}`;
+          cache[cacheKey] = {
+            data: priceInfo,
+            expireAt: Date.now() + CACHE_TTL_MS
+          };
+        }
+      }
     }
   }
 

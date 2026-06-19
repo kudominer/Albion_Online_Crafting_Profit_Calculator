@@ -1,74 +1,106 @@
-import { ITEM_DEFINITIONS, MATERIAL_DEFINITIONS } from '../core/constants';
+import RECIPES from '../data/recipes.json';
 
 export class ItemService {
   /**
-   * Sinh toàn bộ cây dữ liệu Destiny Board từ định nghĩa
+   * Sinh toàn bộ cây dữ liệu Destiny Board từ recipes.json
+   * Lọc bỏ những category là resources
    */
   static generateDestinyBoard() {
-    const tiers = [4, 5, 6];
-    const enchants = [0, 1, 2, 3];
+    const tree = [];
+    const catMap = new Map();
 
-    return ITEM_DEFINITIONS.map(root => ({
-      id: root.id,
-      name: root.name,
-      iconName: root.iconName,
-      children: root.subCategories.map(cat => ({
-        id: cat.id,
-        name: cat.name,
-        children: tiers.map(tier => ({
-          id: `${cat.id}_t${tier}`,
-          name: `Tier ${tier}`,
-          children: cat.items.flatMap(item => {
-            return enchants.map(enchant => {
-              const uniqueName = `T${tier}_${item.base}${enchant > 0 ? '@' + enchant : ''}`;
-              const displayName = `${item.name} T${tier}.${enchant}`;
-              
-              const mappedResources = item.resources.map(res => {
-                const matEnchantSuffix = enchant > 0 ? `_LEVEL${enchant}@${enchant}` : '';
-                return {
-                  uniqueName: `T${tier}_${res.type}${matEnchantSuffix}`,
-                  qty: res.qty
-                };
-              });
+    RECIPES.forEach(recipe => {
+      // Bỏ qua category resources vì sẽ cho vào hàm generateMaterialsTree
+      if (recipe.category === 'resources') return;
 
-              return {
-                id: uniqueName,
-                name: displayName,
-                uniqueName: uniqueName,
-                resources: mappedResources
-              };
-            });
-          })
-        }))
-      }))
-    }));
+      const catId = recipe.category || 'other';
+      const subCatId = recipe.subcategory || 'other';
+      const tierId = `Tier ${recipe.tier}`;
+
+      // Build Category
+      if (!catMap.has(catId)) {
+         catMap.set(catId, { id: catId, name: catId.toUpperCase(), children: [], subMap: new Map() });
+         tree.push(catMap.get(catId));
+      }
+      const catObj = catMap.get(catId);
+
+      // Build SubCategory
+      if (!catObj.subMap.has(subCatId)) {
+         const newSub = { id: `${catId}_${subCatId}`, name: subCatId.toUpperCase(), children: [], tierMap: new Map() };
+         catObj.subMap.set(subCatId, newSub);
+         catObj.children.push(newSub);
+      }
+      const subCatObj = catObj.subMap.get(subCatId);
+
+      // Build Tier
+      if (!subCatObj.tierMap.has(tierId)) {
+         const newTier = { id: `${catId}_${subCatId}_t${recipe.tier}`, name: tierId, children: [] };
+         subCatObj.tierMap.set(tierId, newTier);
+         subCatObj.children.push(newTier);
+      }
+      const tierObj = subCatObj.tierMap.get(tierId);
+
+      // Sắp xếp Tier
+      subCatObj.children.sort((a, b) => a.name.localeCompare(b.name));
+
+      // Add Item
+      const resources = recipe.materials.map(mat => ({
+        uniqueName: mat.id,
+        qty: mat.count
+      }));
+
+      tierObj.children.push({
+        id: recipe.id,
+        name: recipe.id, // Hiển thị tạm ID, sau có thể add LocalizedName
+        uniqueName: recipe.id,
+        resources: resources
+      });
+    });
+
+    return tree;
   }
 
   /**
-   * Sinh toàn bộ cây dữ liệu Nguyên liệu
+   * Sinh toàn bộ cây dữ liệu Nguyên liệu (resources) từ recipes.json
    */
   static generateMaterialsTree() {
-    const tiers = [4, 5, 6];
-    const enchants = [0, 1, 2, 3];
+    const tree = [];
+    const subCatMap = new Map();
 
-    return MATERIAL_DEFINITIONS.map(mat => ({
-      id: `mat_${mat.base}`,
-      name: mat.name,
-      iconName: `T4_${mat.base}`,
-      children: tiers.map(tier => ({
-        id: `mat_${mat.base}_t${tier}`,
-        name: `Tier ${tier}`,
-        children: enchants.map(enchant => {
-          const uniqueName = `T${tier}_${mat.base}${enchant > 0 ? '_LEVEL' + enchant + '@' + enchant : ''}`;
-          const displayName = `${mat.name.split(' ')[0]} T${tier}.${enchant}`;
-          return {
-            id: uniqueName,
-            name: displayName,
-            uniqueName: uniqueName
-          };
-        })
-      }))
-    }));
+    RECIPES.forEach(recipe => {
+      if (recipe.category !== 'resources') return;
+
+      const subCatId = recipe.subcategory || 'other';
+      const tierId = `Tier ${recipe.tier}`;
+
+      // Build SubCategory (ví dụ: planks, metalbar)
+      if (!subCatMap.has(subCatId)) {
+         const newSub = { id: `mat_${subCatId}`, name: subCatId.toUpperCase(), children: [], tierMap: new Map() };
+         subCatMap.set(subCatId, newSub);
+         tree.push(newSub);
+      }
+      const subCatObj = subCatMap.get(subCatId);
+
+      // Build Tier
+      if (!subCatObj.tierMap.has(tierId)) {
+         const newTier = { id: `mat_${subCatId}_t${recipe.tier}`, name: tierId, children: [] };
+         subCatObj.tierMap.set(tierId, newTier);
+         subCatObj.children.push(newTier);
+      }
+      const tierObj = subCatObj.tierMap.get(tierId);
+
+      // Sắp xếp Tier
+      subCatObj.children.sort((a, b) => a.name.localeCompare(b.name));
+
+      // Add Item
+      tierObj.children.push({
+        id: recipe.id,
+        name: recipe.id,
+        uniqueName: recipe.id
+      });
+    });
+
+    return tree;
   }
 
   /**

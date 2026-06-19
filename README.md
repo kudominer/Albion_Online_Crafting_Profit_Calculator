@@ -28,6 +28,12 @@
 4. **Sử dụng Tool**:
    Sau khi lệnh chạy thành công, terminal sẽ cung cấp cho bạn một đường link (thường là `http://localhost:5173`). Bạn chỉ cần copy đường link này và dán vào trình duyệt web (Chrome, Edge, Firefox,...) để bắt đầu sử dụng công cụ.
 
+### 🔄 Cập nhật Dữ liệu (Khi game ra phiên bản mới)
+Ứng dụng tự động kéo 100% công thức ghép đồ từ file gốc của Albion. Khi game có update thêm đồ mới, bạn chỉ cần chạy lệnh sau để làm mới dữ liệu (Không cần sửa code):
+```bash
+node backend/generate_recipes.js
+```
+
 ### Các lệnh hữu ích khác
 - `npm run build`: Đóng gói ứng dụng để chuẩn bị đưa lên môi trường thật (Production).
 - `npm run preview`: Xem trước giao diện của bản build.
