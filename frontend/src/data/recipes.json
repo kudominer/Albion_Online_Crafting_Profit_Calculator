@@ -1,56 +1,5 @@
 [
   {
-    "id": "T1_2H_TOOL_PICK",
-    "category": "tools",
-    "subcategory": "pickaxe",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_WOOD",
-        "count": 3
-      },
-      {
-        "id": "T1_ROCK",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "id": "T2_2H_TOOL_PICK",
-    "category": "tools",
-    "subcategory": "pickaxe",
-    "tier": 2,
-    "weight": "0.75",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T2_METALBAR",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "id": "T3_2H_TOOL_PICK",
-    "category": "tools",
-    "subcategory": "pickaxe",
-    "tier": 3,
-    "weight": "1.13",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 2
-      }
-    ]
-  },
-  {
     "id": "T4_2H_TOOL_PICK",
     "category": "tools",
     "subcategory": "pickaxe",
@@ -237,57 +186,6 @@
       {
         "id": "QUESTITEM_TOKEN_AVALON",
         "count": 300
-      }
-    ]
-  },
-  {
-    "id": "T1_2H_TOOL_HAMMER",
-    "category": "tools",
-    "subcategory": "stonehammer",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_WOOD",
-        "count": 3
-      },
-      {
-        "id": "T1_ROCK",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "id": "T2_2H_TOOL_HAMMER",
-    "category": "tools",
-    "subcategory": "stonehammer",
-    "tier": 2,
-    "weight": "0.75",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T2_METALBAR",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "id": "T3_2H_TOOL_HAMMER",
-    "category": "tools",
-    "subcategory": "stonehammer",
-    "tier": 3,
-    "weight": "1.13",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 2
       }
     ]
   },
@@ -482,57 +380,6 @@
     ]
   },
   {
-    "id": "T1_2H_TOOL_AXE",
-    "category": "tools",
-    "subcategory": "woodaxe",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_WOOD",
-        "count": 3
-      },
-      {
-        "id": "T1_ROCK",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "id": "T2_2H_TOOL_AXE",
-    "category": "tools",
-    "subcategory": "woodaxe",
-    "tier": 2,
-    "weight": "0.75",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T2_METALBAR",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "id": "T3_2H_TOOL_AXE",
-    "category": "tools",
-    "subcategory": "woodaxe",
-    "tier": 3,
-    "weight": "1.13",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 2
-      }
-    ]
-  },
-  {
     "id": "T4_2H_TOOL_AXE",
     "category": "tools",
     "subcategory": "woodaxe",
@@ -719,57 +566,6 @@
       {
         "id": "QUESTITEM_TOKEN_AVALON",
         "count": 300
-      }
-    ]
-  },
-  {
-    "id": "T1_2H_TOOL_SICKLE",
-    "category": "tools",
-    "subcategory": "sickle",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_WOOD",
-        "count": 3
-      },
-      {
-        "id": "T1_ROCK",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "id": "T2_2H_TOOL_SICKLE",
-    "category": "tools",
-    "subcategory": "sickle",
-    "tier": 2,
-    "weight": "0.75",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T2_METALBAR",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "id": "T3_2H_TOOL_SICKLE",
-    "category": "tools",
-    "subcategory": "sickle",
-    "tier": 3,
-    "weight": "1.13",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 2
       }
     ]
   },
@@ -964,57 +760,6 @@
     ]
   },
   {
-    "id": "T1_2H_TOOL_KNIFE",
-    "category": "tools",
-    "subcategory": "skinningknife",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_WOOD",
-        "count": 3
-      },
-      {
-        "id": "T1_ROCK",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "id": "T2_2H_TOOL_KNIFE",
-    "category": "tools",
-    "subcategory": "skinningknife",
-    "tier": 2,
-    "weight": "0.75",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T2_METALBAR",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "id": "T3_2H_TOOL_KNIFE",
-    "category": "tools",
-    "subcategory": "skinningknife",
-    "tier": 3,
-    "weight": "1.13",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 2
-      }
-    ]
-  },
-  {
     "id": "T4_2H_TOOL_KNIFE",
     "category": "tools",
     "subcategory": "skinningknife",
@@ -1201,40 +946,6 @@
       {
         "id": "QUESTITEM_TOKEN_AVALON",
         "count": 300
-      }
-    ]
-  },
-  {
-    "id": "T2_2H_TOOL_SIEGEHAMMER",
-    "category": "tools",
-    "subcategory": "demolitionhammer",
-    "tier": 2,
-    "weight": "0.75",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 12
-      },
-      {
-        "id": "T2_STONEBLOCK",
-        "count": 12
-      }
-    ]
-  },
-  {
-    "id": "T3_2H_TOOL_SIEGEHAMMER",
-    "category": "tools",
-    "subcategory": "demolitionhammer",
-    "tier": 3,
-    "weight": "1.13",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 8
-      },
-      {
-        "id": "T3_STONEBLOCK",
-        "count": 8
       }
     ]
   },
@@ -1429,23 +1140,6 @@
     ]
   },
   {
-    "id": "T3_2H_TOOL_FISHINGROD",
-    "category": "tools",
-    "subcategory": "fishing",
-    "tier": 3,
-    "weight": "1.13",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 6
-      },
-      {
-        "id": "T3_CLOTH",
-        "count": 2
-      }
-    ]
-  },
-  {
     "id": "T4_2H_TOOL_FISHINGROD",
     "category": "tools",
     "subcategory": "fishing",
@@ -1632,32 +1326,6 @@
       {
         "id": "QUESTITEM_TOKEN_AVALON",
         "count": 300
-      }
-    ]
-  },
-  {
-    "id": "T2_2H_BOW",
-    "category": "ranged",
-    "subcategory": "bow",
-    "tier": 2,
-    "weight": "3",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 32
-      }
-    ]
-  },
-  {
-    "id": "T3_2H_BOW",
-    "category": "ranged",
-    "subcategory": "bow",
-    "tier": 3,
-    "weight": "4.5",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 32
       }
     ]
   },
@@ -4475,23 +4143,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T3_2H_CROSSBOW",
-    "category": "ranged",
-    "subcategory": "crossbow",
-    "tier": 3,
-    "weight": "4.5",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 20
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 12
-      }
-    ]
   },
   {
     "id": "T4_2H_CROSSBOW",
@@ -8009,23 +7660,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T3_MAIN_CURSEDSTAFF",
-    "category": "magic",
-    "subcategory": "cursestaff",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 16
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_MAIN_CURSEDSTAFF",
     "category": "magic",
     "subcategory": "cursestaff",
@@ -11539,40 +11173,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T2_MAIN_FIRESTAFF",
-    "category": "magic",
-    "subcategory": "firestaff",
-    "tier": 2,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 16
-      },
-      {
-        "id": "T2_METALBAR",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T3_MAIN_FIRESTAFF",
-    "category": "magic",
-    "subcategory": "firestaff",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 16
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 8
-      }
-    ]
   },
   {
     "id": "T4_MAIN_FIRESTAFF",
@@ -15090,23 +14690,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T3_MAIN_FROSTSTAFF",
-    "category": "magic",
-    "subcategory": "froststaff",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 16
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_MAIN_FROSTSTAFF",
     "category": "magic",
     "subcategory": "froststaff",
@@ -18620,23 +18203,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T3_MAIN_ARCANESTAFF",
-    "category": "magic",
-    "subcategory": "arcanestaff",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 16
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 8
-      }
-    ]
   },
   {
     "id": "T4_MAIN_ARCANESTAFF",
@@ -22154,23 +21720,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T3_MAIN_HOLYSTAFF",
-    "category": "magic",
-    "subcategory": "holystaff",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 16
-      },
-      {
-        "id": "T3_CLOTH",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_MAIN_HOLYSTAFF",
     "category": "magic",
     "subcategory": "holystaff",
@@ -25686,23 +25235,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T3_MAIN_NATURESTAFF",
-    "category": "magic",
-    "subcategory": "naturestaff",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 16
-      },
-      {
-        "id": "T3_CLOTH",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_MAIN_NATURESTAFF",
     "category": "magic",
     "subcategory": "naturestaff",
@@ -29216,23 +28748,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T3_MAIN_DAGGER",
-    "category": "melee",
-    "subcategory": "dagger",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 12
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 12
-      }
-    ]
   },
   {
     "id": "T4_MAIN_DAGGER",
@@ -33185,23 +32700,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T3_MAIN_SPEAR",
-    "category": "melee",
-    "subcategory": "spear",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 16
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_MAIN_SPEAR",
     "category": "melee",
     "subcategory": "spear",
@@ -36715,23 +36213,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T3_MAIN_AXE",
-    "category": "melee",
-    "subcategory": "axe",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 8
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 16
-      }
-    ]
   },
   {
     "id": "T4_MAIN_AXE",
@@ -40249,57 +39730,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T1_MAIN_SWORD",
-    "category": "melee",
-    "subcategory": "sword",
-    "tier": 1,
-    "weight": "1.5",
-    "materials": [
-      {
-        "id": "T1_ROCK",
-        "count": 6
-      },
-      {
-        "id": "T1_WOOD",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "id": "T2_MAIN_SWORD",
-    "category": "melee",
-    "subcategory": "sword",
-    "tier": 2,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T2_METALBAR",
-        "count": 16
-      },
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T3_MAIN_SWORD",
-    "category": "melee",
-    "subcategory": "sword",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 16
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_MAIN_SWORD",
     "category": "melee",
     "subcategory": "sword",
@@ -43813,23 +43243,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T3_2H_QUARTERSTAFF",
-    "category": "melee",
-    "subcategory": "quarterstaff",
-    "tier": 3,
-    "weight": "4.5",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 12
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 20
-      }
-    ]
   },
   {
     "id": "T4_2H_QUARTERSTAFF",
@@ -47347,19 +46760,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T3_MAIN_HAMMER",
-    "category": "melee",
-    "subcategory": "hammer",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 24
-      }
-    ]
-  },
-  {
     "id": "T4_MAIN_HAMMER",
     "category": "melee",
     "subcategory": "hammer",
@@ -50773,23 +50173,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T3_MAIN_MACE",
-    "category": "melee",
-    "subcategory": "mace",
-    "tier": 3,
-    "weight": "3.4",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 16
-      },
-      {
-        "id": "T3_CLOTH",
-        "count": 8
-      }
-    ]
   },
   {
     "id": "T4_MAIN_MACE",
@@ -54305,23 +53688,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T3_2H_KNUCKLES_SET1",
-    "category": "melee",
-    "subcategory": "knuckles",
-    "tier": 3,
-    "weight": "4.5",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 12
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 20
-      }
-    ]
   },
   {
     "id": "T4_2H_KNUCKLES_SET1",
@@ -57943,53 +57309,6 @@
     "enchantmentLevel": 3
   },
   {
-    "id": "T1_OFF_SHIELD",
-    "category": "offhand",
-    "subcategory": "shield",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_WOOD",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "T2_OFF_SHIELD",
-    "category": "offhand",
-    "subcategory": "shield",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_PLANKS",
-        "count": 4
-      },
-      {
-        "id": "T2_METALBAR",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "T3_OFF_SHIELD",
-    "category": "offhand",
-    "subcategory": "shield",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 4
-      },
-      {
-        "id": "T3_METALBAR",
-        "count": 4
-      }
-    ]
-  },
-  {
     "id": "T4_OFF_SHIELD",
     "category": "offhand",
     "subcategory": "shield",
@@ -60613,40 +59932,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T2_OFF_BOOK",
-    "category": "offhand",
-    "subcategory": "book",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T2_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "T3_OFF_BOOK",
-    "category": "offhand",
-    "subcategory": "book",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
   },
   {
     "id": "T4_OFF_BOOK",
@@ -63274,23 +62559,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T3_OFF_TORCH",
-    "category": "offhand",
-    "subcategory": "torch",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_PLANKS",
-        "count": 4
-      },
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      }
-    ]
-  },
-  {
     "id": "T4_OFF_TORCH",
     "category": "offhand",
     "subcategory": "torch",
@@ -65914,40 +65182,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T2_CAPE",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T2_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "T3_CAPE",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
   },
   {
     "id": "T4_CAPE",
@@ -72390,40 +71624,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T2_BAG",
-    "category": "accessories",
-    "subcategory": "bag",
-    "tier": 2,
-    "weight": "1.5",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 12
-      },
-      {
-        "id": "T2_LEATHER",
-        "count": 12
-      }
-    ]
-  },
-  {
-    "id": "T3_BAG",
-    "category": "accessories",
-    "subcategory": "bag",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 8
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_BAG",
     "category": "accessories",
     "subcategory": "bag",
@@ -73414,58 +72614,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "UNIQUE_SHOES_RUBBERBANDING",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_HIDE",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_INTERNAL_HEAD_GAMEMASTER",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_INTERNAL_ARMOR_GAMEMASTER",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_INTERNAL_SHOES_GAMEMASTER",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "UNIQUE_INTERNAL_OFF_SCROLL_GAMEMASTER",
     "category": "offhand",
     "subcategory": "horn",
@@ -73479,32 +72627,6 @@
       {
         "id": "T4_CLOTH",
         "count": 4
-      }
-    ]
-  },
-  {
-    "id": "T2_HEAD_PLATE_SET1",
-    "category": "armor",
-    "subcategory": "plate_helmet",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_METALBAR",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T3_HEAD_PLATE_SET1",
-    "category": "armor",
-    "subcategory": "plate_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 8
       }
     ]
   },
@@ -73854,32 +72976,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T2_ARMOR_PLATE_SET1",
-    "category": "armor",
-    "subcategory": "plate_armor",
-    "tier": 2,
-    "weight": "1.5",
-    "materials": [
-      {
-        "id": "T2_METALBAR",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "T3_ARMOR_PLATE_SET1",
-    "category": "armor",
-    "subcategory": "plate_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 16
-      }
-    ]
-  },
-  {
     "id": "T4_ARMOR_PLATE_SET1",
     "category": "armor",
     "subcategory": "plate_armor",
@@ -74223,32 +73319,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T2_SHOES_PLATE_SET1",
-    "category": "armor",
-    "subcategory": "plate_shoes",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_METALBAR",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T3_SHOES_PLATE_SET1",
-    "category": "armor",
-    "subcategory": "plate_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 8
-      }
-    ]
   },
   {
     "id": "T4_SHOES_PLATE_SET1",
@@ -83341,45 +82411,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T1_HEAD_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_helmet",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_HIDE",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "T2_HEAD_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_helmet",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T3_HEAD_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_HEAD_LEATHER_SET1",
     "category": "armor",
     "subcategory": "leather_helmet",
@@ -83725,45 +82756,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T1_ARMOR_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_armor",
-    "tier": 1,
-    "weight": "1",
-    "materials": [
-      {
-        "id": "T1_HIDE",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T2_ARMOR_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_armor",
-    "tier": 2,
-    "weight": "1.5",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "T3_ARMOR_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 16
-      }
-    ]
-  },
-  {
     "id": "T4_ARMOR_LEATHER_SET1",
     "category": "armor",
     "subcategory": "leather_armor",
@@ -84107,45 +83099,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T1_SHOES_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_shoes",
-    "tier": 1,
-    "weight": "0.5",
-    "materials": [
-      {
-        "id": "T1_HIDE",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "id": "T2_SHOES_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_shoes",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T3_SHOES_LEATHER_SET1",
-    "category": "armor",
-    "subcategory": "leather_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
   },
   {
     "id": "T4_SHOES_LEATHER_SET1",
@@ -93238,32 +92191,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T2_HEAD_CLOTH_SET1",
-    "category": "armor",
-    "subcategory": "cloth_helmet",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T3_HEAD_CLOTH_SET1",
-    "category": "armor",
-    "subcategory": "cloth_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 8
-      }
-    ]
-  },
-  {
     "id": "T4_HEAD_CLOTH_SET1",
     "category": "armor",
     "subcategory": "cloth_helmet",
@@ -93609,32 +92536,6 @@
     "enchantmentLevel": 4
   },
   {
-    "id": "T2_ARMOR_CLOTH_SET1",
-    "category": "armor",
-    "subcategory": "cloth_armor",
-    "tier": 2,
-    "weight": "1.5",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "T3_ARMOR_CLOTH_SET1",
-    "category": "armor",
-    "subcategory": "cloth_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 16
-      }
-    ]
-  },
-  {
     "id": "T4_ARMOR_CLOTH_SET1",
     "category": "armor",
     "subcategory": "cloth_armor",
@@ -93978,32 +92879,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "T2_SHOES_CLOTH_SET1",
-    "category": "armor",
-    "subcategory": "cloth_shoes",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "T3_SHOES_CLOTH_SET1",
-    "category": "armor",
-    "subcategory": "cloth_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 8
-      }
-    ]
   },
   {
     "id": "T4_SHOES_CLOTH_SET1",
@@ -115979,738 +114854,6 @@
       }
     ],
     "enchantmentLevel": 4
-  },
-  {
-    "id": "UNIQUE_WEAPONMASTER_HEAD_PROTOTYPE",
-    "category": "armor",
-    "subcategory": "plate_helmet",
-    "tier": 1,
-    "weight": "3.8",
-    "materials": [
-      {
-        "id": "T2_METALBAR",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_WEAPONMASTER_ARMOR_PROTOTYPE",
-    "category": "armor",
-    "subcategory": "plate_armor",
-    "tier": 1,
-    "weight": "7.6",
-    "materials": [
-      {
-        "id": "T2_METALBAR",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_WEAPONMASTER_SHOES_PROTOTYPE",
-    "category": "armor",
-    "subcategory": "plate_shoes",
-    "tier": 1,
-    "weight": "3.8",
-    "materials": [
-      {
-        "id": "T2_METALBAR",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_JESTER",
-    "category": "armor",
-    "subcategory": "leather_helmet",
-    "tier": 3,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_VANITY_JESTER",
-    "category": "armor",
-    "subcategory": "leather_armor",
-    "tier": 3,
-    "weight": "1.5",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_VANITY_JESTER",
-    "category": "armor",
-    "subcategory": "leather_shoes",
-    "tier": 3,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_DRESS_RED",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 33
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_VANITY_DRESS_RED",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 44
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_VANITY_DRESS_RED",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 33
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_RICH_NOBLE",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 220
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_VANITY_RICH_NOBLE",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 275
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_VANITY_RICH_NOBLE",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 165
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_SANTACLAUS",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 220
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_VANITY_SANTACLAUS",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 275
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_VANITY_SANTACLAUS",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 165
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_BACKPACK_VANITY_SANTACLAUS",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "UNIQUE_CONSUMABLE_EVENT_WINTER_2017",
-        "count": 110
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_BACKPACK_VANITY_EASTER",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CAPE",
-        "count": 1
-      },
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_EASTER_2018",
-        "count": 500
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_PLAGUEDOC",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 30
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_VANITY_PLAGUEDOC",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 40
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_VANITY_PLAGUEDOC",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 30
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_SKELETON",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 250
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_VANITY_SKELETON",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 200
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_VANITY_SKELETON",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 150
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_VANITY_SKELETON",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CAPE",
-        "count": 1
-      },
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 100
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_PUMPKIN_01",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 40
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_PUMPKIN_02",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 40
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_VANITY_PUMPKIN_03",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "QUESTITEM_TOKEN_EVENT_HALLOWEEN_2017",
-        "count": 40
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_XMAS",
-    "category": "armor",
-    "subcategory": "leather_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_FOUNDER_LEGENDARY",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_FOUNDER_LEGENDARY",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_FOUNDER_LEGENDARY",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_FOUNDER_LEGENDARY",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_FOUNDER_ELITE",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_FOUNDER_ELITE",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 2,
-    "weight": "1.5",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_FOUNDER_ELITE",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_STARTERPACK_LEGENDARY",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_STARTERPACK_LEGENDARY",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_STARTERPACK_LEGENDARY",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 3,
-    "weight": "2.3",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_STARTERPACK_LEGENDARY",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_METALBAR",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_HEAD_STARTERPACK_ELITE",
-    "category": "armor",
-    "subcategory": "unique_helmet",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_ARMOR_STARTERPACK_ELITE",
-    "category": "armor",
-    "subcategory": "unique_armor",
-    "tier": 2,
-    "weight": "1.5",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 16
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_SHOES_STARTERPACK_ELITE",
-    "category": "armor",
-    "subcategory": "unique_shoes",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_LEATHER",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_TELLAFRIEND",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T2_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_TELLAFRIEND_02",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T2_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_TELLAFRIEND_BATRIDER",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 2,
-    "weight": "0.8",
-    "materials": [
-      {
-        "id": "T2_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T2_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_TELLAFRIEND_BANNER",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_TELLAFRIEND_BANNER_02",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_TOAD_TELLAFRIEND",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_BLOODHOUND_TELLAFRIEND",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_TIGER_TELLAFRIEND",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_RAM_TELLAFRIEND",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "id": "UNIQUE_CAPE_WOLF_GREY_TELLAFRIEND",
-    "category": "accessories",
-    "subcategory": "cape",
-    "tier": 3,
-    "weight": "1.1",
-    "materials": [
-      {
-        "id": "T3_CLOTH",
-        "count": 4
-      },
-      {
-        "id": "T3_LEATHER",
-        "count": 4
-      }
-    ]
   },
   {
     "id": "T6_CAPE_PLATE_UNDEAD",

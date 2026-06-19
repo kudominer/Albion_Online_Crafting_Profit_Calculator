@@ -44,8 +44,6 @@ async function generateRecipes() {
         const uniqueName = item.uniquename;
         if (!uniqueName || uniqueName.includes('TRASH')) return;
         
-        validItemIds.add(uniqueName);
-
         let craftReqs = item.craftingrequirements;
         if (!craftReqs) return;
 
@@ -69,6 +67,13 @@ async function generateRecipes() {
         });
 
         const tierStr = item.tier ? parseInt(item.tier, 10) : (uniqueName.match(/T(\d)/) ? parseInt(uniqueName.match(/T(\d)/)[1], 10) : 1);
+
+        // Bỏ qua Vũ khí, Giáp, Áo choàng, Túi xách nếu bé hơn Tier 4
+        if (tierStr < 4 && ['weapon', 'armor', 'equipmentitem'].includes(tag)) {
+          return;
+        }
+
+        validItemIds.add(uniqueName);
 
         allItems.push({
           id: uniqueName,
