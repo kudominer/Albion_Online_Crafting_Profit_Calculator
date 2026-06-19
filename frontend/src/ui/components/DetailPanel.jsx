@@ -105,6 +105,7 @@ export function DetailPanel() {
         <div className="flex items-center gap-4 mb-6">
           <div className="w-16 h-16 bg-surface-elevated rounded-lg border border-hairline p-1 shadow-sm shrink-0">
             <img 
+              loading="lazy"
               src={`https://render.albiononline.com/v1/item/${selectedItem.uniqueName}.png`} 
               alt={selectedItem.name}
               className="w-full h-full object-contain"
@@ -175,10 +176,11 @@ export function DetailPanel() {
               {resourceDetails.map((res, idx) => (
                 <div key={idx} className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-3">
-                    <div className="relative w-8 h-8 bg-surface-elevated rounded p-0.5 border border-hairline shrink-0">
+                    <div className="w-10 h-10 bg-surface-elevated rounded border border-hairline p-0.5 shrink-0 flex items-center justify-center">
                       <img 
+                        loading="lazy"
                         src={`https://render.albiononline.com/v1/item/${res.uniqueName}.png`} 
-                        alt="Resource"
+                        alt={res.uniqueName}
                         className="w-full h-full object-contain"
                         onError={(e) => { e.target.style.display = 'none'; }}
                       />

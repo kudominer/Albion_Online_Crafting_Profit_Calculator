@@ -306,6 +306,7 @@ export function MarketplaceBoard() {
                   <div className="flex items-center gap-4 flex-1 w-full sm:w-auto">
                     <div className="relative w-14 h-14 bg-canvas rounded-lg border border-hairline overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform">
                       <img 
+                        loading="lazy"
                         src={`https://render.albiononline.com/v1/item/${item.uniqueName}.png`} 
                         alt={item.name}
                         className="w-full h-full object-contain p-1"

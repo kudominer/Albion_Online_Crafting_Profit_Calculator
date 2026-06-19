@@ -76,6 +76,7 @@ export function Watchlist() {
             >
               <div className="w-12 h-12 bg-surface-elevated rounded-lg border border-hairline p-1 shrink-0">
                 <img 
+                  loading="lazy"
                   src={`https://render.albiononline.com/v1/item/${node.uniqueName}.png`}
                   alt={node.name}
                   className="w-full h-full object-contain"
