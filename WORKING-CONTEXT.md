@@ -31,17 +31,18 @@
 ## 4. Cấu Trúc Thư Mục Quan Trọng Hiện Tại
 - `backend/`
   - `app.js`: Backend server Node.js chạy phụ để cung cấp Cache API.
-  - `generate_recipes.js`: Script Node.js thần thánh tự động kéo file XML của game về tạo file `recipes.json`.
-- `src/`
+  - `generate_recipes.js`: Script Node.js thần thánh tự động kéo file XML của game về tạo file `recipes.json` và `localizedNames.json`.
+- `frontend/src/`
   - `data/`
-    - `recipes.json`: File cơ sở dữ liệu khổng lồ sinh tự động, chứa mọi công thức craft.
-    - `itemMapping.js`: Logic convert mã Tên Item (hỗ trợ đọc hiểu Tier và Enchant `_LEVEL@`).
+    - `recipes.json`: File cơ sở dữ liệu sinh tự động, chứa mọi công thức craft.
+    - `localizedNames.json`: Từ điển dịch tên Item sang Tiếng Anh chuẩn (cào từ `localization.xml` gốc).
+    - `itemMapping.js`: Logic convert mã Tên Item cũ (Sẽ dần bị thay thế bởi `localizedNames`).
   - `services/`
-    - `apiService.js`: Chuyên trách gọi Axios lấy raw data.
+    - `apiService.js`: Chuyên trách gọi Axios lấy raw data (đã nối sang backend).
     - `priceService.js`: Chứa hàm `extractValidPrice` xử lý logic lọc giá rác.
-    - `itemService.js`: Đọc file `recipes.json` và phân bổ nhánh giao diện.
+    - `itemService.js`: Đọc file `recipes.json` và `localizedNames.json` để phân bổ nhánh giao diện.
     - `craftingService.js`: Core tính toán lợi nhuận.
 
 ## 5. Những Việc Tiếp Theo (Roadmap)
-*   **Gắn Frontend với Backend riêng:** Frontend hiện vẫn đang gọi trực tiếp Albion API qua `apiService.js`. Việc chuyển url gốc thành `http://localhost:3001/api/prices` sẽ giúp Frontend tận dụng 100% in-memory cache của Backend vừa xây.
-*   **Tối ưu Localized Names (Đa ngôn ngữ cho Item):** Hiện tại `recipes.json` đang hiển thị ID tiếng Anh hệ thống (ví dụ `T4_MAIN_SWORD`), chúng ta có thể mở rộng Script cào luôn file ngôn ngữ gốc để map ra tên tiếng Việt/Anh mượt mà nhất.
+*   **Gắn Frontend với Backend riêng (Hoàn Thành):** Đã kết nối Frontend sang `http://localhost:3001/api/prices`.
+*   **Tối ưu Localized Names (Hoàn Thành):** Đã cào thành công `localization.xml` để lấy tên chuẩn Tiếng Anh (EN-US) cho hàng ngàn Items.

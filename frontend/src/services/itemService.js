@@ -1,4 +1,5 @@
 import RECIPES from '../data/recipes.json';
+import LOCALIZED_NAMES from '../data/localizedNames.json';
 
 export class ItemService {
   /**
@@ -51,7 +52,7 @@ export class ItemService {
 
       tierObj.children.push({
         id: recipe.id,
-        name: recipe.id, // Hiển thị tạm ID, sau có thể add LocalizedName
+        name: LOCALIZED_NAMES[recipe.id] || recipe.id, // Đã đổi sang tiếng Anh chuẩn từ file JSON
         uniqueName: recipe.id,
         resources: resources
       });
@@ -95,7 +96,7 @@ export class ItemService {
       // Add Item
       tierObj.children.push({
         id: recipe.id,
-        name: recipe.id,
+        name: LOCALIZED_NAMES[recipe.id] || recipe.id, // Đã đổi sang tiếng Anh chuẩn từ file JSON
         uniqueName: recipe.id
       });
     });

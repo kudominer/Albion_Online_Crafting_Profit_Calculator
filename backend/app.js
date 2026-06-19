@@ -70,14 +70,21 @@ function extractValidPrice(rawData) {
 
 /**
  * Hàm hỗ trợ lấy giá của 1 hoặc nhiều items từ Albion API (có sử dụng cache)
+ * @param {string[]} items Array các item_id (VD: ['T4_BAG', 'T4_CLOTH'])
+ * @param {string} locations Danh sách các thành phố (VD: 'Martlock,Caerleon')
+ * @returns {Promise<Object>} Map các item_id và giá của chúng
  */
-async function getPricesWithCache(items, location) {
+async function getPricesWithCache(items, locations) {
   const result = {};
   const itemsToFetch = [];
 
+  // Kiểm tra cache. Vì cache là { "price:T4_BAG:Caerleon,Martlock": ... },
+  // Tốt nhất là dùng hash của locations để làm key.
+  const cacheKeySuffix = locations;
+  
   const now = Date.now();
   items.forEach(item => {
-    const cacheKey = `price:${item}:${location}`;
+    const cacheKey = `price:${item}:${cacheKeySuffix}`;
     const cachedItem = cache[cacheKey];
     
     if (cachedItem && cachedItem.expireAt > now) {
@@ -87,42 +94,32 @@ async function getPricesWithCache(items, location) {
     }
   });
 
+  // Nếu có item chưa có trong cache hoặc đã hết hạn, gọi API
   if (itemsToFetch.length > 0) {
-    let retries = 3;
-    let success = false;
-    let fetchedData = [];
-
-    while (retries > 0 && !success) {
-      try {
-        const itemsString = itemsToFetch.join(',');
-        const url = `${ALBION_API_BASE}/${itemsString}?locations=${location}`;
-        const response = await axios.get(url, { timeout: 5000 });
-        fetchedData = response.data;
-        success = true;
-      } catch (error) {
-        retries--;
-        console.warn(`[WARN] Lỗi khi gọi Albion API, còn lại ${retries} lần thử...`);
-        if (retries === 0) throw new Error('Không thể lấy dữ liệu từ Albion API sau 3 lần thử');
-        await new Promise(res => setTimeout(res, 1000));
+    try {
+      const itemsString = itemsToFetch.join(',');
+      const url = `${ALBION_API_BASE}/${itemsString}?locations=${locations}`;
+      const response = await axios.get(url);
+      
+      const fetchedData = response.data;
+      
+      // Chạy qua hàm chuẩn hóa giá (Lọc Quality = 1)
+      const formattedData = extractValidPrice(fetchedData);
+      
+      // Lưu vào kết quả trả về và cache
+      for (const itemId in formattedData) {
+        result[itemId] = formattedData[itemId];
+        
+        const cacheKey = `price:${itemId}:${cacheKeySuffix}`;
+        cache[cacheKey] = {
+          data: formattedData[itemId],
+          expireAt: Date.now() + CACHE_TTL_MS
+        };
       }
-    }
-    
-    const formattedData = extractValidPrice(fetchedData);
-    
-    // Cập nhật kết quả & cache
-    for (const itemId in formattedData) {
-      for (const city in formattedData[itemId]) {
-        if (city === location || !location) {
-          const priceInfo = formattedData[itemId][city];
-          result[itemId] = priceInfo;
-          
-          const cacheKey = `price:${itemId}:${location}`;
-          cache[cacheKey] = {
-            data: priceInfo,
-            expireAt: Date.now() + CACHE_TTL_MS
-          };
-        }
-      }
+      
+    } catch (error) {
+      console.error('Lỗi khi gọi Albion API:', error.message);
+      throw new Error('Không thể lấy dữ liệu từ Albion API');
     }
   }
 
@@ -131,24 +128,24 @@ async function getPricesWithCache(items, location) {
 
 // ==========================================
 // 1. API lấy giá item
-// GET /api/prices?items=T4_BAG,T5_BAG&location=Martlock
+// GET /api/prices?items=T4_BAG,T5_BAG&locations=Martlock,Caerleon
 // ==========================================
 app.get('/api/prices', async (req, res) => {
   try {
     const itemsQuery = req.query.items;
-    const location = req.query.location;
+    const locations = req.query.locations || req.query.location;
 
-    if (!itemsQuery || !location) {
-      return res.status(400).json({ error: 'Thiếu tham số items hoặc location' });
+    if (!itemsQuery || !locations) {
+      return res.status(400).json({ error: 'Thiếu tham số items hoặc locations' });
     }
 
     const items = itemsQuery.split(',').map(i => i.trim());
-    const prices = await getPricesWithCache(items, location);
+    const prices = await getPricesWithCache(items, locations);
 
-    // Chuyển kết quả từ Object sang Array để trả về giống format mong muốn
-    const responseArray = Object.values(prices);
-    
-    res.json(responseArray);
+    // Chú ý: Vì `prices` là Map: { "T4_BAG": { Caerleon: {...}, Martlock: {...} } }
+    // Frontend của mình (apiService) đang mong đợi Object dạng `formattedData` để Object.assign.
+    // Nên ta trả về thẳng object prices.
+    res.json(prices);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -176,7 +173,8 @@ app.post('/api/profit', async (req, res) => {
     // Tính toán chi phí
     let totalCost = 0;
     const materialDetails = materials.map(mat => {
-      const matPriceInfo = prices[mat.item_id];
+      const matCities = prices[mat.item_id] || {};
+      const matPriceInfo = matCities[location];
       // Ưu tiên dùng sell_price_min, nếu không có thì lấy 0
       const matPrice = matPriceInfo ? matPriceInfo.sell_price_min : 0; 
       const matTotalCost = matPrice * mat.quantity;
@@ -192,7 +190,8 @@ app.post('/api/profit', async (req, res) => {
     });
 
     // Lấy giá bán dự kiến của item chính
-    const mainItemPriceInfo = prices[item_id];
+    const mainItemCities = prices[item_id] || {};
+    const mainItemPriceInfo = mainItemCities[location];
     const sellPrice = mainItemPriceInfo ? mainItemPriceInfo.sell_price_min : 0;
 
     // Tính lợi nhuận (Chưa trừ RRR/Tax, có thể thêm sau nếu cần)
