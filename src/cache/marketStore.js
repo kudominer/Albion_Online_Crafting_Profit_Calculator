@@ -11,6 +11,7 @@ export const useStore = create((set) => ({
   globalTax: '6.5',
   globalCraftFee: '',
   globalCity: '', // Empty means 'All Cities'
+  globalServer: 'europe',
   customPrices: {},
   
   // UI State
@@ -33,6 +34,7 @@ export const useStore = create((set) => ({
   setGlobalTax: (val) => set({ globalTax: val }),
   setGlobalCraftFee: (val) => set({ globalCraftFee: val }),
   setGlobalCity: (val) => set({ globalCity: val }),
+  setGlobalServer: (val) => set({ globalServer: val }),
   setCustomPrice: (uniqueName, price) => set((state) => ({
     customPrices: { ...state.customPrices, [uniqueName]: price }
   })),

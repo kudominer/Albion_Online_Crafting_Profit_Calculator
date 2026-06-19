@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useStore } from '../cache/marketStore'; // Notice the path change to cache/marketStore
-import { API_BASE_URL } from '../core/config';
+import { API_SERVERS } from '../core/config';
 
 export class ApiService {
   /**
@@ -11,6 +11,8 @@ export class ApiService {
 
     const store = useStore.getState();
     store.setIsFetching(true);
+    
+    const serverConfig = API_SERVERS.find(s => s.id === store.globalServer) || API_SERVERS[0];
 
     try {
       const formattedData = {};
@@ -18,12 +20,15 @@ export class ApiService {
       const chunkSize = 200;
       for (let i = 0; i < itemIds.length; i += chunkSize) {
         const chunk = itemIds.slice(i, i + chunkSize);
-        const url = `${API_BASE_URL}/${chunk.join(',')}?locations=Caerleon,Bridgewatch,Martlock,Thetford,Fort Sterling,Lymhurst,Brecilien`;
+        const url = `${serverConfig.url}/${chunk.join(',')}?locations=Caerleon,Bridgewatch,Martlock,Thetford,Fort Sterling,Lymhurst,Brecilien`;
         
         const response = await axios.get(url);
         const data = response.data;
         
         data.forEach(item => {
+          // Chỉ lấy quality 1 (Normal) cho nguyên liệu và item cơ bản
+          if (item.quality !== 1) return;
+
           const { item_id, city, sell_price_min, buy_price_max } = item;
           if (!formattedData[item_id]) {
             formattedData[item_id] = {};

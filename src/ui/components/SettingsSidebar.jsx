@@ -4,6 +4,7 @@ import { useStore } from '../../cache/marketStore';
 import { ItemService } from '../../services/itemService';
 import { ApiService } from '../../services/apiService';
 import { CraftingService } from '../../services/craftingService';
+import { API_SERVERS } from '../../core/config';
 
 const materialsData = ItemService.generateMaterialsTree();
 
@@ -122,11 +123,13 @@ export function SettingsSidebar() {
   const globalTax = useStore(state => state.globalTax);
   const globalCraftFee = useStore(state => state.globalCraftFee);
   const globalCity = useStore(state => state.globalCity);
+  const globalServer = useStore(state => state.globalServer);
   
   const setGlobalRrr = useStore(state => state.setGlobalRrr);
   const setGlobalTax = useStore(state => state.setGlobalTax);
   const setGlobalCraftFee = useStore(state => state.setGlobalCraftFee);
   const setGlobalCity = useStore(state => state.setGlobalCity);
+  const setGlobalServer = useStore(state => state.setGlobalServer);
   const setIsSettingsOpen = useStore(state => state.setIsSettingsOpen);
 
   const CITIES = [
@@ -160,6 +163,18 @@ export function SettingsSidebar() {
         <div className="bg-canvas border border-hairline rounded-xl p-4">
           <h5 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Mặc định (Áp dụng cho mọi SP)</h5>
           <div className="space-y-3">
+            <div>
+              <label className="block text-xs text-muted mb-1">Máy chủ (Server)</label>
+              <select
+                value={globalServer}
+                onChange={(e) => setGlobalServer(e.target.value)}
+                className="w-full bg-surface-elevated border border-hairline rounded px-3 py-2 text-sm text-strong font-semibold focus:outline-none focus:border-primary transition-colors appearance-none"
+              >
+                {API_SERVERS.map(s => (
+                  <option key={s.id} value={s.id}>{s.name}</option>
+                ))}
+              </select>
+            </div>
             <div>
               <label className="block text-xs text-muted mb-1">Thành phố (Lọc Giá API)</label>
               <select

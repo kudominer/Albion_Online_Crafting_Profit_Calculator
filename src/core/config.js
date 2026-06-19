@@ -1,4 +1,8 @@
-export const API_BASE_URL = 'https://europe.albion-online-data.com/api/v2/stats/Prices';
+export const API_SERVERS = [
+  { id: 'europe', name: 'Europe', url: 'https://europe.albion-online-data.com/api/v2/stats/Prices' },
+  { id: 'west', name: 'Americas (West)', url: 'https://west.albion-online-data.com/api/v2/stats/Prices' },
+  { id: 'east', name: 'Asia (East)', url: 'https://east.albion-online-data.com/api/v2/stats/Prices' }
+];
 
 export const CITIES = [
   { id: '', name: 'Tất cả thành phố (Min/Max)' },
@@ -14,5 +18,6 @@ export const CITIES = [
 export const DEFAULT_SETTINGS = {
   rrr: '15.2',
   tax: '6.5',
-  craftFee: ''
+  craftFee: '',
+  server: 'europe'
 };
