@@ -65,8 +65,7 @@ function loadData() {
       const cachedData = JSON.parse(fs.readFileSync(pricesPath, 'utf8'));
       let count = 0;
       for (const itemId in cachedData) {
-        const ttl = getItemTTL(itemId);
-        priceCache.set(itemId, cachedData[itemId], ttl);
+        priceCache.set(itemId, cachedData[itemId]);
         count++;
       }
       console.log(`[Data] Loaded ${count} cached prices from disk`);
@@ -186,8 +185,8 @@ function parseAndCache(rawData) {
     for (const city in grouped[itemId]) {
       merged[city] = { ...grouped[itemId][city], updatedAt: Date.now() };
     }
-    const ttl = getItemTTL(itemId);
-    priceCache.set(itemId, merged, ttl);
+    merged.lastScannedAt = Date.now();
+    priceCache.set(itemId, merged);
     updated++;
   }
 
@@ -244,6 +243,16 @@ function saveData() {
   }
 }
 
+function isItemExpired(itemId) {
+  const cached = priceCache.get(itemId);
+  if (!cached) return true;
+  if (!cached.lastScannedAt) return true;
+
+  const ageMs = Date.now() - cached.lastScannedAt;
+  const ttlMs = getItemTTL(itemId) * 1000;
+  return ageMs > ttlMs;
+}
+
 async function runScannerTick() {
   if (scannerState.isRunning) return;
   if (uniqueItemIds.length === 0) return;
@@ -256,7 +265,7 @@ async function runScannerTick() {
     const toScan = [];
     for (let i = 0; i < uniqueItemIds.length && toScan.length < BATCH_SIZE; i++) {
       const id = uniqueItemIds[(scannerState.currentIndex + i) % uniqueItemIds.length];
-      if (!priceCache.has(id)) {
+      if (isItemExpired(id)) {
         toScan.push(id);
       }
     }
@@ -271,6 +280,14 @@ async function runScannerTick() {
 
     console.log(`[Scanner] Fetching ${toScan.length} expired items...`);
     const data = await fetchBatch(toScan);
+
+    // Mark all fetched items as scanned (prevent immediate re-scan for empty items)
+    toScan.forEach(id => {
+      const existing = priceCache.get(id) || {};
+      existing.lastScannedAt = Date.now();
+      priceCache.set(id, existing);
+    });
+
     const updated = parseAndCache(data);
     scannerState.itemsUpdated += updated;
     console.log(`[Scanner] Updated ${updated} items. Cache has ~${priceCache.keys().length} entries.`);
