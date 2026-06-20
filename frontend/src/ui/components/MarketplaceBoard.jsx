@@ -101,17 +101,15 @@ export function MarketplaceBoard() {
     let profitPercent = 0;
     let isProfitCalculated = false;
 
-    if (marketData[item.uniqueName]) {
-      const cityData = marketData[item.uniqueName];
-      let targetCityData = cityData;
-      if (globalCity && cityData[globalCity]) {
-        targetCityData = { [globalCity]: cityData[globalCity] };
-      } else if (globalCity) {
-        targetCityData = {};
+    const data = marketData[item.uniqueName];
+    if (data) {
+      // 1. Try globalCity for sellPrice
+      if (globalCity && data[globalCity] && data[globalCity].sellPriceMin > 0) {
+        sellPrice = data[globalCity].sellPriceMin;
+      } else {
+        const sells = Object.values(data).map(d => d.sellPriceMin).filter(p => p > 0);
+        sellPrice = sells.length > 0 ? Math.min(...sells) : 0;
       }
-
-      const sells = Object.values(targetCityData).map(d => d.sellPriceMin).filter(p => p > 0);
-      sellPrice = sells.length > 0 ? Math.min(...sells) : 0;
 
       if (sellPrice > 0 && item.resources) {
         const mockItem = {
@@ -124,15 +122,15 @@ export function MarketplaceBoard() {
             if (customPrices[res.uniqueName]) {
               resPrice = Number(customPrices[res.uniqueName]);
             } else {
-              const resCityData = marketData[res.uniqueName] || {};
-              let targetResCityData = resCityData;
-              if (globalCity && resCityData[globalCity]) {
-                targetResCityData = { [globalCity]: resCityData[globalCity] };
-              } else if (globalCity) {
-                targetResCityData = {};
+              const resData = marketData[res.uniqueName];
+              if (resData) {
+                if (globalCity && resData[globalCity] && resData[globalCity].sellPriceMin > 0) {
+                  resPrice = resData[globalCity].sellPriceMin;
+                } else {
+                  const resSells = Object.values(resData).map(d => d.sellPriceMin).filter(p => p > 0);
+                  resPrice = resSells.length > 0 ? Math.min(...resSells) : 0;
+                }
               }
-              const resSells = Object.values(targetResCityData).map(d => d.sellPriceMin).filter(p => p > 0);
-              resPrice = resSells.length > 0 ? Math.min(...resSells) : 0;
             }
             return { quantity: res.qty, unitPrice: resPrice };
           })
@@ -155,21 +153,48 @@ export function MarketplaceBoard() {
 
   const renderPrice = (uniqueName, type = 'sell') => {
     if (!marketData[uniqueName]) return '--';
-    const cityData = marketData[uniqueName];
-    let targetCityData = cityData;
-    if (globalCity && cityData[globalCity]) {
-      targetCityData = { [globalCity]: cityData[globalCity] };
-    } else if (globalCity) {
-      targetCityData = {};
+    const data = marketData[uniqueName];
+
+    let price = 0;
+    let city = '';
+    let isFallback = false;
+
+    // 1. Try globalCity
+    if (globalCity && data[globalCity]) {
+      const val = type === 'sell' ? data[globalCity].sellPriceMin : data[globalCity].buyPriceMax;
+      if (val > 0) {
+        price = val;
+        city = globalCity;
+        isFallback = false;
+      }
     }
 
-    if (type === 'sell') {
-      const sells = Object.values(targetCityData).map(d => d.sellPriceMin).filter(p => p > 0);
-      return sells.length > 0 ? formatSilver(Math.min(...sells)) : '--';
-    } else {
-      const buys = Object.values(targetCityData).map(d => d.buyPriceMax).filter(p => p > 0);
-      return buys.length > 0 ? formatSilver(Math.max(...buys)) : '--';
+    // 2. Fallback
+    if (price === 0) {
+      const prices = Object.entries(data)
+        .filter(([key]) => key !== 'lastScannedAt' && key !== 'updatedAt')
+        .map(([c, d]) => ({
+          city: c,
+          val: type === 'sell' ? d.sellPriceMin : d.buyPriceMax
+        }))
+        .filter(item => item.val > 0);
+        
+      if (prices.length > 0) {
+        prices.sort((a, b) => type === 'sell' ? a.val - b.val : b.val - a.val);
+        price = prices[0].val;
+        city = prices[0].city;
+        isFallback = globalCity ? true : false;
+      }
     }
+
+    if (price === 0) return '--';
+
+    return (
+      <>
+        <span>{formatSilver(price)}</span>
+        {isFallback && <span className="text-[9px] text-muted block font-sans font-normal normal-case mt-0.5">({city})</span>}
+      </>
+    );
   };
 
   return (
@@ -332,11 +357,11 @@ export function MarketplaceBoard() {
                   <div className="flex items-center gap-6 mt-3 sm:mt-0 w-full sm:w-auto justify-between sm:justify-end px-2 sm:px-0">
                     <div className="flex flex-col items-start sm:items-end">
                       <span className="text-[10px] uppercase text-muted font-bold tracking-wider mb-0.5">Sell Price</span>
-                      <span className="text-trading-up font-bold font-plex">{renderPrice(item.uniqueName, 'sell')}</span>
+                      <div className="text-trading-up font-bold font-plex text-right">{renderPrice(item.uniqueName, 'sell')}</div>
                     </div>
                     <div className="flex flex-col items-start sm:items-end">
                       <span className="text-[10px] uppercase text-muted font-bold tracking-wider mb-0.5">Buy Price</span>
-                      <span className="text-trading-down font-bold font-plex">{renderPrice(item.uniqueName, 'buy')}</span>
+                      <div className="text-trading-down font-bold font-plex text-right">{renderPrice(item.uniqueName, 'buy')}</div>
                     </div>
                   </div>
                 </div>

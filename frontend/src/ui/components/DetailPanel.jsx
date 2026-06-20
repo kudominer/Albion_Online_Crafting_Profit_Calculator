@@ -28,18 +28,63 @@ export function DetailPanel() {
   // Get prices with city preference
   const getPrices = (itemId) => {
     const data = marketData[itemId];
-    if (!data) return { sell: 0, buy: 0 };
-    let cityData = globalCity && data[globalCity] ? { [globalCity]: data[globalCity] } : data;
-    if (globalCity && !data[globalCity]) cityData = data; // fallback to all
-    const sells = Object.values(cityData).map(d => d.sellPriceMin).filter(p => p > 0);
-    const buys = Object.values(cityData).map(d => d.buyPriceMax).filter(p => p > 0);
-    return {
-      sell: sells.length > 0 ? Math.min(...sells) : 0,
-      buy: buys.length > 0 ? Math.max(...buys) : 0
-    };
+    if (!data) return { sell: 0, buy: 0, sellCity: '', buyCity: '', sellFallback: false, buyFallback: false };
+
+    let sell = 0;
+    let buy = 0;
+    let sellCity = '';
+    let buyCity = '';
+    let sellFallback = false;
+    let buyFallback = false;
+
+    // 1. Try globalCity
+    if (globalCity && data[globalCity]) {
+      if (data[globalCity].sellPriceMin > 0) {
+        sell = data[globalCity].sellPriceMin;
+        sellCity = globalCity;
+      }
+      if (data[globalCity].buyPriceMax > 0) {
+        buy = data[globalCity].buyPriceMax;
+        buyCity = globalCity;
+      }
+    }
+
+    // 2. Fallback for sell
+    if (sell === 0) {
+      const sells = Object.entries(data)
+        .filter(([key]) => key !== 'lastScannedAt' && key !== 'updatedAt')
+        .map(([city, d]) => ({ city, val: d.sellPriceMin }))
+        .filter(item => item.val > 0);
+
+      if (sells.length > 0) {
+        sells.sort((a, b) => a.val - b.val); // Min price is best
+        sell = sells[0].val;
+        sellCity = sells[0].city;
+        sellFallback = globalCity ? true : false;
+      }
+    }
+
+    // 3. Fallback for buy
+    if (buy === 0) {
+      const buys = Object.entries(data)
+        .filter(([key]) => key !== 'lastScannedAt' && key !== 'updatedAt')
+        .map(([city, d]) => ({ city, val: d.buyPriceMax }))
+        .filter(item => item.val > 0);
+
+      if (buys.length > 0) {
+        buys.sort((a, b) => b.val - a.val); // Max price is best
+        buy = buys[0].val;
+        buyCity = buys[0].city;
+        buyFallback = globalCity ? true : false;
+      }
+    }
+
+    return { sell, buy, sellCity, buyCity, sellFallback, buyFallback };
   };
 
-  const { sell: minSell, buy: maxBuy } = getPrices(selectedItem.uniqueName);
+  const sellDetails = getPrices(selectedItem.uniqueName);
+  const minSell = sellDetails.sell;
+  const maxBuy = sellDetails.buy;
 
   const resourceDetails = (selectedItem.resources || []).map(res => {
     const isCustom = !!customPrices[res.uniqueName];
@@ -96,11 +141,17 @@ export function DetailPanel() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <div className="text-[10px] text-muted mb-0.5">Min Sell</div>
-              <div className="text-sm font-plex font-bold text-trading-up">{CraftingService.formatSilverFull(minSell) || '--'}</div>
+              <div className="text-sm font-plex font-bold text-trading-up">
+                {minSell ? CraftingService.formatSilverFull(minSell) : '--'}
+                {sellDetails.sellFallback && <span className="text-[9px] text-muted block font-sans font-normal">({sellDetails.sellCity})</span>}
+              </div>
             </div>
             <div>
               <div className="text-[10px] text-muted mb-0.5">Max Buy Order</div>
-              <div className="text-sm font-plex font-bold text-trading-down">{CraftingService.formatSilverFull(maxBuy) || '--'}</div>
+              <div className="text-sm font-plex font-bold text-trading-down">
+                {maxBuy ? CraftingService.formatSilverFull(maxBuy) : '--'}
+                {sellDetails.buyFallback && <span className="text-[9px] text-muted block font-sans font-normal">({sellDetails.buyCity})</span>}
+              </div>
             </div>
           </div>
         </div>

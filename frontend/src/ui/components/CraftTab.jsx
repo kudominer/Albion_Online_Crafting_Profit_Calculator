@@ -70,14 +70,39 @@ export function CraftTab() {
     ApiService.fetchMarketPrices([...ids]);
   }, [displayedItems]);
 
-  const getPriceForItem = (uniqueName, type = 'sell') => {
+  const getPriceDetailsForItem = (uniqueName, type = 'sell') => {
     const data = marketData[uniqueName];
-    if (!data) return 0;
-    let cityData = globalCity && data[globalCity] ? { [globalCity]: data[globalCity] } : data;
-    if (globalCity && !data[globalCity]) return 0;
-    const prices = Object.values(cityData).map(d => type === 'sell' ? d.sellPriceMin : d.buyPriceMax).filter(p => p > 0);
-    if (prices.length === 0) return 0;
-    return type === 'sell' ? Math.min(...prices) : Math.max(...prices);
+    if (!data) return { price: 0, city: '', isFallback: false };
+
+    // 1. Try selected globalCity
+    if (globalCity && data[globalCity]) {
+      const cityVal = type === 'sell' ? data[globalCity].sellPriceMin : data[globalCity].buyPriceMax;
+      if (cityVal > 0) return { price: cityVal, city: globalCity, isFallback: false };
+    }
+
+    // 2. Fallback to other cities
+    const prices = Object.entries(data)
+      .filter(([key]) => key !== 'lastScannedAt' && key !== 'updatedAt')
+      .map(([city, d]) => ({
+        city,
+        val: type === 'sell' ? d.sellPriceMin : d.buyPriceMax
+      }))
+      .filter(item => item.val > 0);
+
+    if (prices.length === 0) return { price: 0, city: '', isFallback: false };
+
+    // Sort: for 'sell' (Min price is best), for 'buy' (Max price is best)
+    prices.sort((a, b) => type === 'sell' ? a.val - b.val : b.val - a.val);
+    
+    return { 
+      price: prices[0].val, 
+      city: prices[0].city, 
+      isFallback: globalCity ? true : false 
+    };
+  };
+
+  const getPriceForItem = (uniqueName, type = 'sell') => {
+    return getPriceDetailsForItem(uniqueName, type).price;
   };
 
   const renderProfitBadge = (item) => {
@@ -197,8 +222,8 @@ export function CraftTab() {
           <div className="grid gap-1.5">
             {displayedItems.map(item => {
               const isSelected = selectedItem?.uniqueName === item.uniqueName;
-              const sellPrice = getPriceForItem(item.uniqueName, 'sell');
-              const buyPrice = getPriceForItem(item.uniqueName, 'buy');
+              const sellDetails = getPriceDetailsForItem(item.uniqueName, 'sell');
+              const buyDetails = getPriceDetailsForItem(item.uniqueName, 'buy');
               return (
                 <div
                   key={item.uniqueName}
@@ -221,11 +246,17 @@ export function CraftTab() {
                   <div className="flex items-center gap-4 flex-shrink-0 text-right">
                     <div>
                       <div className="text-[9px] text-muted uppercase mb-0.5">Sell</div>
-                      <div className="text-xs font-bold font-plex text-trading-up">{CraftingService.formatSilver(sellPrice) || '--'}</div>
+                      <div className="text-xs font-bold font-plex text-trading-up">
+                        {sellDetails.price ? CraftingService.formatSilver(sellDetails.price) : '--'}
+                        {sellDetails.isFallback && <span className="text-[8px] text-muted block font-sans">({sellDetails.city})</span>}
+                      </div>
                     </div>
                     <div>
                       <div className="text-[9px] text-muted uppercase mb-0.5">Buy</div>
-                      <div className="text-xs font-bold font-plex text-trading-down">{CraftingService.formatSilver(buyPrice) || '--'}</div>
+                      <div className="text-xs font-bold font-plex text-trading-down">
+                        {buyDetails.price ? CraftingService.formatSilver(buyDetails.price) : '--'}
+                        {buyDetails.isFallback && <span className="text-[8px] text-muted block font-sans">({buyDetails.city})</span>}
+                      </div>
                     </div>
                   </div>
                 </div>
