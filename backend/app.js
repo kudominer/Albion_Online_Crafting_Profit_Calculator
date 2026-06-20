@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // ============================================================
 // CONSTANTS
@@ -58,6 +58,33 @@ function loadData() {
     }
   } catch (e) {
     console.error('[Data] Error loading refine_recipes.json:', e.message);
+  }
+  try {
+    const pricesPath = path.join(DATA_DIR, 'prices_east.json');
+    if (fs.existsSync(pricesPath)) {
+      const cachedData = JSON.parse(fs.readFileSync(pricesPath, 'utf8'));
+      let count = 0;
+      for (const itemId in cachedData) {
+        const ttl = getItemTTL(itemId);
+        priceCache.set(itemId, cachedData[itemId], ttl);
+        count++;
+      }
+      console.log(`[Data] Loaded ${count} cached prices from disk`);
+    }
+  } catch (e) {
+    console.error('[Data] Error loading prices_east.json from disk:', e.message);
+  }
+  try {
+    const statePath = path.join(DATA_DIR, 'scanner_state.json');
+    if (fs.existsSync(statePath)) {
+      const savedState = JSON.parse(fs.readFileSync(statePath, 'utf8'));
+      if (savedState.currentIndex !== undefined) {
+        scannerState.currentIndex = savedState.currentIndex;
+        console.log(`[Scanner] Restored scan index: ${scannerState.currentIndex}`);
+      }
+    }
+  } catch (e) {
+    console.error('[Data] Error loading scanner_state.json from disk:', e.message);
   }
 }
 
@@ -190,6 +217,31 @@ async function fetchBatch(itemIds) {
   const response = await axios.get(url, { timeout: 15000 });
   scannerState.requestsThisMinute++;
   return response.data;
+}
+
+function saveData() {
+  try {
+    const allPrices = {};
+    for (const itemId of priceCache.keys()) {
+      const data = priceCache.get(itemId);
+      if (data) {
+        allPrices[itemId] = data;
+      }
+    }
+    const pricesPath = path.join(DATA_DIR, 'prices_east.json');
+    fs.writeFileSync(pricesPath, JSON.stringify(allPrices, null, 2), 'utf8');
+
+    const statePath = path.join(DATA_DIR, 'scanner_state.json');
+    const savedState = {
+      currentServer: 'east',
+      currentIndex: scannerState.currentIndex,
+      lastRunTimestamp: Date.now()
+    };
+    fs.writeFileSync(statePath, JSON.stringify(savedState, null, 2), 'utf8');
+    console.log(`[Data] Saved ${Object.keys(allPrices).length} prices and scanner state to disk`);
+  } catch (e) {
+    console.error('[Data] Error saving data to disk:', e.message);
+  }
 }
 
 async function runScannerTick() {
@@ -634,4 +686,20 @@ app.listen(PORT, async () => {
 
   // Continuous scan every 5s (crawler will skip items still in TTL)
   setInterval(runScannerTick, 5000);
+
+  // Auto-save every 5 minutes
+  setInterval(saveData, 300000);
+});
+
+// Graceful shutdown hooks
+process.on('SIGINT', () => {
+  console.log('\n[Server] SIGINT received. Saving data before exit...');
+  saveData();
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  console.log('\n[Server] SIGTERM received. Saving data before exit...');
+  saveData();
+  process.exit(0);
 });
