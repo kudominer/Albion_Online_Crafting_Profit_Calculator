@@ -1,0 +1,94 @@
+/* =============================================
+   THE NORTHERN CONSTELLATIONS — Theme
+   Guild of kudominer | Albion Online
+   Deep space navy · Icy silver · Aurora accents
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode — muted parchment feel */
+    --color-canvas: #f0f2f5;
+    --color-surface-card: #ffffff;
+    --color-surface-elevated: #e8ebf0;
+    --color-hairline: #d4d8e2;
+    --color-text-strong: #0d1117;
+    --color-text-body: #1a2035;
+    --color-text-muted: #5a6480;
+    --color-text-muted-strong: #7a85a0;
+  }
+
+  .dark {
+    /* Dark mode — The Northern Constellations */
+    --color-canvas: #07090f;         /* Deep space void */
+    --color-surface-card: #0d1220;   /* Dark nebula */
+    --color-surface-elevated: #131d30; /* Deep navy */
+    --color-hairline: #1e2d47;       /* Subtle starline */
+    --color-text-strong: #e8eaf6;    /* Starlight white */
+    --color-text-body: #b8c0d8;      /* Moonlight grey */
+    --color-text-muted: #5a6b8a;     /* Dim constellation */
+    --color-text-muted-strong: #7a8fad; /* Faint star */
+  }
+
+  * {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Apply Cinzel to headings for a regal, constellation-map feel */
+  h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* Subtle star-field background on dark mode */
+.dark body,
+.dark #root > div {
+  background-image:
+    radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.12) 0%, transparent 100%),
+    radial-gradient(1px 1px at 42% 10%, rgba(200,220,255,0.10) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 70% 55%, rgba(180,210,255,0.09) 0%, transparent 100%),
+    radial-gradient(1px 1px at 88% 30%, rgba(255,255,255,0.08) 0%, transparent 100%),
+    radial-gradient(1px 1px at 5%  80%, rgba(200,220,255,0.07) 0%, transparent 100%),
+    radial-gradient(2px 2px at 55% 90%, rgba(150,190,255,0.06) 0%, transparent 100%);
+}
+
+/* Northern sky ambient glow at top of page */
+.dark header {
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 60, 110, 0.18) 0%,
+    rgba(13, 18, 32, 0.0) 100%
+  ) !important;
+  border-bottom-color: #1e3060 !important;
+}
+
+/* Scrollbar — icy navy */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07090f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e3060;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a4a8a;
+}
+
+/* Aurora constellation glow — used on primary elements */
+.constellation-glow {
+  box-shadow: 0 0 12px 2px rgba(100, 160, 255, 0.25),
+              0 0 30px 6px rgba(60, 120, 220, 0.10);
+}
+
+.glow {
+  box-shadow: 0 0 12px 3px rgba(100, 160, 255, 0.30);
+}
