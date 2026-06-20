@@ -4,223 +4,179 @@ import { useStore } from '../../cache/marketStore';
 import { CraftingService } from '../../services/craftingService';
 import { ItemService } from '../../services/itemService';
 
-const formatResourceName = (uniqueName, lang) => {
-  return ItemService.getItemName(uniqueName, lang);
-};
-
 export function DetailPanel() {
-  const globalLanguage = useStore(state => state.globalLanguage);
-  const selectedItem = useStore(state => state.selectedItem);
-  const setSelectedItem = useStore(state => state.setSelectedItem);
-  const marketData = useStore(state => state.marketData);
-  const customPrices = useStore(state => state.customPrices);
-  const watchlist = useStore(state => state.watchlist);
-  const toggleWatchlist = useStore(state => state.toggleWatchlist);
-
-  // Global Settings linked
-  const globalRrr = useStore(state => state.globalRrr);
-  const setGlobalRrr = useStore(state => state.setGlobalRrr);
-  const globalTax = useStore(state => state.globalTax);
-  const setGlobalTax = useStore(state => state.setGlobalTax);
-  const globalCraftFee = useStore(state => state.globalCraftFee);
-  const setGlobalCraftFee = useStore(state => state.setGlobalCraftFee);
+  const globalLanguage = useStore(s => s.globalLanguage);
+  const selectedItem   = useStore(s => s.selectedItem);
+  const setSelectedItem = useStore(s => s.setSelectedItem);
+  const marketData     = useStore(s => s.marketData);
+  const customPrices   = useStore(s => s.customPrices);
+  const watchlist      = useStore(s => s.watchlist);
+  const toggleWatchlist = useStore(s => s.toggleWatchlist);
+  const globalRrr      = useStore(s => s.globalRrr);
+  const setGlobalRrr   = useStore(s => s.setGlobalRrr);
+  const globalTax      = useStore(s => s.globalTax);
+  const setGlobalTax   = useStore(s => s.setGlobalTax);
+  const globalCraftFee = useStore(s => s.globalCraftFee);
+  const setGlobalCraftFee = useStore(s => s.setGlobalCraftFee);
+  const globalCity     = useStore(s => s.globalCity);
+  const globalFocus    = useStore(s => s.globalFocus);
 
   if (!selectedItem) return null;
 
-  // Lấy giá vật phẩm chính
-  const itemPrices = marketData[selectedItem.uniqueName] || {};
-  const sells = Object.values(itemPrices).map(d => d.sellPriceMin).filter(p => p > 0);
-  const buys = Object.values(itemPrices).map(d => d.buyPriceMax).filter(p => p > 0);
-  const minSell = sells.length > 0 ? Math.min(...sells) : 0;
-  const maxBuy = buys.length > 0 ? Math.max(...buys) : 0;
+  const effectiveRrr = globalFocus ? CraftingService.getFocusRrr(globalRrr) : globalRrr;
 
-  // Chuẩn bị dữ liệu nguyên liệu (Ưu tiên Custom Price)
-  const resourceDetails = selectedItem.resources?.map(res => {
-    let unitPrice = 0;
-    const isCustomPrice = !!customPrices[res.uniqueName];
-
-    if (isCustomPrice) {
-      unitPrice = Number(customPrices[res.uniqueName]);
-    } else {
-      const resPrices = marketData[res.uniqueName] || {};
-      const resSells = Object.values(resPrices).map(d => d.sellPriceMin).filter(p => p > 0);
-      unitPrice = resSells.length > 0 ? Math.min(...resSells) : 0;
-    }
-    
+  // Get prices with city preference
+  const getPrices = (itemId) => {
+    const data = marketData[itemId];
+    if (!data) return { sell: 0, buy: 0 };
+    let cityData = globalCity && data[globalCity] ? { [globalCity]: data[globalCity] } : data;
+    if (globalCity && !data[globalCity]) cityData = data; // fallback to all
+    const sells = Object.values(cityData).map(d => d.sellPriceMin).filter(p => p > 0);
+    const buys = Object.values(cityData).map(d => d.buyPriceMax).filter(p => p > 0);
     return {
-      ...res,
-      unitPrice,
-      totalCost: unitPrice * res.qty,
-      isCustomPrice
+      sell: sells.length > 0 ? Math.min(...sells) : 0,
+      buy: buys.length > 0 ? Math.max(...buys) : 0
     };
-  }) || [];
+  };
 
-  // Tính toán lợi nhuận sử dụng helper function và Global Settings
-  const mockItem = {
-    rrr: globalRrr,
+  const { sell: minSell, buy: maxBuy } = getPrices(selectedItem.uniqueName);
+
+  const resourceDetails = (selectedItem.resources || []).map(res => {
+    const isCustom = !!customPrices[res.uniqueName];
+    const unitPrice = isCustom ? Number(customPrices[res.uniqueName]) : getPrices(res.uniqueName).sell;
+    return { ...res, unitPrice, totalCost: unitPrice * res.qty, isCustomPrice: isCustom };
+  });
+
+  const calcs = CraftingService.calculateProfit({
+    rrr: effectiveRrr,
     tax: globalTax,
     craftFee: globalCraftFee,
     sellPrice: minSell,
-    materials: resourceDetails.map(res => ({
-      quantity: res.qty,
-      unitPrice: res.unitPrice
-    }))
-  };
+    materials: resourceDetails.map(r => ({ quantity: r.qty, unitPrice: r.unitPrice }))
+  });
 
-  const calcs = CraftingService.calculateProfit(mockItem);
-  const profitColor = calcs.profit > 0 ? 'text-trading-up' : calcs.profit < 0 ? 'text-trading-down' : 'text-body';
   const isWatchlisted = watchlist.includes(selectedItem.uniqueName);
 
   return (
-    <div className="w-full h-full bg-surface-card border-l border-hairline flex flex-col shadow-lg overflow-hidden">
-      <div className="p-4 border-b border-hairline flex items-center justify-between bg-surface-elevated/50">
-        <h3 className="font-bold text-strong flex items-center gap-2">
-          <Calculator size={18} className="text-primary" />
-          Chi tiết Vật phẩm
+    <div className="w-full h-full bg-surface-card flex flex-col overflow-hidden">
+      {/* Header */}
+      <div className="flex-shrink-0 p-3 border-b border-hairline flex items-center justify-between bg-surface-elevated/50">
+        <h3 className="font-bold text-strong text-sm flex items-center gap-2">
+          <Calculator size={14} className="text-primary" /> Craft Detail
         </h3>
         <div className="flex items-center gap-1">
-          <button 
+          <button
             onClick={() => toggleWatchlist(selectedItem.uniqueName)}
             className={`p-1.5 rounded transition-colors ${isWatchlisted ? 'text-primary bg-primary/10' : 'text-muted hover:text-strong hover:bg-surface-elevated'}`}
-            title={isWatchlisted ? "Bỏ theo dõi" : "Theo dõi vật phẩm"}
           >
-            <Star size={18} fill={isWatchlisted ? "currentColor" : "none"} />
+            <Star size={15} fill={isWatchlisted ? 'currentColor' : 'none'} />
           </button>
-          <button 
-            onClick={() => setSelectedItem(null)}
-            className="p-1.5 text-muted hover:text-strong hover:bg-surface-elevated rounded transition-colors"
-          >
-            <X size={18} />
+          <button onClick={() => setSelectedItem(null)} className="p-1.5 text-muted hover:text-strong hover:bg-surface-elevated rounded transition-colors">
+            <X size={15} />
           </button>
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
-        {/* Item Header */}
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-16 h-16 bg-surface-elevated rounded-lg border border-hairline p-1 shadow-sm shrink-0">
-            <img 
-              loading="lazy"
-              src={`https://render.albiononline.com/v1/item/${selectedItem.uniqueName}.png`} 
-              alt={selectedItem.name}
-              className="w-full h-full object-contain"
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
+      <div className="flex-1 overflow-y-auto p-3 custom-scrollbar space-y-3">
+        {/* Item header */}
+        <div className="flex items-center gap-3">
+          <div className="w-14 h-14 bg-surface-elevated rounded-lg border border-hairline p-1 shrink-0">
+            <img loading="lazy" src={`https://render.albiononline.com/v1/item/${selectedItem.uniqueName}.png`} alt={selectedItem.name} className="w-full h-full object-contain" />
           </div>
           <div>
-            <h4 className="font-bold text-lg text-strong">{ItemService.getItemName(selectedItem.uniqueName, globalLanguage)}</h4>
-            <p className="text-xs text-muted font-mono">{selectedItem.uniqueName}</p>
+            <h4 className="font-bold text-base text-strong">{ItemService.getItemName(selectedItem.uniqueName, globalLanguage)}</h4>
+            <p className="text-[10px] text-muted font-mono">{selectedItem.uniqueName}</p>
+            <span className="text-[10px] text-muted bg-canvas px-1.5 py-0.5 rounded border border-hairline">T{selectedItem.tier}.{selectedItem.enchantment}</span>
           </div>
         </div>
 
-        {/* Market Prices */}
-        <div className="bg-canvas border border-hairline rounded-xl p-4 mb-6">
-          <h5 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Giá Thị trường (Tốt nhất)</h5>
-          <div className="grid grid-cols-2 gap-4">
+        {/* Market prices */}
+        <div className="bg-canvas border border-hairline rounded-xl p-3">
+          <h5 className="text-[10px] text-muted uppercase tracking-wider font-bold mb-2">Market Prices{globalCity && ` — ${globalCity}`}</h5>
+          <div className="grid grid-cols-2 gap-3">
             <div>
-              <div className="text-xs text-muted mb-1">Giá Bán (Min Sell)</div>
-              <div className="font-plex text-trading-up font-bold text-lg">{minSell > 0 ? CraftingService.formatSilver(minSell) : '--'}</div>
+              <div className="text-[10px] text-muted mb-0.5">Min Sell</div>
+              <div className="text-sm font-plex font-bold text-trading-up">{CraftingService.formatSilverFull(minSell) || '--'}</div>
             </div>
             <div>
-              <div className="text-xs text-muted mb-1">Giá Mua (Max Buy)</div>
-              <div className="font-plex text-trading-down font-bold text-lg">{maxBuy > 0 ? CraftingService.formatSilver(maxBuy) : '--'}</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Form Nhập Thông số */}
-        <div className="bg-canvas border border-hairline rounded-xl p-4 mb-6">
-          <h5 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Thông số Chế tạo (Đồng bộ Toàn cục)</h5>
-          <div className="grid grid-cols-3 gap-3">
-            <div>
-              <label className="block text-[10px] text-muted mb-1">RRR (%)</label>
-              <input
-                type="number"
-                value={globalRrr}
-                onChange={(e) => setGlobalRrr(e.target.value)}
-                className="w-full bg-surface-elevated border border-hairline rounded px-2 py-1.5 text-sm text-strong font-plex focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-[10px] text-muted mb-1">Thuế chợ (%)</label>
-              <input
-                type="number"
-                value={globalTax}
-                onChange={(e) => setGlobalTax(e.target.value)}
-                className="w-full bg-surface-elevated border border-hairline rounded px-2 py-1.5 text-sm text-strong font-plex focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-[10px] text-muted mb-1">Phí Craft</label>
-              <input
-                type="number"
-                value={globalCraftFee}
-                onChange={(e) => setGlobalCraftFee(e.target.value)}
-                placeholder="0"
-                className="w-full bg-surface-elevated border border-hairline rounded px-2 py-1.5 text-sm text-strong font-plex focus:outline-none focus:border-primary transition-colors"
-              />
+              <div className="text-[10px] text-muted mb-0.5">Max Buy Order</div>
+              <div className="text-sm font-plex font-bold text-trading-down">{CraftingService.formatSilverFull(maxBuy) || '--'}</div>
             </div>
           </div>
         </div>
 
-        {/* Nguyên liệu */}
-        <div className="bg-canvas border border-hairline rounded-xl p-4 mb-6">
-          <h5 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Nguyên liệu Chế tạo</h5>
-          {resourceDetails.length > 0 ? (
-            <div className="space-y-3">
-              {resourceDetails.map((res, idx) => (
-                <div key={idx} className="flex items-center justify-between text-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-surface-elevated rounded border border-hairline p-0.5 shrink-0 flex items-center justify-center">
-                      <img 
-                        loading="lazy"
-                        src={`https://render.albiononline.com/v1/item/${res.uniqueName}.png`} 
-                        alt={res.uniqueName}
-                        className="w-full h-full object-contain"
-                        onError={(e) => { e.target.style.display = 'none'; }}
-                      />
-                    </div>
-                    <div>
-                      <div className="text-strong font-medium text-xs flex items-center gap-1">
-                        {formatResourceName(res.uniqueName, globalLanguage)}
-                        {res.isCustomPrice && <span className="text-[9px] bg-primary/20 text-primary px-1 rounded">CUSTOM</span>}
-                      </div>
-                      <div className="text-muted text-[10px]">{res.qty}x</div>
-                    </div>
+        {/* Craft params */}
+        <div className="bg-canvas border border-hairline rounded-xl p-3">
+          <h5 className="text-[10px] text-muted uppercase tracking-wider font-bold mb-2">Craft Parameters</h5>
+          <div className="grid grid-cols-3 gap-2">
+            {[
+              { label: `RRR${globalFocus ? ' (Focus)' : ''} %`, value: effectiveRrr, set: setGlobalRrr },
+              { label: 'Tax %', value: globalTax, set: setGlobalTax },
+              { label: 'Fee', value: globalCraftFee, set: setGlobalCraftFee, placeholder: '0' },
+            ].map(({ label, value, set, placeholder }) => (
+              <div key={label}>
+                <label className="block text-[9px] text-muted mb-0.5">{label}</label>
+                <input
+                  type="number"
+                  value={value}
+                  onChange={e => set(e.target.value)}
+                  placeholder={placeholder}
+                  readOnly={globalFocus && label.includes('RRR')}
+                  className="w-full bg-surface-elevated border border-hairline rounded px-2 py-1 text-xs text-strong font-plex focus:outline-none focus:border-primary transition-colors"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Materials */}
+        <div className="bg-canvas border border-hairline rounded-xl p-3">
+          <h5 className="text-[10px] text-muted uppercase tracking-wider font-bold mb-2">Materials</h5>
+          <div className="space-y-2">
+            {resourceDetails.map((res, i) => (
+              <div key={i} className="flex items-center justify-between text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-surface-elevated rounded border border-hairline p-0.5 shrink-0">
+                    <img loading="lazy" src={`https://render.albiononline.com/v1/item/${res.uniqueName}.png`} alt={res.uniqueName} className="w-full h-full object-contain" />
                   </div>
-                  <div className="text-right shrink-0">
-                    <div className={`font-plex text-xs font-semibold ${res.isCustomPrice ? 'text-primary' : 'text-strong'}`}>
-                      {res.totalCost > 0 ? CraftingService.formatSilver(res.totalCost) : '--'}
+                  <div>
+                    <div className="text-strong font-medium text-[11px] flex items-center gap-1">
+                      {ItemService.getItemName(res.uniqueName, globalLanguage)}
+                      {res.isCustomPrice && <span className="text-[9px] bg-primary/20 text-primary px-1 rounded">CUSTOM</span>}
                     </div>
-                    <div className="text-[10px] text-muted">@{res.unitPrice > 0 ? CraftingService.formatSilver(res.unitPrice) : '--'}/ea</div>
+                    <div className="text-muted text-[10px]">{res.qty}×</div>
                   </div>
                 </div>
-              ))}
-              <div className="pt-3 mt-3 border-t border-hairline flex flex-col gap-1">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-muted">Tổng chi phí NL gốc:</span>
-                  <span className="font-plex text-strong">{calcs.totalMaterialCost > 0 ? CraftingService.formatSilver(calcs.totalMaterialCost) : '--'}</span>
-                </div>
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-muted">Chi phí Thực tế (Sau RRR):</span>
-                  <span className="font-plex font-bold text-strong">{calcs.trueCostPerItem > 0 ? CraftingService.formatSilver(calcs.trueCostPerItem) : '--'}</span>
+                <div className="text-right">
+                  <div className={`font-plex text-xs font-bold ${res.isCustomPrice ? 'text-primary' : 'text-strong'}`}>
+                    {CraftingService.formatSilver(res.totalCost) || '--'}
+                  </div>
+                  <div className="text-[10px] text-muted">@{CraftingService.formatSilver(res.unitPrice) || '--'}/ea</div>
                 </div>
               </div>
+            ))}
+            <div className="pt-2 mt-1 border-t border-hairline space-y-1">
+              <div className="flex justify-between text-[11px]">
+                <span className="text-muted">Raw material cost:</span>
+                <span className="font-plex text-strong">{CraftingService.formatSilver(calcs.totalMaterialCost) || '--'}</span>
+              </div>
+              <div className="flex justify-between text-[11px]">
+                <span className="text-muted">After RRR ({effectiveRrr}%):</span>
+                <span className="font-plex font-bold text-strong">{CraftingService.formatSilver(calcs.trueCostPerItem) || '--'}</span>
+              </div>
             </div>
-          ) : (
-            <p className="text-sm text-muted">Không có thông tin nguyên liệu.</p>
-          )}
+          </div>
         </div>
 
-        {/* Lợi nhuận */}
+        {/* Profit */}
         <div className="bg-surface-elevated border border-hairline rounded-xl p-4">
-          <h5 className="text-xs font-semibold text-muted uppercase tracking-wider mb-1">Lợi nhuận dự kiến</h5>
+          <h5 className="text-[10px] text-muted uppercase tracking-wider font-bold mb-1">Estimated Profit</h5>
           <div className="flex justify-between items-end mt-2">
-            <div className={`font-plex font-bold text-2xl ${profitColor}`}>
-              {calcs.profit > 0 ? '+' : ''}{calcs.profit !== 0 ? CraftingService.formatSilver(calcs.profit) : '--'}
+            <div className={`font-plex font-bold text-2xl ${CraftingService.profitColor(calcs.profit)}`}>
+              {calcs.profit > 0 ? '+' : ''}{calcs.profit !== 0 ? CraftingService.formatSilverFull(calcs.profit) : '--'}
             </div>
-            <div className={`font-plex font-bold text-lg ${profitColor}`}>
-              {calcs.profitPercent !== 0 ? calcs.profitPercent.toFixed(2) + '%' : '--'}
+            <div className={`font-plex font-bold text-lg ${CraftingService.profitColor(calcs.profit)}`}>
+              {calcs.profitPercent !== 0 ? calcs.profitPercent.toFixed(1) + '%' : '--'}
             </div>
           </div>
         </div>
