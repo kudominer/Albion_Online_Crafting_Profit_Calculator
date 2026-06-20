@@ -3,365 +3,635 @@ const cors = require('cors');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const NodeCache = require('node-cache');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const PORT = 3001;
-const ALBION_SERVERS = {
-  west: 'https://west.albion-online-data.com/api/v2/stats/prices',
-  east: 'https://east.albion-online-data.com/api/v2/stats/prices',
-  europe: 'https://europe.albion-online-data.com/api/v2/stats/prices'
-};
 
+// ============================================================
+// CONSTANTS
+// ============================================================
+const ALBION_API_BASE = 'https://east.albion-online-data.com/api/v2/stats/prices';
+const LOCATIONS = 'Caerleon,Martlock,Bridgewatch,Lymhurst,Fort Sterling,Thetford,Black Market';
+const ALL_LOCATIONS = LOCATIONS.split(',').map(l => l.trim());
+
+// Rate limit: 180 req/min → 1 req per ~333ms. We use 400ms to be safe.
+const BATCH_SIZE = 100;
+const BATCH_DELAY_MS = 400;
+
+// ============================================================
+// CACHE (In-Memory with node-cache)
+// ============================================================
+// TTL by item tier priority
+const priceCache = new NodeCache({ checkperiod: 30 });
+const profitCache = new NodeCache({ stdTTL: 120, checkperiod: 60 });
+
+const TTL = { HIGH: 60, MEDIUM: 180, LOW: 600 };
+
+// ============================================================
+// DATA LOADING
+// ============================================================
 const DATA_DIR = path.join(__dirname, 'data');
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
+if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
-/**
- * Đọc tất cả mã vật phẩm duy nhất từ recipes.json ở frontend (bao gồm cả thành phẩm và nguyên liệu)
- */
-function loadUniqueItemIds() {
+let RECIPES = [];
+let REFINE_RECIPES = {};
+
+function loadData() {
   try {
     const recipesPath = path.join(__dirname, '..', 'frontend', 'src', 'data', 'recipes.json');
-    if (!fs.existsSync(recipesPath)) {
-      console.error(`[Scanner] Không tìm thấy recipes.json tại ${recipesPath}`);
-      return [];
+    if (fs.existsSync(recipesPath)) {
+      RECIPES = JSON.parse(fs.readFileSync(recipesPath, 'utf8'));
+      console.log(`[Data] Loaded ${RECIPES.length} craft recipes`);
     }
-    const recipes = JSON.parse(fs.readFileSync(recipesPath, 'utf8'));
-    const uniqueIds = new Set();
-    recipes.forEach(r => {
-      if (r.id) uniqueIds.add(r.id);
-      if (r.materials && Array.isArray(r.materials)) {
-        r.materials.forEach(m => {
-          if (m.id) uniqueIds.add(m.id);
-        });
-      }
-    });
-    return Array.from(uniqueIds);
-  } catch (error) {
-    console.error('[Scanner] Lỗi đọc danh sách vật phẩm từ recipes.json:', error);
-    return [];
+  } catch (e) {
+    console.error('[Data] Error loading recipes.json:', e.message);
   }
-}
-
-const STATE_PATH = path.join(DATA_DIR, 'scanner_state.json');
-
-/**
- * Đọc trạng thái quét hiện tại
- */
-function loadScannerState() {
   try {
-    if (fs.existsSync(STATE_PATH)) {
-      return JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
+    const refinePath = path.join(DATA_DIR, 'refine_recipes.json');
+    if (fs.existsSync(refinePath)) {
+      REFINE_RECIPES = JSON.parse(fs.readFileSync(refinePath, 'utf8'));
+      console.log(`[Data] Loaded ${Object.keys(REFINE_RECIPES).length} refine recipes`);
     }
-  } catch (error) {
-    console.error('[Scanner] Lỗi đọc scanner_state.json:', error);
-  }
-  return { currentServer: 'east', currentIndex: 0, lastRunTimestamp: 0 };
-}
-
-/**
- * Ghi lại trạng thái quét hiện tại
- */
-function saveScannerState(state) {
-  try {
-    fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2), 'utf8');
-  } catch (error) {
-    console.error('[Scanner] Lỗi ghi scanner_state.json:', error);
+  } catch (e) {
+    console.error('[Data] Error loading refine_recipes.json:', e.message);
   }
 }
 
-function getPricesPath(server) {
-  return path.join(DATA_DIR, `prices_${server}.json`);
+// ============================================================
+// PRIORITY QUEUE SYSTEM
+// ============================================================
+// Raw resources = HIGH, popular gear T4-T6 = MEDIUM, rest = LOW
+const RAW_RESOURCE_PATTERNS = [/_WOOD$/, /_ORE$/, /_FIBER$/, /_HIDE$/, /_ROCK$/];
+const REFINED_PATTERNS = [/_PLANKS$/, /_METALBAR$/, /_CLOTH$/, /_LEATHER$/, /_STONEBLOCK$/];
+
+const BASE_GEAR_PATTERNS = [
+  /^T[4-7]_HEAD_/, /^T[4-7]_ARMOR_/, /^T[4-7]_SHOES_/,
+  /^T[4-7]_CAPE$/, /^T[4-7]_BAG$/,
+  /^T[4-7]_(MAIN|2H|OFF)_/
+];
+
+function getItemPriority(itemId) {
+  if (RAW_RESOURCE_PATTERNS.some(p => p.test(itemId))) return 'HIGH';
+  if (REFINED_PATTERNS.some(p => p.test(itemId))) return 'HIGH';
+  if (BASE_GEAR_PATTERNS.some(p => p.test(itemId))) return 'HIGH';
+  const tier = parseInt(itemId.charAt(1)) || 0;
+  if (tier >= 4 && tier <= 6) return 'MEDIUM';
+  return 'LOW';
 }
 
-/**
- * Đọc giá lưu trong file offline của một server
- */
-function loadPrices(server) {
-  const filePath = getPricesPath(server);
-  try {
-    if (fs.existsSync(filePath)) {
-      return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    }
-  } catch (error) {
-    console.error(`[Scanner] Lỗi đọc file giá server ${server}:`, error);
-  }
-  return {};
+function getItemTTL(itemId) {
+  return TTL[getItemPriority(itemId)];
 }
 
-/**
- * Ghi giá lưu vào file offline của một server
- */
-function savePrices(server, prices) {
-  const filePath = getPricesPath(server);
-  try {
-    fs.writeFileSync(filePath, JSON.stringify(prices, null, 2), 'utf8');
-  } catch (error) {
-    console.error(`[Scanner] Lỗi ghi file giá server ${server}:`, error);
-  }
+// ============================================================
+// CRAWLER WORKER
+// ============================================================
+let scannerState = {
+  isRunning: false,
+  currentIndex: 0,
+  totalItems: 0,
+  lastRunAt: null,
+  itemsUpdated: 0,
+  errors: 0,
+  requestsThisMinute: 0,
+  minuteStart: Date.now()
+};
+
+let uniqueItemIds = [];
+
+function buildItemList() {
+  const ids = new Set();
+
+  // Add refine recipes items
+  Object.keys(REFINE_RECIPES).forEach(id => {
+    ids.add(id);
+    REFINE_RECIPES[id].materials.forEach(m => ids.add(m.id));
+  });
+
+  // Add craft recipe items
+  RECIPES.forEach(r => {
+    if (r.id) ids.add(r.id);
+    if (r.materials) r.materials.forEach(m => { if (m.id) ids.add(m.id); });
+  });
+
+  // Sort by priority: HIGH first, then MEDIUM, then LOW
+  const sorted = Array.from(ids).sort((a, b) => {
+    const pA = getItemPriority(a);
+    const pB = getItemPriority(b);
+    const order = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    return order[pA] - order[pB];
+  });
+
+  uniqueItemIds = sorted;
+  scannerState.totalItems = sorted.length;
+  console.log(`[Scanner] Item list built: ${sorted.length} items (HIGH first)`);
 }
 
-/**
- * Hàm extractValidPrice xử lý luật lọc giá
- */
-function extractValidPrice(rawData) {
-  const tempPrices = {};
+function parseAndCache(rawData) {
+  let updated = 0;
+  const grouped = {};
 
-  rawData.forEach(item => {
-    const { item_id, city, quality, sell_price_min, buy_price_max } = item;
+  rawData.forEach(entry => {
+    const { item_id, city, quality, sell_price_min, buy_price_max } = entry;
+    if (quality !== 1) return;
     if (sell_price_min <= 0 && buy_price_max <= 0) return;
 
-    if (!tempPrices[item_id]) tempPrices[item_id] = {};
-    if (!tempPrices[item_id][city]) {
-      tempPrices[item_id][city] = { 
-        q1_sell: 0, first_valid_sell: 0,
-        q1_buy: 0, first_valid_buy: 0
-      };
+    if (!grouped[item_id]) grouped[item_id] = {};
+    if (!grouped[item_id][city]) {
+      grouped[item_id][city] = { sellPriceMin: 0, buyPriceMax: 0 };
     }
-
-    const p = tempPrices[item_id][city];
-
-    if (sell_price_min > 0) {
-      if (quality === 1) p.q1_sell = sell_price_min;
-      else if (p.first_valid_sell === 0) p.first_valid_sell = sell_price_min;
+    const existing = grouped[item_id][city];
+    if (sell_price_min > 0 && (existing.sellPriceMin === 0 || sell_price_min < existing.sellPriceMin)) {
+      existing.sellPriceMin = sell_price_min;
     }
-    if (buy_price_max > 0) {
-      if (quality === 1) p.q1_buy = buy_price_max;
-      else if (p.first_valid_buy === 0) p.first_valid_buy = buy_price_max;
+    if (buy_price_max > existing.buyPriceMax) {
+      existing.buyPriceMax = buy_price_max;
     }
   });
 
-  const formattedData = {};
-  for (const itemId in tempPrices) {
-    formattedData[itemId] = {};
-    for (const city in tempPrices[itemId]) {
-      const p = tempPrices[itemId][city];
-      const finalSell = p.q1_sell > 0 ? p.q1_sell : p.first_valid_sell;
-      const finalBuy = p.q1_buy > 0 ? p.q1_buy : p.first_valid_buy;
-
-      formattedData[itemId][city] = {
-        item_id: itemId,
-        city: city,
-        sellPriceMin: finalSell,
-        buyPriceMax: finalBuy
-      };
+  for (const itemId in grouped) {
+    const existing = priceCache.get(itemId) || {};
+    const merged = { ...existing };
+    for (const city in grouped[itemId]) {
+      merged[city] = { ...grouped[itemId][city], updatedAt: Date.now() };
     }
+    const ttl = getItemTTL(itemId);
+    priceCache.set(itemId, merged, ttl);
+    updated++;
   }
 
-  return formattedData;
+  return updated;
 }
 
-/**
- * Trích xuất giá offline từ tệp JSON tương ứng
- */
-function getPricesOffline(items, locations, server = 'east') {
-  const offlinePrices = loadPrices(server);
-  const result = {};
-  const locationList = locations.split(',').map(l => l.trim());
-
-  items.forEach(item => {
-    const itemPrices = offlinePrices[item] || {};
-    result[item] = {};
-    locationList.forEach(loc => {
-      if (itemPrices[loc]) {
-        const data = itemPrices[loc];
-        // Ánh xạ sang camelCase để tương thích với Frontend
-        result[item][loc] = {
-          item_id: data.item_id,
-          city: data.city,
-          sellPriceMin: data.sellPriceMin !== undefined ? data.sellPriceMin : (data.sell_price_min || 0),
-          buyPriceMax: data.buyPriceMax !== undefined ? data.buyPriceMax : (data.buy_price_max || 0),
-          updatedAt: data.updatedAt
-        };
-      } else {
-        result[item][loc] = {
-          item_id: item,
-          city: loc,
-          sellPriceMin: 0,
-          buyPriceMax: 0
-        };
-      }
-    });
-  });
-
-  return result;
+async function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// ==========================================
-// 1. API lấy giá item (Lấy trực tiếp từ file giá offline đã quét)
-// GET /api/prices?items=T4_BAG,T5_BAG&locations=Martlock,Caerleon&server=east
-// ==========================================
-app.get('/api/prices', async (req, res) => {
-  try {
-    const itemsQuery = req.query.items;
-    const locations = req.query.locations || req.query.location;
-    const server = req.query.server || 'east';
-
-    if (!itemsQuery || !locations) {
-      return res.status(400).json({ error: 'Thiếu tham số items hoặc locations' });
-    }
-
-    const items = itemsQuery.split(',').map(i => i.trim());
-    const prices = getPricesOffline(items, locations, server);
-
-    res.json(prices);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+async function fetchBatch(itemIds) {
+  // Rate limit check
+  const now = Date.now();
+  if (now - scannerState.minuteStart > 60000) {
+    scannerState.requestsThisMinute = 0;
+    scannerState.minuteStart = now;
   }
-});
-
-// ==========================================
-// 2. API tính profit (Sử dụng giá offline từ file để tính toán)
-// POST /api/profit
-// ==========================================
-app.post('/api/profit', async (req, res) => {
-  try {
-    const { item_id, location, materials, server = 'east' } = req.body;
-
-    if (!item_id || !location || !materials || !Array.isArray(materials)) {
-      return res.status(400).json({ error: 'Body không hợp lệ. Yêu cầu item_id, location và materials (array)' });
-    }
-
-    const materialIds = materials.map(m => m.item_id);
-    const allItems = [item_id, ...materialIds];
-
-    const prices = getPricesOffline(allItems, location, server);
-
-    let totalCost = 0;
-    const materialDetails = materials.map(mat => {
-      const matCities = prices[mat.item_id] || {};
-      const matPriceInfo = matCities[location];
-      const matPrice = matPriceInfo ? matPriceInfo.sell_price_min : 0; 
-      const matTotalCost = matPrice * mat.quantity;
-      
-      totalCost += matTotalCost;
-      
-      return {
-        item_id: mat.item_id,
-        quantity: mat.quantity,
-        unit_price: matPrice,
-        total_cost: matTotalCost
-      };
-    });
-
-    const mainItemCities = prices[item_id] || {};
-    const mainItemPriceInfo = mainItemCities[location];
-    const sellPrice = mainItemPriceInfo ? mainItemPriceInfo.sell_price_min : 0;
-
-    const profit = sellPrice - totalCost;
-
-    res.json({
-      item_id,
-      location,
-      sell_price: sellPrice,
-      cost: totalCost,
-      profit: profit,
-      materials_breakdown: materialDetails
-    });
-
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  if (scannerState.requestsThisMinute >= 175) {
+    const wait = 60000 - (now - scannerState.minuteStart);
+    console.log(`[Scanner] Rate limit approaching, waiting ${wait}ms`);
+    await sleep(wait + 1000);
+    scannerState.requestsThisMinute = 0;
+    scannerState.minuteStart = Date.now();
   }
-});
 
-// ==========================================
-// 3. Tiến trình quét ngầm tự động (Scanner Background Loop)
-// ==========================================
-let isScanning = false;
+  const url = `${ALBION_API_BASE}/${itemIds.join(',')}?locations=${LOCATIONS}&qualities=1`;
+  const response = await axios.get(url, { timeout: 15000 });
+  scannerState.requestsThisMinute++;
+  return response.data;
+}
 
 async function runScannerTick() {
-  if (isScanning) {
-    console.log('[Scanner] Một tiến trình quét đang chạy, bỏ qua lần này...');
-    return;
-  }
+  if (scannerState.isRunning) return;
+  if (uniqueItemIds.length === 0) return;
 
-  isScanning = true;
-  console.log(`\n--- [Scanner] Khởi động đợt quét giá tự động: ${new Date().toLocaleString()} ---`);
+  scannerState.isRunning = true;
+  scannerState.lastRunAt = new Date().toISOString();
 
   try {
-    const uniqueIds = loadUniqueItemIds();
-    if (uniqueIds.length === 0) {
-      console.error('[Scanner] Không tìm thấy vật phẩm nào trong recipes.json để quét.');
-      isScanning = false;
+    // Only scan items whose cache has expired or is missing
+    const toScan = [];
+    for (let i = 0; i < uniqueItemIds.length && toScan.length < BATCH_SIZE; i++) {
+      const id = uniqueItemIds[(scannerState.currentIndex + i) % uniqueItemIds.length];
+      if (!priceCache.has(id)) {
+        toScan.push(id);
+      }
+    }
+
+    // Move index forward
+    scannerState.currentIndex = (scannerState.currentIndex + BATCH_SIZE) % uniqueItemIds.length;
+
+    if (toScan.length === 0) {
+      scannerState.isRunning = false;
       return;
     }
 
-    const state = loadScannerState();
-    const server = 'east'; // Cố định chỉ quét server Asia (East)
-    let index = state.currentIndex || 0;
+    console.log(`[Scanner] Fetching ${toScan.length} expired items...`);
+    const data = await fetchBatch(toScan);
+    const updated = parseAndCache(data);
+    scannerState.itemsUpdated += updated;
+    console.log(`[Scanner] Updated ${updated} items. Cache has ~${priceCache.keys().length} entries.`);
 
-    // Reset lại chỉ số nếu vượt quá số lượng vật phẩm
-    if (index >= uniqueIds.length) {
-      console.log(`[Scanner] Đã quét hết toàn bộ danh sách. Quay trở lại đầu danh sách.`);
-      index = 0;
-    }
-
-    const chunk = uniqueIds.slice(index, index + 50);
-    console.log(`[Scanner] Máy chủ: EAST | Đang quét index ${index} -> ${Math.min(index + 50, uniqueIds.length)} / ${uniqueIds.length} vật phẩm...`);
-
-    if (chunk.length > 0) {
-      const locations = 'Caerleon,Martlock,Bridgewatch,Lymhurst,Fort Sterling,Thetford,Black Market';
-      const baseUrl = ALBION_SERVERS[server] || ALBION_SERVERS['east'];
-      const itemsString = chunk.join(',');
-      const url = `${baseUrl}/${itemsString}?locations=${locations}&qualities=1`;
-
-      console.log(`[Scanner] Đang gửi yêu cầu lấy giá cho ${chunk.length} vật phẩm tại các chợ lớn...`);
-      const response = await axios.get(url, { timeout: 15000 });
-      const formattedData = extractValidPrice(response.data);
-
-      // Đọc dữ liệu giá hiện tại để cập nhật đè
-      const prices = loadPrices(server);
-      let updatedCount = 0;
-
-      for (const itemId in formattedData) {
-        if (!prices[itemId]) {
-          prices[itemId] = {};
-        }
-        for (const city in formattedData[itemId]) {
-          prices[itemId][city] = {
-            ...formattedData[itemId][city],
-            updatedAt: Date.now()
-          };
-        }
-        updatedCount++;
-      }
-
-      savePrices(server, prices);
-      console.log(`[Scanner] Cập nhật thành công giá cho ${updatedCount} vật phẩm vào prices_${server}.json.`);
-    }
-
-    // Tính toán index cho đợt kế tiếp
-    let nextIndex = index + 50;
-    if (nextIndex >= uniqueIds.length) {
-      console.log(`[Scanner] Đã hoàn thành 1 vòng quét đầy đủ cho ${uniqueIds.length} vật phẩm của server Asia (East). Quay trở lại đầu danh sách.`);
-      nextIndex = 0;
-    }
-
-    state.currentIndex = nextIndex;
-    state.currentServer = 'east';
-    state.lastRunTimestamp = Date.now();
-    saveScannerState(state);
-
-    console.log(`[Scanner] Hoàn tất đợt quét. Chỉ số tiếp theo: ${nextIndex} trên máy chủ EAST.\n`);
-  } catch (error) {
-    console.error('[Scanner] Lỗi trong quá trình quét giá:', error.response ? `API Status ${error.response.status}` : error.message);
+  } catch (err) {
+    scannerState.errors++;
+    console.error('[Scanner] Error:', err.response ? `HTTP ${err.response.status}` : err.message);
   } finally {
-    isScanning = false;
+    scannerState.isRunning = false;
   }
 }
 
-// Chạy server & Kích hoạt vòng lặp quét ngầm
-app.listen(PORT, () => {
-  console.log(`🚀 API Server đang chạy tại http://localhost:${PORT}`);
-  
-  // Khởi động chạy đợt quét đầu tiên sau 2 giây khi khởi động server
-  setTimeout(runScannerTick, 2000);
-  
-  // Thiết lập vòng lặp quét mỗi 60 giây (1 phút)
-  setInterval(runScannerTick, 60000);
+// ============================================================
+// PRICE HELPERS
+// ============================================================
+function getPriceFromCache(itemId, city) {
+  const data = priceCache.get(itemId);
+  if (!data) return null;
+  if (city) return data[city] || null;
+  return data; // Return all cities
+}
+
+function getBestPrice(itemId, preferredCity, type = 'sell') {
+  const data = priceCache.get(itemId);
+  if (!data) return 0;
+
+  if (preferredCity && data[preferredCity]) {
+    const p = type === 'sell' ? data[preferredCity].sellPriceMin : data[preferredCity].buyPriceMax;
+    if (p > 0) return p;
+  }
+
+  // Fallback to best price across all cities
+  const prices = Object.values(data)
+    .map(d => type === 'sell' ? d.sellPriceMin : d.buyPriceMax)
+    .filter(p => p > 0);
+
+  if (prices.length === 0) return 0;
+  return type === 'sell' ? Math.min(...prices) : Math.max(...prices);
+}
+
+// ============================================================
+// REFINE CHAIN ENGINE (Recursive)
+// ============================================================
+function calculateRefineCost(itemId, city, rrr = 0.152, depth = 0) {
+  if (depth > 10) return { cost: 0, breakdown: [], error: 'Max depth exceeded' };
+
+  const recipe = REFINE_RECIPES[itemId];
+
+  // Base case: raw resource → return market price
+  if (!recipe) {
+    const price = getBestPrice(itemId, city, 'sell');
+    return {
+      itemId,
+      isRaw: true,
+      marketPrice: price,
+      cost: price,
+      breakdown: []
+    };
+  }
+
+  // Recursive case: calculate cost of all materials
+  let totalRawCost = 0;
+  const materialBreakdown = recipe.materials.map(mat => {
+    const matResult = calculateRefineCost(mat.id, city, rrr, depth + 1);
+    const matCost = matResult.cost * mat.count;
+    totalRawCost += matCost;
+    return {
+      itemId: mat.id,
+      count: mat.count,
+      unitCost: matResult.cost,
+      totalCost: matCost,
+      detail: matResult
+    };
+  });
+
+  // Apply RRR: effective cost = raw / (1 + rrr) — accounting for return
+  const effectiveCost = totalRawCost * (1 - rrr);
+
+  return {
+    itemId,
+    isRaw: false,
+    rawCost: totalRawCost,
+    cost: effectiveCost,
+    breakdown: materialBreakdown
+  };
+}
+
+function buildRefineChainTree(itemId, city, rrr = 0.152) {
+  const recipe = REFINE_RECIPES[itemId];
+  if (!recipe) return null;
+
+  const costResult = calculateRefineCost(itemId, city, rrr);
+  if (costResult.cost <= 0) return null; // Missing material prices
+
+  const sellPrice = getBestPrice(itemId, city, 'sell');
+  const buyPrice = getBestPrice(itemId, city, 'buy');
+  const profit = sellPrice > 0 ? sellPrice - costResult.cost : null;
+
+  return {
+    itemId,
+    sellPrice,
+    buyPrice,
+    refineCost: Math.round(costResult.cost),
+    rawCost: Math.round(costResult.rawCost || costResult.cost),
+    profit: profit !== null ? Math.round(profit) : null,
+    profitPercent: profit !== null && costResult.cost > 0 ? ((profit / costResult.cost) * 100).toFixed(1) : null,
+    recipe: recipe.materials,
+    breakdown: costResult.breakdown,
+    tier: recipe.tier,
+    resource: recipe.resource
+  };
+}
+
+// ============================================================
+// CRAFT PROFIT ENGINE
+// ============================================================
+function calculateCraftProfit(recipe, city, rrr = 0.152, tax = 0.065) {
+  let totalMatCost = 0;
+  const materialDetails = [];
+  let missingMaterial = false;
+
+  for (const mat of recipe.materials) {
+    const unitPrice = getBestPrice(mat.id, city, 'sell');
+    if (unitPrice <= 0) missingMaterial = true;
+    const total = unitPrice * mat.count;
+    totalMatCost += total;
+    materialDetails.push({ id: mat.id, count: mat.count, unitPrice, total });
+  }
+
+  if (missingMaterial) {
+    return { effectiveCost: 0, profit: -999999999, profitPercent: 0 };
+  }
+
+  const effectiveCost = totalMatCost * (1 - rrr);
+  const sellPrice = getBestPrice(recipe.id, city, 'sell');
+  const buyPrice = getBestPrice(recipe.id, city, 'buy');
+  const revenue = sellPrice * (1 - tax);
+  const profit = revenue - effectiveCost;
+  const profitPercent = effectiveCost > 0 ? (profit / effectiveCost) * 100 : 0;
+
+  return {
+    itemId: recipe.id,
+    city,
+    sellPrice,
+    buyPrice,
+    effectiveCost: Math.round(effectiveCost),
+    rawCost: Math.round(totalMatCost),
+    revenue: Math.round(revenue),
+    profit: Math.round(profit),
+    profitPercent: parseFloat(profitPercent.toFixed(2)),
+    materials: materialDetails
+  };
+}
+
+// ============================================================
+// TOP PROFIT ENGINE (precomputed)
+// ============================================================
+function computeTopCraftProfit(city, rrr, tax, limit = 50) {
+  const results = [];
+  const seen = new Set();
+
+  for (const recipe of RECIPES) {
+    if (!recipe.id || !recipe.materials || seen.has(recipe.id)) continue;
+    seen.add(recipe.id);
+
+    // Skip items with no sell price
+    const sell = getBestPrice(recipe.id, city, 'sell');
+    if (sell <= 0) continue;
+
+    const calc = calculateCraftProfit(recipe, city, rrr, tax);
+    if (calc.effectiveCost <= 0) continue;
+
+    results.push(calc);
+  }
+
+  return results
+    .sort((a, b) => b.profit - a.profit)
+    .slice(0, limit);
+}
+
+function computeTopRefineProfit(city, rrr, limit = 50) {
+  const results = [];
+
+  for (const itemId of Object.keys(REFINE_RECIPES)) {
+    const tree = buildRefineChainTree(itemId, city, rrr);
+    if (!tree || tree.profit === null || tree.profit <= 0) continue;
+    results.push(tree);
+  }
+
+  return results
+    .sort((a, b) => b.profit - a.profit)
+    .slice(0, limit);
+}
+
+function computeTopFlipProfit(limit = 50) {
+  const results = [];
+
+  for (const itemId of priceCache.keys()) {
+    const data = priceCache.get(itemId);
+    if (!data) continue;
+
+    for (const city of ALL_LOCATIONS) {
+      if (!data[city]) continue;
+      const { sellPriceMin, buyPriceMax } = data[city];
+      if (sellPriceMin > 0 && buyPriceMax > 0) {
+        const spread = sellPriceMin - buyPriceMax;
+        if (spread > 0) {
+          const spreadPercent = (spread / buyPriceMax) * 100;
+          results.push({ itemId, city, sellPriceMin, buyPriceMax, spread, spreadPercent: parseFloat(spreadPercent.toFixed(2)) });
+        }
+      }
+    }
+  }
+
+  return results.sort((a, b) => b.spreadPercent - a.spreadPercent).slice(0, limit);
+}
+
+// ============================================================
+// API ROUTES
+// ============================================================
+
+// GET /api/prices?items=T4_WOOD,T5_PLANKS&locations=Caerleon,Martlock&server=east
+app.get('/api/prices', (req, res) => {
+  const { items, locations } = req.query;
+  if (!items) return res.status(400).json({ error: 'Missing items parameter' });
+
+  const itemList = items.split(',').map(i => i.trim()).filter(Boolean);
+  const locationFilter = locations ? locations.split(',').map(l => l.trim()) : ALL_LOCATIONS;
+
+  const result = {};
+  for (const itemId of itemList) {
+    const cached = priceCache.get(itemId);
+    result[itemId] = {};
+    for (const city of locationFilter) {
+      if (cached && cached[city]) {
+        result[itemId][city] = cached[city];
+      } else {
+        result[itemId][city] = { sellPriceMin: 0, buyPriceMax: 0 };
+      }
+    }
+  }
+
+  res.json(result);
 });
 
+// GET /api/craft-profit?item=T4_BAG&city=Caerleon&rrr=15.2&tax=6.5
+app.get('/api/craft-profit', (req, res) => {
+  const { item, city, rrr = '15.2', tax = '6.5' } = req.query;
+  if (!item) return res.status(400).json({ error: 'Missing item parameter' });
+
+  const recipe = RECIPES.find(r => r.id === item);
+  if (!recipe) return res.status(404).json({ error: `Recipe not found for ${item}` });
+
+  const result = calculateCraftProfit(recipe, city, parseFloat(rrr) / 100, parseFloat(tax) / 100);
+  res.json(result);
+});
+
+// GET /api/refine-chain?item=T5_PLANKS&city=Caerleon&rrr=15.2
+app.get('/api/refine-chain', (req, res) => {
+  const { item, city, rrr = '15.2' } = req.query;
+  if (!item) return res.status(400).json({ error: 'Missing item parameter' });
+
+  const tree = buildRefineChainTree(item, city, parseFloat(rrr) / 100);
+  if (!tree) return res.status(404).json({ error: `No refine recipe found for ${item}` });
+
+  res.json(tree);
+});
+
+// GET /api/transport?item=T4_BAG&from=Caerleon&to=Martlock
+app.get('/api/transport', (req, res) => {
+  const { item, from, to } = req.query;
+  if (!item || !from || !to) return res.status(400).json({ error: 'Missing item, from, or to' });
+
+  const itemList = item.split(',').map(i => i.trim());
+  const results = [];
+
+  for (const itemId of itemList) {
+    const fromData = priceCache.get(itemId)?.[from];
+    const toData = priceCache.get(itemId)?.[to];
+
+    const buyPrice = fromData?.sellPriceMin || 0;
+    const sellPrice = toData?.sellPriceMin || 0;
+    const profit = sellPrice - buyPrice;
+    const profitPercent = buyPrice > 0 ? (profit / buyPrice) * 100 : 0;
+
+    results.push({
+      itemId,
+      from,
+      to,
+      buyPrice,
+      sellPrice,
+      profit,
+      profitPercent: parseFloat(profitPercent.toFixed(2))
+    });
+  }
+
+  res.json(results.length === 1 ? results[0] : results);
+});
+
+// GET /api/flip?items=T4_BAG,T5_BOW&city=Caerleon
+app.get('/api/flip', (req, res) => {
+  const { items, city } = req.query;
+  if (!items) return res.status(400).json({ error: 'Missing items parameter' });
+
+  const itemList = items.split(',').map(i => i.trim());
+  const results = [];
+
+  for (const itemId of itemList) {
+    const data = priceCache.get(itemId);
+    if (!data) { results.push({ itemId, error: 'No price data' }); continue; }
+
+    const cityData = city ? { [city]: data[city] } : data;
+
+    for (const [loc, prices] of Object.entries(cityData)) {
+      if (!prices) continue;
+      const { sellPriceMin = 0, buyPriceMax = 0 } = prices;
+      if (sellPriceMin > 0 && buyPriceMax > 0) {
+        const spread = sellPriceMin - buyPriceMax;
+        const spreadPercent = (spread / buyPriceMax) * 100;
+        results.push({ itemId, city: loc, sellPriceMin, buyPriceMax, spread, spreadPercent: parseFloat(spreadPercent.toFixed(2)) });
+      }
+    }
+  }
+
+  res.json(results);
+});
+
+// GET /api/market/top-profit?type=craft|refine|flip&city=Caerleon&limit=20&rrr=15.2&tax=6.5
+app.get('/api/market/top-profit', (req, res) => {
+  const { type = 'craft', city, limit = '20', rrr = '15.2', tax = '6.5' } = req.query;
+  const limitN = Math.min(parseInt(limit) || 20, 100);
+  const rrrVal = parseFloat(rrr) / 100;
+  const taxVal = parseFloat(tax) / 100;
+
+  const cacheKey = `top-profit:${type}:${city || 'all'}:${rrr}:${tax}`;
+  const cached = profitCache.get(cacheKey);
+  if (cached) return res.json(cached);
+
+  let results;
+  try {
+    if (type === 'craft') {
+      results = computeTopCraftProfit(city, rrrVal, taxVal, limitN);
+    } else if (type === 'refine') {
+      results = computeTopRefineProfit(city, rrrVal, limitN);
+    } else if (type === 'flip') {
+      results = computeTopFlipProfit(limitN);
+    } else {
+      return res.status(400).json({ error: 'type must be craft|refine|flip' });
+    }
+    profitCache.set(cacheKey, results);
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/scanner/status
+app.get('/api/scanner/status', (req, res) => {
+  res.json({
+    isRunning: scannerState.isRunning,
+    currentIndex: scannerState.currentIndex,
+    totalItems: scannerState.totalItems,
+    lastRunAt: scannerState.lastRunAt,
+    itemsUpdated: scannerState.itemsUpdated,
+    errors: scannerState.errors,
+    cachedItems: priceCache.keys().length,
+    requestsThisMinute: scannerState.requestsThisMinute
+  });
+});
+
+// GET /api/market/all-prices?city=Caerleon (for Market tab)
+app.get('/api/market/all-prices', (req, res) => {
+  const { city, limit = '200' } = req.query;
+  const limitN = parseInt(limit) || 200;
+  const result = [];
+  const keys = priceCache.keys().slice(0, limitN);
+
+  for (const itemId of keys) {
+    const data = priceCache.get(itemId);
+    if (!data) continue;
+
+    if (city) {
+      if (data[city]) {
+        result.push({ itemId, city, ...data[city] });
+      }
+    } else {
+      for (const [loc, prices] of Object.entries(data)) {
+        result.push({ itemId, city: loc, ...prices });
+      }
+    }
+  }
+
+  res.json(result);
+});
+
+// Legacy endpoint for backward compat with old frontend
+app.get('/api/prices/legacy', (req, res) => {
+  return res.redirect(302, `/api/prices?${new URLSearchParams(req.query).toString()}`);
+});
+
+// ============================================================
+// SERVER BOOTSTRAP
+// ============================================================
+app.listen(PORT, async () => {
+  console.log(`\n🚀 Albion Trading API running at http://localhost:${PORT}`);
+  console.log(`📦 Endpoints: /api/prices | /api/craft-profit | /api/refine-chain | /api/transport | /api/flip | /api/market/top-profit | /api/scanner/status\n`);
+
+  loadData();
+  buildItemList();
+
+  // Initial scan after 1s
+  setTimeout(runScannerTick, 1000);
+
+  // Continuous scan every 5s (crawler will skip items still in TTL)
+  setInterval(runScannerTick, 5000);
+});

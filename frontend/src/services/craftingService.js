@@ -1,61 +1,91 @@
 export class CraftingService {
-  /**
-   * Tính toán lợi nhuận và chi phí chế tạo cho một vật phẩm
-   * @param {Object} item - Thông tin vật phẩm và giá
-   * @param {number|string} item.rrr - Resource Return Rate (VD: 15.2)
-   * @param {number|string} item.tax - Thuế sử dụng trạm (VD: 6.5)
-   * @param {number|string} item.craftFee - Phí chế tạo base (VD: 1000)
-   * @param {number} item.sellPrice - Giá bán ước tính
-   * @param {Array} item.materials - Danh sách nguyên liệu [{ quantity, unitPrice }]
-   * @returns {Object} Kết quả tính toán
-   */
-  static calculateProfit(item) {
-    const {
-      rrr = 15.2,
-      tax = 6.5,
-      craftFee = 0,
-      sellPrice = 0,
-      materials = []
-    } = item;
+  // ── Craft profit calculation ────────────────────────────
+  static calculateProfit({ rrr = 15.2, tax = 6.5, craftFee = 0, sellPrice = 0, materials = [] }) {
+    const rrrVal = Number(rrr) / 100;
+    const taxVal = Number(tax) / 100;
+    const feeVal = Number(craftFee) || 0;
 
-    const rrrValue = Number(rrr) / 100;
-    const taxValue = Number(tax) / 100;
-    const feeValue = Number(craftFee);
-
-    // Tính tổng chi phí nguyên liệu gốc
     let totalMaterialCost = 0;
-    materials.forEach(mat => {
-      totalMaterialCost += (mat.quantity * mat.unitPrice);
-    });
+    materials.forEach(mat => { totalMaterialCost += (mat.quantity * mat.unitPrice); });
 
-    // Công thức tính chi phí thực tế với RRR:
-    // Thực tế, RRR trả lại nguyên liệu chứ không phải giảm giá trực tiếp. 
-    // Giả sử làm liên tục, chi phí sẽ xấp xỉ cost * (1 - rrr).
-    // Ở đây ta dùng công thức cơ bản: TrueCost = Cost * (1 - RRR)
-    const trueMaterialCost = totalMaterialCost * (1 - rrrValue);
-
-    const totalCost = trueMaterialCost + feeValue;
-
-    // Lợi nhuận = Doanh thu sau thuế - Tổng chi phí
-    const revenue = sellPrice * (1 - taxValue);
+    const trueMaterialCost = totalMaterialCost * (1 - rrrVal);
+    const totalCost = trueMaterialCost + feeVal;
+    const revenue = sellPrice * (1 - taxVal);
     const profit = revenue - totalCost;
-
-    let profitPercent = 0;
-    if (totalCost > 0) {
-      profitPercent = (profit / totalCost) * 100;
-    }
+    const profitPercent = totalCost > 0 ? (profit / totalCost) * 100 : 0;
 
     return {
       totalMaterialCost: Math.round(totalMaterialCost),
       trueCostPerItem: Math.round(totalCost),
       revenue: Math.round(revenue),
       profit: Math.round(profit),
-      profitPercent: profitPercent
+      profitPercent
     };
   }
 
+  // ── Refine profit (flat, no chain) ──────────────────────
+  static calculateRefineProfit({ refinedPrice = 0, rawCost = 0, rrr = 15.2 }) {
+    const rrrVal = Number(rrr) / 100;
+    const effectiveCost = rawCost * (1 - rrrVal);
+    const profit = refinedPrice - effectiveCost;
+    const profitPercent = effectiveCost > 0 ? (profit / effectiveCost) * 100 : 0;
+    return {
+      effectiveCost: Math.round(effectiveCost),
+      rawCost: Math.round(rawCost),
+      profit: Math.round(profit),
+      profitPercent
+    };
+  }
+
+  // ── Transport profit ────────────────────────────────────
+  static calculateTransportProfit({ buyPrice = 0, sellPrice = 0, tax = 6.5 }) {
+    const taxVal = Number(tax) / 100;
+    const revenue = sellPrice * (1 - taxVal);
+    const profit = revenue - buyPrice;
+    const profitPercent = buyPrice > 0 ? (profit / buyPrice) * 100 : 0;
+    return { revenue: Math.round(revenue), profit: Math.round(profit), profitPercent };
+  }
+
+  // ── Flip profit (spread) ────────────────────────────────
+  static calculateFlipProfit({ sellPriceMin = 0, buyPriceMax = 0, tax = 6.5 }) {
+    const taxVal = Number(tax) / 100;
+    const revenue = sellPriceMin * (1 - taxVal);
+    const profit = revenue - buyPriceMax;
+    const spreadPercent = buyPriceMax > 0 ? ((sellPriceMin - buyPriceMax) / buyPriceMax) * 100 : 0;
+    const profitPercent = buyPriceMax > 0 ? (profit / buyPriceMax) * 100 : 0;
+    return { revenue: Math.round(revenue), profit: Math.round(profit), profitPercent, spreadPercent };
+  }
+
+  // ── Focus simulation ────────────────────────────────────
+  // With focus, effective RRR increases (common rates: base 15.2%, focus ~47.9%)
+  static getFocusRrr(baseRrr) {
+    const base = parseFloat(baseRrr);
+    // Focus roughly triples the return rate, capped at ~53%
+    return Math.min(base * 3.15, 53).toFixed(1);
+  }
+
+  // ── Format helpers ──────────────────────────────────────
   static formatSilver(amount) {
-    if (amount === undefined || amount === null || amount === 0) return '--';
-    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    if (!amount || amount === 0) return '--';
+    if (Math.abs(amount) >= 1_000_000) return (amount / 1_000_000).toFixed(1) + 'M';
+    if (Math.abs(amount) >= 1_000) return (amount / 1_000).toFixed(1) + 'k';
+    return amount.toString();
+  }
+
+  static formatSilverFull(amount) {
+    if (!amount || amount === 0) return '--';
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  static profitColor(profit) {
+    if (profit > 0) return 'text-trading-up';
+    if (profit < 0) return 'text-trading-down';
+    return 'text-body';
+  }
+
+  static profitBgColor(profit) {
+    if (profit > 0) return 'bg-trading-up/10 text-trading-up';
+    if (profit < 0) return 'bg-trading-down/10 text-trading-down';
+    return 'bg-body/10 text-body';
   }
 }
