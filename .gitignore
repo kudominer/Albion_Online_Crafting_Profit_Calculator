@@ -24,7 +24,5 @@ dist-ssr
 *.sw?
 
 # Agent
-.agent/
 
 # Local data
-backend/data/
